@@ -1,51 +1,51 @@
 [
-    {
-        "id": "BT01-001",
-        "name": "Rapi",
-        "type": "Unit",
-        "color": "Red",
-        "level": 1,
-        "power": 2000,
-        "text": "Forcer le blocage de l'adversaire si cette unité attaque.",
-        "image": "https://example.com/images/rapi.jpg"
-    },
-    {
-        "id": "BT01-002",
-        "name": "Anis",
-        "type": "Unit",
-        "color": "Blue",
-        "level": 1,
-        "power": 1500,
-        "text": "Défendre une ligne adjacente en défaussant 1 carte.",
-        "image": "https://example.com/images/anis.jpg"
-    },
-    {
-        "id": "BT01-003",
-        "name": "Neon",
-        "type": "Unit",
-        "color": "Green",
-        "level": 1,
-        "power": 1000,
-        "text": "Donne un bonus de +1000 de puissance à une unité alliée.",
-        "image": "https://example.com/images/neon.jpg"
-    },
-    {
-        "id": "BT01-004",
-        "name": "Marian",
-        "type": "Leader",
-        "color": "Purple",
-        "level": 1,
-        "power": 3000,
-        "text": "Leader principal. Permet de piocher une carte en cas de dégât reçu.",
-        "image": "https://example.com/images/marian.jpg"
-    },
-    {
-        "id": "BT01-005",
-        "name": "Inconnue (Goddess of Victory)",
-        "type": "Skill",
-        "color": "Yellow",
-        "level": 0,
-        "text": "Équipez à une unité pour lui octroyer la capacité Attaque à distance.",
-        "image": "https://example.com/images/goddess_skill.jpg"
-    }
+  {
+    "id": "BT01-001",
+    "name": "Rapi",
+    "type": "Unit",
+    "color": "Red",
+    "level": 1,
+    "power": 2000,
+    "text": "Forcer le blocage de l'adversaire si cette unité attaque.",
+    "image": "https://raw.githubusercontent.com/valentinorossi85/nikke-deck-builder/refs/heads/main/images/rapi.jpg"
+  },
+  {
+    "id": "BT01-002",
+    "name": "Anis",
+    "type": "Unit",
+    "color": "Blue",
+    "level": 1,
+    "power": 1500,
+    "text": "Défendre une ligne adjacente en défaussant 1 carte.",
+    "image": "https://raw.githubusercontent.com/valentinorossi85/nikke-deck-builder/refs/heads/main/images/anis.jpg"
+  },
+  {
+    "id": "BT01-003",
+    "name": "Neon",
+    "type": "Unit",
+    "color": "Green",
+    "level": 1,
+    "power": 1000,
+    "text": "Donne un bonus de +1000 de puissance à une unité alliée.",
+    "image": "https://raw.githubusercontent.com/valentinorossi85/nikke-deck-builder/refs/heads/main/images/neon.jpg"
+  },
+  {
+    "id": "BT01-004",
+    "name": "Marian",
+    "type": "Leader",
+    "color": "Purple",
+    "level": 1,
+    "power": 3000,
+    "text": "Leader principal. Permet de piocher une carte en cas de dégât reçu.",
+    "image": "https://raw.githubusercontent.com/valentinorossi85/nikke-deck-builder/refs/heads/main/images/marian.jpg"
+  },
+  {
+    "id": "BT01-005",
+    "name": "Inconnue (Goddess of Victory)",
+    "type": "Skill",
+    "color": "Yellow",
+    "level": 0,
+    "text": "Équipez à une unité pour lui octroyer la capacité Attaque à distance.",
+    "image": "https://raw.githubusercontent.com/valentinorossi85/nikke-deck-builder/refs/heads/main/images/goddess_skill.jpg"
+  }
 ]
