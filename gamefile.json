@@ -58,7 +58,7 @@
         }
     },
     "cards": {
-        "dataUrl": "https://github.com/valentinorossi85/nikke-deck-builder/blob/main/cards.json",
+        "dataUrl": "https://raw.githubusercontent.com/valentinorossi85/nikke-deck-builder/refs/heads/main/cards.json",
         "cardBack": "https://example.com/nikke-cardback.jpg"
     }
 }
