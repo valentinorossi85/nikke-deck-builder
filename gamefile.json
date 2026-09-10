@@ -1,0 +1,64 @@
+{
+    "name": "Nivel Arena - NIKKE",
+    "deckBuilding": {
+        "mainFilters": [
+            "type",
+            "color",
+            "level"
+        ],
+        "formats": [
+            {
+                "title": "Standard format",
+                "gameplay": "Standard"
+            }
+        ]
+    },
+    "gameplay": {
+        "Standard": {
+            "mulligan": {
+                "startingHandSize": 5
+            },
+            "newTurn": {
+                "drawPerTurn": 1
+            },
+            "countersStartingValues": [],
+            "sections": {
+                "layout": {
+                    "direction": "column",
+                    "content": [
+                        {
+                            "section": "LeaderZone"
+                        },
+                        {
+                            "section": "BattleField"
+                        },
+                        {
+                            "section": "DamageGauge"
+                        }
+                    ]
+                },
+                "sectionsDict": {
+                    "LeaderZone": {
+                        "isHidden": "no",
+                        "height": "SMALL",
+                        "alignment": "CENTER"
+                    },
+                    "BattleField": {
+                        "isHidden": "no",
+                        "height": "MEDIUM",
+                        "alignment": "CENTER"
+                    },
+                    "DamageGauge": {
+                        "isHidden": "no",
+                        "height": "SMALL",
+                        "alignment": "CENTER"
+                    }
+                }
+            }
+        }
+    },
+    "cards": {
+        "dataUrl": "https://tcg-arena.fr/load/aHR0cHMlM0ElMkYlMkZnaXRodWIuY29tJTJGdmFsZW50aW5vcm9zc2k4NSUyRm5pa2tlLWRlY2stYnVpbGRlcg==",
+        "cardBack": "https://example.com/nikke-cardback.jpg"
+    }
+}
