@@ -58,7 +58,7 @@
         }
     },
     "cards": {
-        "dataUrl": "https://tcg-arena.fr/load/aHR0cHMlM0ElMkYlMkZnaXRodWIuY29tJTJGdmFsZW50aW5vcm9zc2k4NSUyRm5pa2tlLWRlY2stYnVpbGRlcg==",
+        "dataUrl": "https://github.com/valentinorossi85/nikke-deck-builder/blob/main/cards.json",
         "cardBack": "https://example.com/nikke-cardback.jpg"
     }
 }
