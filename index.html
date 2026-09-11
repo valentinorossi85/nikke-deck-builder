@@ -10,64 +10,50 @@
     <header>
         <h1>🎮 Nivel Arena Deck Builder</h1>
         <nav>
-            <a href="rules.md">Règles</a>
-            <a href="#" id="helpBtn">Aide</a>
+            <a href="rules.html">Règles</a>
+            <a href="#" onclick="alert('Aide: Cliquez sur une carte pour l\'ajouter au deck')">Aide</a>
         </nav>
     </header>
 
     <main>
-        <!-- Section Filtres -->
         <section class="filters">
             <input type="text" id="searchInput" placeholder="Rechercher une carte...">
             <select id="ipFilter">
-                <option value="all">Toutes les IPs</option>
-                <option value="nikke">NIKKE</option>
-                <option value="stellar_blade">Stellar Blade</option>
-                <option value="epic_seven">Epic Seven</option>
-                <option value="eternal_return">Eternal Return</option>
-                <option value="brown_dust_2">Brown Dust 2</option>
+                <option value="all">Tous les types</option>
+                <option value="Unit">Unités</option>
+                <option value="Leader">Leaders</option>
+                <option value="Skill">Compétences</option>
             </select>
         </section>
 
         <div class="builder-container">
-            <!-- Liste des cartes disponibles -->
             <section class="card-pool">
-                <h2>Cartes Disponibles</h2>
+                <h2>Cartes Disponibles (<span id="cardCount">0</span>)</h2>
                 <div id="cardList" class="card-grid"></div>
             </section>
 
-            <!-- Deck en construction -->
             <section class="deck-builder">
                 <h2>Mon Deck</h2>
                 
-                <!-- Stats -->
                 <div id="deckStats" class="deck-stats">
                     <div class="stat">
                         <span class="stat-label">Cartes:</span>
                         <span class="stat-value">0/40</span>
                     </div>
-                    <div class="stat">
-                        <span class="stat-label">Triggers:</span>
-                        <span class="stat-value">0/8</span>
-                    </div>
                 </div>
 
-                <!-- Slot Leader -->
                 <div class="leader-section">
                     <h3>Leader</h3>
                     <div id="leaderSlot" class="leader-slot"></div>
                 </div>
 
-                <!-- Liste du deck -->
+                <h3>Cartes du deck</h3>
                 <div id="deckList" class="deck-grid"></div>
 
-                <!-- Validation -->
                 <div id="validationResult" class="validation"></div>
 
-                <!-- Actions -->
                 <div class="actions">
-                    <button id="validateBtn" class="btn btn-primary">Valider le Deck</button>
-                    <button id="exportBtn" class="btn btn-secondary">Exporter</button>
+                    <button id="exportBtn" class="btn btn-primary">Exporter</button>
                     <label class="btn btn-secondary">
                         Importer
                         <input type="file" id="importBtn" accept=".json" style="display: none;">
@@ -79,9 +65,8 @@
 
     <footer>
         <p>Nivel Arena Deck Builder - Projet éducatif</p>
-        <p>Les cartes appartiennent à leurs propriétaires respectifs</p>
     </footer>
 
-    <script type="module" src="app.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
