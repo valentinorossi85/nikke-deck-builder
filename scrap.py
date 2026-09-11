@@ -1,117 +1,87 @@
-import requests
-from bs4 import BeautifulSoup
 import json
-import time
+import re
+from bs4 import BeautifulSoup
 
-def scrape_cards():
-    url = "http://nivelarena.co.kr/skin/board/card_list_new/get_more_list.php"
+def parse_cards_html():
+    """Parse le HTML brut pour extraire les informations des cartes"""
     
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-        'Referer': 'http://nivelarena.co.kr/bbs/board.php?bo_table=cardlists'
-    }
+    # Lire le fichier HTML
+    with open('page1_raw.html', 'r', encoding='utf-8') as f:
+        html_content = f.read()
     
-    all_cards = []
-    page = 1
+    soup = BeautifulSoup(html_content, 'html.parser')
     
-    print("Demarrage du scraping...")
+    cards = []
+    card_number = 1
     
-    while page <= 50:
-        print(f"Page {page}...")
-        
-        data = {
-            'bo_table': 'cardlists',
-            'sca': '',
-            'sop': 'and',
-            'wr_1': '',
-            'wr_2': '',
-            'wr_3': '',
-            'wr_5': '',
-            'wr_8': '',
-            'wr_10': '',
-            'wk': 'card',
-            'sfl': 'wr_subject||wr_content||ca_name||wr_1||wr_2||wr_3||wr_4||wr_5||wr_6||wr_7||wr_8||wr_11',
-            'stx': '',
-            'page': str(page)
-        }
-        
+    # Trouver tous les éléments li avec la classe gall_li
+    card_elements = soup.find_all('li', class_='gall_li')
+    
+    print(f"Nombre d'éléments trouvés: {len(card_elements)}")
+    
+    for card_el in card_elements:
         try:
-            response = requests.post(url, data=data, headers=headers, timeout=10)
+            # Extraire l'attribut data-info
+            data_info = card_el.get('data-info', '')
             
-            if response.status_code != 200:
-                print(f"Erreur HTTP {response.status_code}")
-                break
-            
-            html = response.text
-            
-            if '225x315' not in html:
-                print("Plus de cartes trouvees")
-                break
-            
-            soup = BeautifulSoup(html, 'html.parser')
-            images = soup.find_all('img', src=lambda x: x and '225x315' in x)
-            
-            if not images:
-                print("Aucune image trouvee")
-                break
-            
-            print(f"  -> {len(images)} images trouvees")
-            
-            for img in images:
-                img_url = img.get('src', '')
-                if not img_url:
-                    continue
+            # Extraire l'URL de l'image
+            img_tag = card_el.find('img')
+            if not img_tag:
+                continue
                 
-                if not img_url.startswith('http'):
-                    img_url = 'http://nivelarena.co.kr' + img_url
-                
-                # Essayer de trouver le nom
-                name = "Carte inconnue"
-                parent = img.parent
-                for _ in range(5):
-                    if parent:
-                        link = parent.find('a')
-                        if link and link.text.strip():
-                            name = link.text.strip()
-                            break
-                        title = parent.find(['h3', 'h4', 'h5', 'div', 'span'])
-                        if title and title.text.strip() and len(title.text.strip()) > 2:
-                            name = title.text.strip()
-                            break
-                        parent = parent.parent
-                
-                # Extraire un ID unique
-                filename = img_url.split('/')[-1]
-                card_id = filename.split('_225x315')[0] if '_225x315' in filename else f"card_{len(all_cards)+1}"
-                
-                all_cards.append({
-                    "id": card_id,
-                    "name": name,
-                    "type": "Unit",
-                    "color": "Red",
-                    "level": 1,
-                    "power": 1000,
-                    "text": "",
-                    "image": img_url
-                })
-        
+            img_src = img_tag.get('src', '')
+            if not img_src or '225x315' not in img_src:
+                continue
+            
+            # Extraire le numéro de carte depuis data-info (après ♬)
+            card_id_num = ""
+            if '♬' in data_info:
+                card_id_num = data_info.split('♬')[-1].strip()
+            
+            # Créer un ID unique basé sur le numéro ou la position
+            if card_id_num:
+                card_id = f"CARD_{card_id_num}"
+            else:
+                card_id = f"CARD_{card_number:04d}"
+            
+            # Extraire le nom de fichier pour l'ID
+            filename = ""
+            if '.' in data_info:
+                filename = data_info.split('.')[0]
+            
+            card = {
+                "id": card_id,
+                "name": f"Carte {card_number}",  # Nom par défaut
+                "type": "Unit",
+                "color": "Red",
+                "level": 1,
+                "power": 1000,
+                "text": "",
+                "image": img_src,
+                "data_info": data_info,
+                "filename": filename
+            }
+            
+            cards.append(card)
+            card_number += 1
+            
         except Exception as e:
-            print(f"Erreur: {e}")
-            break
-        
-        time.sleep(1)
-        page += 1
+            print(f"Erreur sur un élément: {e}")
+            continue
     
-    # Sauvegarder
+    # Sauvegarder le JSON
     with open('cards.json', 'w', encoding='utf-8') as f:
-        json.dump(all_cards, f, ensure_ascii=False, indent=2)
+        json.dump(cards, f, ensure_ascii=False, indent=2)
     
-    print(f"\nTermine! {len(all_cards)} cartes sauvegardees dans cards.json")
+    print(f"\n✅ {len(cards)} cartes sauvegardées dans cards.json")
     
-    if all_cards:
-        print("\nApercu des 5 premieres cartes:")
-        for card in all_cards[:5]:
-            print(f"  - {card['name']}: {card['image']}")
+    # Afficher les 5 premières cartes
+    print("\nAperçu des 5 premières cartes:")
+    for i, card in enumerate(cards[:5], 1):
+        print(f"{i}. {card['id']} - {card['name']}")
+        print(f"   Image: {card['image']}")
+        print(f"   Data-info: {card.get('data_info', 'N/A')}")
+        print()
 
 if __name__ == "__main__":
-    scrape_cards()
+    parse_cards_html()
