@@ -1,94 +1,129 @@
-import requests
-from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 import json
 import time
 import re
 
-BASE_URL = "http://nivelarena.jp"
-LIST_URL = f"{BASE_URL}/skin/board/card_list_new/get_more_list.php"
-INFO_URL = f"{BASE_URL}/skin/board/card_list_new/get_info.php"
-
-HEADERS = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
-    'Referer': f'{BASE_URL}/bbs/board.php?bo_table=cardlists',
-}
-
-def get_all_card_ids():
-    print("Étape 1: Récupération de la liste des cartes...")
-    all_ids = []
-    page = 1
+def scrape_nikke_cards():
+    chrome_options = Options()
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    # chrome_options.add_argument("--headless")
     
-    while True:
-        data = {
-            'bo_table': 'cardlists',
-            'page': str(page)
-        }
-        
-        try:
-            response = requests.post(LIST_URL, data=data, headers=HEADERS, timeout=10)
-            if response.status_code != 200:
-                break
-            
-            html = response.text
-            if '225x315' not in html:
-                break
-            
-            soup = BeautifulSoup(html, 'html.parser')
-            
-            for li in soup.find_all('li', class_='gall_li'):
-                data_info = li.get('data-info', '')
-                img = li.find('img')
-                
-                if data_info and img and '♬' in data_info:
-                    card_id = data_info.split('♬')[-1].strip()
-                    img_url = img.get('src', '')
-                    if not img_url.startswith('http'):
-                        img_url = BASE_URL + img_url
-                    
-                    all_ids.append({
-                        'id': card_id,
-                        'image': img_url
-                    })
-            
-            print(f"  Page {page}: {len(all_ids)} cartes trouvées")
-            page += 1
-            time.sleep(0.5)
-            
-        except Exception as e:
-            print(f"Erreur: {e}")
-            break
+    service = Service(ChromeDriverManager().install())
+    driver = webdriver.Chrome(service=service, options=chrome_options)
+    wait = WebDriverWait(driver, 15)
     
-    return all_ids
-
-def get_card_details(wr_id):
+    print("🌐 Ouverture du site...")
+    driver.get("http://nivelarena.co.kr/bbs/board.php?bo_table=cardlists")
+    time.sleep(5)
+    
+    cards_data = []
+    processed_cards = set()  # Pour tracker les cartes déjà traitées (ID + rareté)
+    max_iterations = 100
+    iteration = 0
+    
     try:
-        data = {
-            'bo_table': 'cardlists',
-            'wr_id': str(wr_id)
-        }
-        
-        response = requests.post(INFO_URL, data=data, headers=HEADERS, timeout=5)
-        
-        if response.status_code == 200:
-            return parse_card_html(response.text)
-        
-        return None
-    except Exception as e:
-        return None
+        while iteration < max_iterations:
+            iteration += 1
+            print(f"\n=== Itération {iteration} ===")
+            
+            # Trouver toutes les cartes visibles
+            card_elements = driver.find_elements(By.CSS_SELECTOR, "li.gall_li, .gall_item, .card-item")
+            print(f" {len(card_elements)} éléments trouvés sur cette page")
+            
+            # Traiter les cartes
+            for index, card_elem in enumerate(card_elements):
+                try:
+                    card_elem.click()
+                    time.sleep(1)
+                    
+                    try:
+                        modal = wait.until(EC.presence_of_element_located((By.ID, "pop_content")))
+                    except:
+                        continue
+                    
+                    card_info = extract_card_info_complete(modal)
+                    
+                    # Vérifier les doublons avec ID + rareté
+                    if card_info:
+                        card_key = f"{card_info.get('id', '')}_{card_info.get('rarity', '')}"
+                        
+                        if card_key not in processed_cards and card_info.get('id'):
+                            cards_data.append(card_info)
+                            processed_cards.add(card_key)
+                            print(f"✅ {card_info.get('name', 'N/A')} - {card_info.get('id')} ({card_info.get('rarity', 'N/A')})")
+                        else:
+                            print(f"️ Doublon ignoré: {card_info.get('id')} ({card_info.get('rarity', 'N/A')})")
+                    
+                    # Fermer la modale
+                    try:
+                        close_btn = driver.find_element(By.CSS_SELECTOR, ".close, .modal-close, button.close, a.close, .pop_close")
+                        close_btn.click()
+                        time.sleep(0.5)
+                    except:
+                        driver.execute_script("document.querySelector('.pop_content')?.style.display='none'")
+                        
+                except Exception as e:
+                    print(f"❌ Erreur carte: {e}")
+                    continue
+            
+            # Chercher et cliquer sur le bouton "voir plus"
+            try:
+                more_selectors = [
+                    ".more", ".load-more", ".btn-more", 
+                    ".list_more", "a.more", "button.more",
+                    "[class*='more']", "[onclick*='more']"
+                ]
+                
+                more_btn = None
+                for selector in more_selectors:
+                    try:
+                        elements = driver.find_elements(By.CSS_SELECTOR, selector)
+                        for elem in elements:
+                            if elem.is_displayed() and elem.text.strip():
+                                more_btn = elem
+                                break
+                        if more_btn:
+                            break
+                    except:
+                        continue
+                
+                if more_btn and more_btn.is_displayed():
+                    print("🔽 Clique sur 'voir plus'...")
+                    driver.execute_script("arguments[0].scrollIntoView();", more_btn)
+                    time.sleep(1)
+                    more_btn.click()
+                    time.sleep(3)
+                else:
+                    print("✅ Plus de bouton 'voir plus' trouvé - Terminé!")
+                    break
+                    
+            except Exception as e:
+                print(f"✅ Fin du scraping: {e}")
+                break
+    
+    finally:
+        driver.quit()
+    
+    print(f"\n🎉 {len(cards_data)} cartes récupérées au total")
+    
+    # Sauvegarder
+    with open('nikke_cards_complet.json', 'w', encoding='utf-8') as f:
+        json.dump(cards_data, f, ensure_ascii=False, indent=2)
 
-def parse_card_html(html):
-    """Parse le HTML pour extraire les infos de la carte"""
-    soup = BeautifulSoup(html, 'html.parser')
-    
-    # Extraire tout le texte et le diviser en lignes
-    text = soup.get_text(separator='\n')
-    lines = [line.strip() for line in text.split('\n') if line.strip()]
-    
+def extract_card_info_complete(modal):
+    """Extraction complète avec attribut et mots-clés corrigés"""
     card = {
+        'id': '',
         'name': '',
-        'card_id': '',
-        'type': '',
-        'color': '',
+        'type': 'Unit',
+        'attribute': '',  # Remplace color par attribute
         'cost': 0,
         'power': 0,
         'hit': 0,
@@ -96,125 +131,115 @@ def parse_card_html(html):
         'affiliation': '',
         'keyword': '',
         'effect': '',
-        'product': ''
+        'ip': 'Goddess of Victory: NIKKE',
+        'image': ''
     }
     
-    if not lines:
-        return None
+    all_text = modal.text
     
-    # Première ligne = nom de la carte
-    card['name'] = lines[0]
+    # Nom - première ligne non vide
+    lines = all_text.split('\n')
+    for line in lines:
+        line = line.strip()
+        if line and not re.match(r'^BT\d+-\d+', line) and not re.search(r'\d{4}', line):
+            card['name'] = line
+            break
     
-    # Parser les autres lignes
-    i = 1
-    while i < len(lines):
-        line = lines[i]
-        
-        # Ligne avec ID / Type / Couleur (contient des slashs)
-        if '/' in line and any(x in line for x in ['ユニット', 'スキル', 'リーダー', 'アイテム']):
-            parts = [p.strip() for p in line.split('/')]
-            if len(parts) >= 3:
-                card['card_id'] = parts[0]
-                card['type'] = parts[1]
-                card['color'] = parts[2]
-        
-        # Coût
-        elif 'コスト' in line:
-            match = re.search(r'(\d+)', line)
-            if match:
-                card['cost'] = int(match.group(1))
-        
-        # Power
-        elif 'パワー' in line:
-            match = re.search(r'(\d+)', line)
-            if match:
-                card['power'] = int(match.group(1))
-        
-        # Hit
-        elif 'ヒット' in line or 'ヒッ' in line:
-            match = re.search(r'(\d+)', line)
-            if match:
-                card['hit'] = int(match.group(1))
-        
-        # Rareté
-        elif 'レアリティ' in line:
-            for part in line.split():
-                if part in ['P', 'R', 'SR', 'SSR', 'N', 'C']:
-                    card['rarity'] = part
-                    break
-        
-        # Affiliation
-        elif '所属' in line:
-            card['affiliation'] = line.replace('所属', '').strip()
-        
-        # Keyword
-        elif 'キーワード' in line:
-            card['keyword'] = line.replace('キーワード', '').strip()
-        
-        # Effet (tout le texte après "効果" jusqu'à "製品名")
-        elif '効果' in line:
-            effect_lines = []
-            i += 1
-            while i < len(lines) and '製品名' not in lines[i]:
-                effect_lines.append(lines[i])
-                i += 1
-            card['effect'] = ' '.join(effect_lines)
-            continue  # Ne pas incrémenter i ici car on l'a déjà fait
-        
-        # Produit
-        elif '製品名' in line:
-            card['product'] = line.replace('製品名', '').strip()
-        
-        i += 1
+    # ID
+    id_match = re.search(r'(BT\d+-\d+)', all_text)
+    if id_match:
+        card['id'] = id_match.group(1)
     
-    return card if card['name'] else None
-
-def main():
-    print("Démarrage du scraping...\n")
+    # Stats
+    cost_match = re.search(r'코스트.*?(\d+)', all_text)
+    if cost_match:
+        card['cost'] = int(cost_match.group(1))
     
-    cards_list = get_all_card_ids()
-    print(f"\nTotal: {len(cards_list)} cartes\n")
+    power_match = re.search(r'파워.*?(\d+)', all_text)
+    if power_match:
+        card['power'] = int(power_match.group(1))
     
-    all_cards = []
-    errors = 0
+    hit_match = re.search(r'히트.*?(\d+)', all_text)
+    if hit_match:
+        card['hit'] = int(hit_match.group(1))
     
-    for i, card_info in enumerate(cards_list, 1):
-        print(f"[{i}/{len(cards_list)}] Carte {card_info['id']}...", end=' ')
-        
-        details = get_card_details(card_info['id'])
-        
-        if details and details['name'] and not details['name'].startswith('<'):
-            card = {
-                'id': details['card_id'] or f"JP_{card_info['id']}",
-                'name': details['name'],
-                'type': details['type'] or 'Unit',
-                'color': details['color'] or 'Unknown',
-                'cost': details['cost'],
-                'power': details['power'],
-                'hit': details['hit'],
-                'rarity': details['rarity'] or 'R',
-                'affiliation': details['affiliation'],
-                'keyword': details['keyword'],
-                'effect': details['effect'],
-                'product': details['product'],
-                'image': card_info['image']
-            }
-            all_cards.append(card)
-            print(f"OK - {card['name'][:30]}")
+    # Rareté
+    rarity_match = re.search(r'레어도.*?([A-Z]+)', all_text)
+    if rarity_match:
+        card['rarity'] = rarity_match.group(1)
+    
+    # ATTRIBUT - Chercher les couleurs/attributs
+    # Mapping coréen -> anglais
+    attribute_keywords = {
+        'flame': ['red', 'rouge', '화염', '불', 'flame'],
+        'earth': ['green', 'vert', 'verde', '대지', '땅', 'earth'],
+        'storm': ['blue', 'bleu', 'blue', '폭풍', '바람', 'storm'],
+        'wave': ['blue', 'bleu', 'wave', '물결', '파도', 'water'],
+        'lightning': ['yellow', 'jaune', 'lightning', '번개', '전기', 'thunder']
+    }
+    
+    # Chercher dans le texte
+    for attr_en, attr_variants in attribute_keywords.items():
+        for variant in attr_variants:
+            if variant.lower() in all_text.lower():
+                card['attribute'] = attr_en.capitalize()
+                break
+    
+    # Chercher dans les classes CSS
+    if not card['attribute']:
+        modal_classes = modal.get_attribute('class') or ''
+        for attr_en in attribute_keywords.keys():
+            if attr_en in modal_classes.lower():
+                card['attribute'] = attr_en.capitalize()
+                break
+    
+    # Type
+    if '리더' in all_text or 'leader' in all_text.lower():
+        card['type'] = 'Leader'
+    elif '스킬' in all_text or 'skill' in all_text.lower():
+        card['type'] = 'Skill'
+    elif '이벤트' in all_text or 'event' in all_text.lower():
+        card['type'] = 'Event'
+    
+    # Keywords - Nettoyer et corriger
+    keywords = []
+    
+    # Chercher les mots-clés connus
+    keyword_patterns = {
+        'Attacker': ['어태커', 'attacker'],
+        'Defender': ['디펜더', 'defender'],
+        'Guardian': ['가디언', 'guardian'],
+        'Passive': ['패시브', 'passive'],
+        'Active': ['액티브', 'active'],
+        'Entry': ['엔트리', 'entry'],
+        'Trigger': ['트리거', 'trigger']
+    }
+    
+    for keyword_en, keyword_variants in keyword_patterns.items():
+        for variant in keyword_variants:
+            if variant.lower() in all_text.lower():
+                if keyword_en not in keywords:
+                    keywords.append(keyword_en)
+                break
+    
+    # Filtrer les valeurs non pertinentes comme "1", "-", etc.
+    card['keyword'] = ', '.join(keywords) if keywords else ''
+    
+    # Effet complet
+    card['effect'] = all_text
+    
+    # Image
+    try:
+        img = modal.find_element(By.CSS_SELECTOR, "img")
+        img_src = img.get_attribute('src')
+        if img_src and 'thumb' not in img_src:
+            card['image'] = img_src
         else:
-            errors += 1
-            print(f"ECHEC")
-        
-        time.sleep(0.3)
-        
-        if i % 50 == 0:
-            with open('cards_progress.json', 'w', encoding='utf-8') as f:
-                json.dump(all_cards, f, ensure_ascii=False, indent=2)
+            card['image'] = img_src.replace('thumb-', '').replace('_225x315', '') if img_src else ''
+    except:
+        pass
     
-    with open('cards.json', 'w', encoding='utf-8') as f:
-        json.dump(all_cards, f, ensure_ascii=False, indent=2)
-    
-    print(f"\nTerminé ! {len(all_cards)} cartes sauvegardées, {errors} erreurs")
+    return card
 
 if __name__ == "__main__":
-    main()
+    scrape_nikke_cards()
