@@ -8,6 +8,7 @@ const CONFIG = {
 let allCards = [];
 let filteredCards = [];
 let isLeaderFilterActive = false;
+let currentLanguage = 'ko'; // 'ko' or 'en'
 
 let deck = {
     leader: null,
@@ -17,8 +18,8 @@ let deck = {
 // --- CHARGEMENT ---
 async function loadCards() {
     try {
-        const response = await fetch('./cards.json');
-        if (!response.ok) throw new Error("Impossible de charger cards.json");
+        const response = await fetch('./cards_translated_en.json');
+        if (!response.ok) throw new Error("Impossible de charger cards_translated_en.json");
         allCards = await response.json();
         console.log(`${allCards.length} cartes chargées.`);
         
@@ -345,6 +346,34 @@ function translateToEnglish(text) {
     return translated;
 }
 
+// Fonction pour obtenir l'effet de la carte selon la langue
+function getCardEffect(card) {
+    if (currentLanguage === 'en' && card.effect_en) {
+        return card.effect_en;
+    }
+    return card.effect || "";
+}
+
+// Toggle language function
+window.toggleLanguage = function() {
+    currentLanguage = currentLanguage === 'ko' ? 'en' : 'ko';
+    const btn = document.getElementById('langToggle');
+    btn.textContent = currentLanguage === 'ko' ? 'English / 한국어' : '한국어 / English';
+    
+    // Re-render the card list to update effects
+    renderCardList();
+    
+    // Update modal if open
+    const modal = document.getElementById('cardModal');
+    if (modal.classList.contains('active')) {
+        // Find currently displayed card and re-show it
+        const currentCardId = modal.dataset.cardId;
+        if (currentCardId) {
+            showCardDetails(currentCardId);
+        }
+    }
+};
+
 // Afficher la modale avec les détails de la carte
 window.showCardDetails = function(cardId) {
     const card = allCards.find(c => c.id === cardId);
@@ -353,12 +382,18 @@ window.showCardDetails = function(cardId) {
     const modal = document.getElementById('cardModal');
     const modalBody = document.getElementById('modalBody');
     
+    // Store card ID for language toggle
+    modal.dataset.cardId = cardId;
+    
+    // Get effect based on current language
+    const cardEffect = getCardEffect(card);
+    
     // Traduction des informations
     const translatedType = translateToEnglish(card.type || "");
     const translatedAttribute = translateToEnglish(card.attribute || "");
     const translatedAffiliation = translateToEnglish(card.affiliation || "");
     const translatedKeywords = translateToEnglish(card.keyword || "");
-    const translatedEffect = translateToEnglish(card.effect || "");
+    const translatedEffect = translateToEnglish(cardEffect);
 
     modalBody.innerHTML = `
         <div class="modal-body">
