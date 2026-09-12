@@ -77,6 +77,9 @@ function renderCardList() {
         const isLeaderCard = card.type && card.type.toLowerCase().includes('leader');
         const borderStyle = isLeaderCard ? 'border: 2px solid gold;' : '';
         const opacityStyle = isLeaderFilterActive && !isLeaderCard ? 'opacity: 0.3;' : '';
+        
+        // Get effect based on current language
+        const cardEffect = getCardEffect(card);
 
         return `
         <div class="card-item" 
@@ -358,14 +361,16 @@ function getCardEffect(card) {
 window.toggleLanguage = function() {
     currentLanguage = currentLanguage === 'ko' ? 'en' : 'ko';
     const btn = document.getElementById('langToggle');
-    btn.textContent = currentLanguage === 'ko' ? 'English / 한국어' : '한국어 / English';
+    if (btn) {
+        btn.textContent = currentLanguage === 'ko' ? 'English / 한국어' : '한국어 / English';
+    }
     
-    // Re-render the card list to update effects
+    // Re-render the card list to update display
     renderCardList();
     
     // Update modal if open
     const modal = document.getElementById('cardModal');
-    if (modal.classList.contains('active')) {
+    if (modal && modal.classList.contains('active')) {
         // Find currently displayed card and re-show it
         const currentCardId = modal.dataset.cardId;
         if (currentCardId) {
