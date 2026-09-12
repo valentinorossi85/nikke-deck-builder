@@ -8,7 +8,6 @@ const CONFIG = {
 let allCards = [];
 let filteredCards = [];
 let isLeaderFilterActive = false;
-let currentLanguage = 'ko'; // 'ko' or 'en'
 
 let deck = {
     leader: null,
@@ -18,8 +17,8 @@ let deck = {
 // --- CHARGEMENT ---
 async function loadCards() {
     try {
-        const response = await fetch('./cards_translated_en.json');
-        if (!response.ok) throw new Error("Impossible de charger cards_translated_en.json");
+        const response = await fetch('./cards_english.json');
+        if (!response.ok) throw new Error("Impossible de charger cards_english.json");
         allCards = await response.json();
         console.log(`${allCards.length} cartes chargées.`);
         
@@ -305,80 +304,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // --- GESTION DE LA MODALE (Popup détails carte) ---
 
-// Dictionnaire de traduction Coréen -> Anglais
-const translations = {
-    "유닛": "Unit",
-    "리더": "Leader",
-    "스킬": "Skill",
-    "폭풍": "Storm",
-    "번개": "Lightning",
-    "불꽃": "Fire",
-    "물": "Water",
-    "빛": "Light",
-    "어둠": "Darkness",
-    "코스트": "Cost",
-    "파워": "Power",
-    "히트": "Hit",
-    "레어도": "Rarity",
-    "소속": "Affiliation",
-    "키워드": "Keyword",
-    "효과": "Effect",
-    "디펜더": "Defender",
-    "패시브": "Passive",
-    "어태커": "Attacker",
-    "가디언": "Guardian",
-    "종결": "Finisher",
-    "희생": "Sacrifice",
-    "플레이": "Play",
-    "트래시": "Trash",
-    "드로우": "Draw",
-    "필드": "Field",
-    "레이인": "Lane",
-    "장착": "Equip",
-    "조우": "Encounter"
-};
-
-// Fonction pour traduire un texte
-function translateToEnglish(text) {
-    if (!text) return "";
-    let translated = text;
-    for (const [ko, en] of Object.entries(translations)) {
-        const regex = new RegExp(ko, 'g');
-        translated = translated.replace(regex, en);
-    }
-    return translated;
-}
-
-// Fonction pour obtenir l'effet de la carte selon la langue
-function getCardEffect(card) {
-    if (currentLanguage === 'en' && card.effect_en) {
-        return card.effect_en;
-    }
-    return card.effect || "";
-}
-
-// Toggle language function
-window.toggleLanguage = function() {
-    currentLanguage = currentLanguage === 'ko' ? 'en' : 'ko';
-    const btn = document.getElementById('langToggle');
-    if (btn) {
-        btn.textContent = currentLanguage === 'ko' ? 'English / 한국어' : '한국어 / English';
-    }
-    
-    // Re-render the card list to update display
-    renderCardList();
-    
-    // Update modal if open
-    const modal = document.getElementById('cardModal');
-    if (modal && modal.classList.contains('active')) {
-        // Find currently displayed card and re-show it
-        const currentCardId = modal.dataset.cardId;
-        if (currentCardId) {
-            showCardDetails(currentCardId);
-        }
-    }
-};
-
 // Afficher la modale avec les détails de la carte
 window.showCardDetails = function(cardId) {
     const card = allCards.find(c => c.id === cardId);
@@ -387,19 +312,6 @@ window.showCardDetails = function(cardId) {
     const modal = document.getElementById('cardModal');
     const modalBody = document.getElementById('modalBody');
     
-    // Store card ID for language toggle
-    modal.dataset.cardId = cardId;
-    
-    // Get effect based on current language
-    const cardEffect = getCardEffect(card);
-    
-    // Traduction des informations
-    const translatedType = translateToEnglish(card.type || "");
-    const translatedAttribute = translateToEnglish(card.attribute || "");
-    const translatedAffiliation = translateToEnglish(card.affiliation || "");
-    const translatedKeywords = translateToEnglish(card.keyword || "");
-    const translatedEffect = translateToEnglish(cardEffect);
-
     modalBody.innerHTML = `
         <div class="modal-body">
             <h2>${card.name}</h2>
@@ -411,11 +323,11 @@ window.showCardDetails = function(cardId) {
             </div>
             <div class="modal-info-row">
                 <span class="modal-info-label">Type:</span>
-                <span class="modal-info-value">${translatedType}</span>
+                <span class="modal-info-value">${card.type || '-'}</span>
             </div>
             <div class="modal-info-row">
                 <span class="modal-info-label">Attribute:</span>
-                <span class="modal-info-value">${translatedAttribute || '-'}</span>
+                <span class="modal-info-value">${card.attribute || '-'}</span>
             </div>
             <div class="modal-info-row">
                 <span class="modal-info-label">Cost:</span>
@@ -431,14 +343,14 @@ window.showCardDetails = function(cardId) {
             </div>
             <div class="modal-info-row">
                 <span class="modal-info-label">Affiliation:</span>
-                <span class="modal-info-value">${translatedAffiliation || '-'}</span>
+                <span class="modal-info-value">${card.affiliation || '-'}</span>
             </div>
             <div class="modal-info-row">
                 <span class="modal-info-label">Keywords:</span>
-                <span class="modal-info-value">${translatedKeywords || '-'}</span>
+                <span class="modal-info-value">${card.keyword || '-'}</span>
             </div>
             
-            ${translatedEffect ? `<div class="modal-effect"><strong>Effect:</strong><br>${translatedEffect}</div>` : ''}
+            ${card.effect ? `<div class="modal-effect"><strong>Effect:</strong><br>${card.effect}</div>` : ''}
         </div>
     `;
     
