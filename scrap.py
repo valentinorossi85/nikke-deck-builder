@@ -12,21 +12,39 @@ def scrape_all_nikke_cards():
     
     all_wr_ids = set()
     
-    params = {'bo_table': 'cardlists', 'page': '1'}
+    # Parcourir toutes les pages pour collecter tous les wr_id
+    page = 1
+    while True:
+        params = {'bo_table': 'cardlists', 'page': str(page)}
+        
+        try:
+            response = requests.get(base_url, params=params, timeout=30)
+            html = response.text
+            matches = re.findall(r'data-info="[^"]*♬(\d+)"', html)
+            
+            if not matches:
+                print(f"✅ Fin de la collecte à la page {page}")
+                break
+            
+            for wr_id in matches:
+                all_wr_ids.add(wr_id)
+            
+            print(f"Page {page}: {len(matches)} cartes (total unique: {len(all_wr_ids)})")
+            page += 1
+            
+            # Limite de sécurité pour éviter de boucler indéfiniment
+            if page > 100:
+                print("⚠️ Limite de 100 pages atteinte")
+                break
+                
+        except Exception as e:
+            print(f"❌ Erreur page {page}: {e}")
+            break
     
-    try:
-        response = requests.get(base_url, params=params, timeout=30)
-        html = response.text
-        matches = re.findall(r'data-info="[^"]*♬(\d+)"', html)
-        for wr_id in matches:
-            all_wr_ids.add(wr_id)
-    except Exception as e:
-        print(f"❌ Erreur: {e}")
-        return []
-    
-    print(f"📋 {len(all_wr_ids)} cartes trouvées à scraper\n")
+    print(f"\n📋 {len(all_wr_ids)} cartes uniques trouvées à scraper\n")
     
     count = 0
+    nikke_count = 0
     for wr_id in sorted(all_wr_ids, key=int, reverse=True):
         card_url = f"{base_url}?bo_table=cardlists&wr_id={wr_id}"
         count += 1
@@ -34,9 +52,10 @@ def scrape_all_nikke_cards():
         try:
             card_info = get_card_details(card_url, wr_id)
             
-            if card_info and card_info.get('ip') == 'Goddess of Victory: NIKKE':
+            if card_info:
                 cards_data.append(card_info)
-                print(f"[{len(cards_data):3d}] {card_info['id']} - {card_info['name']}")
+                nikke_count += 1
+                print(f"[{nikke_count:3d}] {card_info['id']} - {card_info['name']}")
             
             if count % 10 == 0:
                 time.sleep(0.5)
@@ -62,7 +81,7 @@ def get_card_details(card_url, wr_id):
         
         soup = BeautifulSoup(response.text, 'html.parser')
         
-        # Extraire le nom depuis h2#subject (texte direct avant h2 imbrique)
+        # Extraire le nom depuis h2#subject (texte direct avant h2 imbriqué)
         subject_h2 = soup.find('h2', id='subject')
         if not subject_h2:
             return None
@@ -78,22 +97,7 @@ def get_card_details(card_url, wr_id):
         if not card_name:
             return None
         
-        # Vérifier si c'est une carte NIKKE
-        if '니케' not in card_name and 'NIKKE' not in card_name.upper():
-            return None
-        
-        # Extraire le type depuis h2#type
-        type_h2 = soup.find('h2', id='type')
-        type_text = type_h2.get_text(strip=True) if type_h2 else ""
-        
-        # Extraire l'ID de la carte (BTxx-xxx)
-        id_match = re.search(r'(BT\d+-\d+|ST\d+-\d+|SB\d+-\d+)', type_text + card_name)
-        if not id_match:
-            return None
-        
-        card_id = id_match.group(1)
-        
-        # Extraire l'image
+        # Extraire l'image avant de parser tout le texte
         img_elem = soup.find('img')
         image_url = ''
         if img_elem:
@@ -106,12 +110,35 @@ def get_card_details(card_url, wr_id):
         # Récupérer tout le texte pour parser
         all_text = soup.get_text(separator='\n', strip=True)
         
-        # Parser les informations
+        # Parser les informations pour obtenir l'IP
+        type_h2 = soup.find('h2', id='type')
+        type_text = type_h2.get_text(strip=True) if type_h2 else ""
+        
+        # Parser d'abord pour extraire l'IP
+        ip = ''
+        ip_match = re.search(r'IP\s*\n?\s*([^\n]+)', all_text)
+        if ip_match:
+            ip = ip_match.group(1).strip()
+        
+        # Vérifier si c'est une carte NIKKE via le champ IP (et non le nom)
+        is_nikke = '승리의 여신' in ip or 'NIKKE' in ip.upper()
+        if not is_nikke:
+            return None
+        
+        # Extraire l'ID de la carte (BTxx-xxx)
+        id_match = re.search(r'(BT\d+-\d+|ST\d+-\d+|SB\d+-\d+)', all_text)
+        if not id_match:
+            return None
+        
+        card_id = id_match.group(1)
+        
+        # Parser les informations complètes
         card = parse_card_info(all_text, type_text, card_id, card_name, image_url)
         
         return card
         
     except Exception as e:
+        print(f"  ❌ Erreur détail carte {wr_id}: {e}")
         return None
 
 
@@ -195,6 +222,12 @@ def parse_card_info(text, type_text, card_id, card_name, image_url):
         ip = ip_match.group(1).strip()
         if 'NIKKE' in ip.upper() or '승리의 여신' in ip:
             ip = 'Goddess of Victory: NIKKE'
+    
+    # Extraire l'ID de la carte depuis le texte complet si pas trouvé avant
+    if not card_id:
+        id_match = re.search(r'(BT\d+-\d+|ST\d+-\d+|SB\d+-\d+)', text)
+        if id_match:
+            card_id = id_match.group(1)
     
     card = {
         'id': card_id,
