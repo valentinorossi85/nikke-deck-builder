@@ -82,7 +82,8 @@ function renderCardList() {
              style="${borderStyle} ${opacityStyle} cursor: grab;"
              draggable="true" 
              ondragstart="handleDragStart(event, '${card.id}')"
-             ondblclick="setAsLeader('${card.id}')">
+             ondblclick="setAsLeader('${card.id}')"
+             onclick="showCardDetails('${card.id}')">
             
             <img src="${card.image}" alt="${card.name}" class="card-thumbnail" 
                  onerror="this.src='https://via.placeholder.com/150x200?text=No+Image'">
@@ -93,7 +94,7 @@ function renderCardList() {
                 ${isLeaderCard && isLeaderFilterActive ? '<span style="color:gold; font-weight:bold;">★ LEADER</span>' : ''}
             </div>
             
-            <button class="btn-add" onclick="addToDeck('${card.id}')">+</button>
+            <button class="btn-add" onclick="event.stopPropagation(); addToDeck('${card.id}')">+</button>
         </div>
     `}).join('');
 }
@@ -297,3 +298,120 @@ document.addEventListener('DOMContentLoaded', () => {
     initLeaderZone();
     console.log("Application prête. Drag & Drop activé.");
 });
+
+// --- GESTION DE LA MODALE (Popup détails carte) ---
+
+// Dictionnaire de traduction Coréen -> Anglais
+const translations = {
+    "유닛": "Unit",
+    "리더": "Leader",
+    "스킬": "Skill",
+    "폭풍": "Storm",
+    "번개": "Lightning",
+    "불꽃": "Fire",
+    "물": "Water",
+    "빛": "Light",
+    "어둠": "Darkness",
+    "코스트": "Cost",
+    "파워": "Power",
+    "히트": "Hit",
+    "레어도": "Rarity",
+    "소속": "Affiliation",
+    "키워드": "Keyword",
+    "효과": "Effect",
+    "디펜더": "Defender",
+    "패시브": "Passive",
+    "어태커": "Attacker",
+    "가디언": "Guardian",
+    "종결": "Finisher",
+    "희생": "Sacrifice",
+    "플레이": "Play",
+    "트래시": "Trash",
+    "드로우": "Draw",
+    "필드": "Field",
+    "레이인": "Lane",
+    "장착": "Equip",
+    "조우": "Encounter"
+};
+
+// Fonction pour traduire un texte
+function translateToEnglish(text) {
+    if (!text) return "";
+    let translated = text;
+    for (const [ko, en] of Object.entries(translations)) {
+        const regex = new RegExp(ko, 'g');
+        translated = translated.replace(regex, en);
+    }
+    return translated;
+}
+
+// Afficher la modale avec les détails de la carte
+window.showCardDetails = function(cardId) {
+    const card = allCards.find(c => c.id === cardId);
+    if (!card) return;
+
+    const modal = document.getElementById('cardModal');
+    const modalBody = document.getElementById('modalBody');
+    
+    // Traduction des informations
+    const translatedType = translateToEnglish(card.type || "");
+    const translatedAttribute = translateToEnglish(card.attribute || "");
+    const translatedAffiliation = translateToEnglish(card.affiliation || "");
+    const translatedKeywords = translateToEnglish(card.keyword || "");
+    const translatedEffect = translateToEnglish(card.effect || "");
+
+    modalBody.innerHTML = `
+        <div class="modal-body">
+            <h2>${card.name}</h2>
+            <img src="${card.image}" alt="${card.name}" class="card-image" onerror="this.src='https://via.placeholder.com/300x400?text=No+Image'">
+            
+            <div class="modal-info-row">
+                <span class="modal-info-label">ID:</span>
+                <span class="modal-info-value">${card.id}</span>
+            </div>
+            <div class="modal-info-row">
+                <span class="modal-info-label">Type:</span>
+                <span class="modal-info-value">${translatedType}</span>
+            </div>
+            <div class="modal-info-row">
+                <span class="modal-info-label">Attribute:</span>
+                <span class="modal-info-value">${translatedAttribute || '-'}</span>
+            </div>
+            <div class="modal-info-row">
+                <span class="modal-info-label">Cost:</span>
+                <span class="modal-info-value">${card.cost || '-'}</span>
+            </div>
+            <div class="modal-info-row">
+                <span class="modal-info-label">Power:</span>
+                <span class="modal-info-value">${card.power || '-'}</span>
+            </div>
+            <div class="modal-info-row">
+                <span class="modal-info-label">Hit:</span>
+                <span class="modal-info-value">${card.hit || '-'}</span>
+            </div>
+            <div class="modal-info-row">
+                <span class="modal-info-label">Affiliation:</span>
+                <span class="modal-info-value">${translatedAffiliation || '-'}</span>
+            </div>
+            <div class="modal-info-row">
+                <span class="modal-info-label">Keywords:</span>
+                <span class="modal-info-value">${translatedKeywords || '-'}</span>
+            </div>
+            
+            ${translatedEffect ? `<div class="modal-effect"><strong>Effect:</strong><br>${translatedEffect}</div>` : ''}
+        </div>
+    `;
+    
+    modal.classList.add('active');
+};
+
+// Fermer la modale
+window.closeModal = function(event) {
+    if (event.target.id === 'cardModal') {
+        document.getElementById('cardModal').classList.remove('active');
+    }
+};
+
+window.closeModalDirect = function() {
+    document.getElementById('cardModal').classList.remove('active');
+};

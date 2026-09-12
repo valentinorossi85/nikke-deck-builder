@@ -74,6 +74,14 @@
         <p>Nivel Arena Deck Builder - Projet éducatif</p>
     </footer>
 
+    <!-- Modal pour afficher les détails de la carte -->
+    <div id="cardModal" class="modal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModalDirect()">×</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
     <script src="app.js"></script>
 </body>
 </html>
