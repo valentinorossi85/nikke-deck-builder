@@ -214,6 +214,14 @@ window.addToDeck = function(cardId) {
         return;
     }
 
+    // Vérifier que l'attribut de la carte correspond à celui du leader
+    if (deck.leader && deck.leader.attribute) {
+        if (card.attribute && card.attribute !== deck.leader.attribute) {
+            alert(`Cannot add ${card.name} (${card.attribute}) to a deck with leader ${deck.leader.name} (${deck.leader.attribute}). All cards must match the leader's attribute.`);
+            return;
+        }
+    }
+
     if (deck.cards.length >= CONFIG.MAX_CARDS) {
         alert("Deck complet (40 cartes)");
         return;
