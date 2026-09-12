@@ -23,10 +23,10 @@ async function loadCards() {
         }
         allCards = await response.json();
         console.log(`✅ ${allCards.length} cartes chargées`);
-        console.log("Première carte:", allCards[0]);
         filteredCards = [...allCards];
         renderCardList();
-        updateStats();
+        // Initialiser les interactions après chargement
+        setTimeout(initLeaderSystem, 100); 
     } catch (error) {
         console.error("❌ Erreur de chargement:", error);
         document.getElementById('cardList').innerHTML = 
@@ -40,18 +40,15 @@ async function loadCards() {
 // Afficher la liste des cartes
 function renderCardList() {
     const container = document.getElementById('cardList');
-    if (!container) {
-        console.error("Container cardList introuvable !");
-        return;
-    }
+    if (!container) return;
 
     if (filteredCards.length === 0) {
         container.innerHTML = '<p>Aucune carte trouvée</p>';
         return;
     }
 
-    container.innerHTML = filteredCards.map((card, index) => `
-        <div class="card-item" onclick="addToDeck(${index})">
+    container.innerHTML = filteredCards.map((card) => `
+        <div class="card-item" data-id="${card.id}" onclick="handleCardClick('${card.id}')">
             <img src="${card.image}" alt="${card.name}" class="card-thumbnail" 
                  onerror="this.src='https://via.placeholder.com/150x200?text=Erreur'">
             <div class="card-info">
@@ -61,21 +58,26 @@ function renderCardList() {
             <button class="btn-add">+</button>
         </div>
     `).join('');
+    
+    // Réactiver les listeners drag&drop après réaffichage
+    initLeaderSystem();
 }
 
-// Ajouter une carte au deck
-function addToDeck(index) {
-    const card = filteredCards[index];
-    
-    // Vérifier si c'est un leader
-    if (card.type === 'Leader' || card.type === 'leader') {
-        deck.leader = card;
-        renderLeader();
-        updateStats();
-        validateDeck();
-        return;
-    }
+// Gestionnaire de clic unique (remplace l'ancien addToDeck direct)
+function handleCardClick(cardId) {
+    const card = allCards.find(c => c.id === cardId);
+    if (!card) return;
 
+    // Si c'est un Leader, on le définit comme tel directement
+    if (card.type === 'Leader' || card.type === 'leader') {
+        setAsLeader(card);
+    } else {
+        addToDeck(card);
+    }
+}
+
+// Ajouter une carte au deck (logique existante adaptée)
+function addToDeck(card) {
     // Vérifier le nombre de copies
     const copies = deck.cards.filter(c => c.id === card.id).length;
     if (copies >= CONFIG.MAX_COPIES) {
@@ -103,12 +105,103 @@ function removeFromDeck(index) {
     validateDeck();
 }
 
-// Retirer le leader
-function removeLeader() {
-    deck.leader = null;
+// --- NOUVEAU SYSTÈME LEADER UNIFIÉ ---
+
+// Fonction centrale pour définir le leader
+function setAsLeader(card) {
+    if (!card) return;
+
+    // Si on clique sur le leader actuel, on le retire (optionnel)
+    if (deck.leader && deck.leader.id === card.id) {
+        deck.leader = null;
+        // On remet la carte dans le deck si elle n'y est pas déjà
+        if (!deck.cards.some(c => c.id === card.id)) {
+            deck.cards.push(card);
+        }
+    } else {
+        // Si un leader existe déjà, on le remet dans le deck
+        if (deck.leader) {
+            deck.cards.push(deck.leader);
+        }
+        // On définit le nouveau leader
+        deck.leader = card;
+        
+        // On retire la carte du deck normal si elle y était
+        const index = deck.cards.findIndex(c => c.id === card.id);
+        if (index > -1) {
+            deck.cards.splice(index, 1);
+        }
+    }
+
     renderLeader();
+    renderDeck(); // Mettre à jour le deck au cas où une carte a bougé
     updateStats();
     validateDeck();
+}
+
+// Initialisation du Drag & Drop et Double Clic
+function initLeaderSystem() {
+    // 1. Configurer la zone de drop (Leader Slot)
+    const leaderZone = document.getElementById('leaderSlot'); // Utilise l'ID de ton HTML
+    if (leaderZone) {
+        leaderZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            leaderZone.style.borderColor = '#ffd700';
+            leaderZone.style.backgroundColor = 'rgba(255, 215, 0, 0.2)';
+            leaderZone.style.transform = 'scale(1.02)';
+        });
+
+        leaderZone.addEventListener('dragleave', () => {
+            leaderZone.style.borderColor = '#ccc';
+            leaderZone.style.backgroundColor = 'transparent';
+            leaderZone.style.transform = 'scale(1)';
+        });
+
+        leaderZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            leaderZone.style.borderColor = '#ccc';
+            leaderZone.style.backgroundColor = 'transparent';
+            leaderZone.style.transform = 'scale(1)';
+
+            const cardId = e.dataTransfer.getData('text/plain');
+            if (cardId) {
+                const card = allCards.find(c => c.id === cardId);
+                if (card) setAsLeader(card);
+            }
+        });
+    }
+
+    // 2. Rendre les cartes "dragables" et ajouter le double-clic
+    const cardElements = document.querySelectorAll('.card-item');
+    cardElements.forEach(el => {
+        // Éviter les doublons de listeners
+        if (el.dataset.leaderInit === "true") return;
+        el.dataset.leaderInit = "true";
+
+        el.setAttribute('draggable', 'true');
+        el.style.cursor = 'grab';
+
+        el.addEventListener('dragstart', (e) => {
+            const id = el.getAttribute('data-id');
+            if (id) {
+                e.dataTransfer.setData('text/plain', id);
+                e.dataTransfer.effectAllowed = 'move';
+                el.style.opacity = '0.5';
+            }
+        });
+
+        el.addEventListener('dragend', () => {
+            el.style.opacity = '1';
+        });
+
+        el.addEventListener('dblclick', () => {
+            const id = el.getAttribute('data-id');
+            if (id) {
+                const card = allCards.find(c => c.id === id);
+                if (card) setAsLeader(card);
+            }
+        });
+    });
 }
 
 // Afficher le leader
@@ -118,13 +211,14 @@ function renderLeader() {
 
     if (deck.leader) {
         container.innerHTML = `
-            <div class="card-in-deck">
+            <div class="card-in-deck" style="border: 2px solid #ffd700;">
                 <img src="${deck.leader.image}" alt="${deck.leader.name}">
-                <button class="btn-remove" onclick="removeLeader()">×</button>
+                <div style="position:absolute; top:2px; right:2px; background:red; color:white; border-radius:50%; width:20px; height:20px; text-align:center; line-height:20px; cursor:pointer;" onclick="setAsLeader(deck.leader)">×</button>
             </div>
+            <div style="text-align:center; font-size:0.8em; margin-top:5px; color:#ffd700;">LEADER</div>
         `;
     } else {
-        container.innerHTML = '<div class="empty-slot">Cliquez sur une carte Leader</div>';
+        container.innerHTML = '<div class="empty-slot" style="display:flex; align-items:center; justify-content:center; height:100%;">Glisser ou Double-cliquer<br>pour mettre un Leader</div>';
     }
 }
 
@@ -132,6 +226,11 @@ function renderLeader() {
 function renderDeck() {
     const container = document.getElementById('deckList');
     if (!container) return;
+
+    if (deck.cards.length === 0) {
+        container.innerHTML = '<div class="empty-slot">Votre deck est vide</div>';
+        return;
+    }
 
     container.innerHTML = deck.cards.map((card, index) => `
         <div class="card-in-deck">
@@ -155,7 +254,9 @@ function updateStats() {
         </div>
         <div class="stat">
             <span class="stat-label">Leader:</span>
-            <span class="stat-value">${deck.leader ? '✓' : '✗'}</span>
+            <span class="stat-value" style="color: ${deck.leader ? 'gold' : 'red'}">
+                ${deck.leader ? '✓' : '✗'}
+            </span>
         </div>
     `;
 }
@@ -265,160 +366,4 @@ document.addEventListener('DOMContentLoaded', () => {
     if (importBtn) {
         importBtn.addEventListener('change', (e) => importDeck(e.target.files[0]));
     }
-
-    /* =======================================================
-   AJOUT FONCTIONNALITÉ LEADER (Drag & Drop + Double Clic)
-   Copie ce bloc à la fin de ton fichier app.js
-   ======================================================= */
-
-// 1. Fonction logique pour définir le leader
-function setAsLeader(card) {
-    if (!card) return;
-
-    // Si on clique sur le leader actuel, on le retire (optionnel)
-    if (currentDeck.leader && currentDeck.leader.id === card.id) {
-        currentDeck.leader = null;
-        // On remet la carte dans le deck si elle n'y est pas déjà
-        if (!currentDeck.cards.some(c => c.id === card.id)) {
-            currentDeck.cards.push(card);
-        }
-    } else {
-        // Si un leader existe déjà, on le remet dans le deck
-        if (currentDeck.leader) {
-            currentDeck.cards.push(currentDeck.leader);
-        }
-        // On définit le nouveau leader
-        currentDeck.leader = card;
-        
-        // On retire la carte du deck normal si elle y était
-        const index = currentDeck.cards.findIndex(c => c.id === card.id);
-        if (index > -1) {
-            currentDeck.cards.splice(index, 1);
-        }
-    }
-
-    updateDeckDisplay(); // Met à jour l'affichage du deck
-    saveDeck();          // Sauvegarde automatique
-}
-
-// 2. Initialisation du Drag & Drop sur la zone Leader
-function initLeaderZone() {
-    const leaderZone = document.getElementById('leader-zone');
-    if (!leaderZone) {
-        console.warn("Zone leader non trouvée, vérifie l'ID dans ton HTML.");
-        return;
-    }
-
-    // Effet visuel au survol
-    leaderZone.addEventListener('dragover', (e) => {
-        e.preventDefault(); // Nécessaire pour autoriser le drop
-        leaderZone.style.borderColor = '#ffd700'; // Doré
-        leaderZone.style.backgroundColor = 'rgba(255, 215, 0, 0.15)';
-        leaderZone.style.transform = 'scale(1.02)';
-        leaderZone.style.cursor = 'copy';
-    });
-
-    // Reset visuel quand on sort
-    leaderZone.addEventListener('dragleave', () => {
-        leaderZone.style.borderColor = '#ccc';
-        leaderZone.style.backgroundColor = 'transparent';
-        leaderZone.style.transform = 'scale(1)';
-        leaderZone.style.cursor = 'default';
-    });
-
-    // Action quand on lâche la carte
-    leaderZone.addEventListener('drop', (e) => {
-        e.preventDefault();
-        leaderZone.style.borderColor = '#ccc';
-        leaderZone.style.backgroundColor = 'transparent';
-        leaderZone.style.transform = 'scale(1)';
-        leaderZone.style.cursor = 'default';
-
-        const cardId = e.dataTransfer.getData('text/plain');
-        if (cardId) {
-            const card = allCards.find(c => c.id === cardId);
-            if (card) {
-                setAsLeader(card);
-            } else {
-                console.error("Carte non trouvée pour l'ID:", cardId);
-            }
-        }
-    });
-}
-
-// 3. Rendre les cartes interactives (à exécuter après l'affichage des cartes)
-// On surcharge la fonction d'affichage existante ou on ajoute un listener global
-function enableCardInteractivity() {
-    // On cible toutes les cartes affichées (ajuste le sélecteur si nécessaire)
-    // Cherche les classes utilisées dans ton HTML pour les cartes (ex: .card, .card-item, etc.)
-    const cardElements = document.querySelectorAll('.card, .card-item, [data-card-id]');
-
-    cardElements.forEach(el => {
-        // Évite de dupliquer les listeners si la fonction est appelée plusieurs fois
-        if (el.dataset.leaderEnabled === "true") return;
-        
-        el.dataset.leaderEnabled = "true";
-        el.setAttribute('draggable', 'true');
-        el.style.cursor = 'grab';
-
-        // Début du glisser
-        el.addEventListener('dragstart', (e) => {
-            // Récupère l'ID de la carte (ajuste selon comment tu stockes l'ID dans ton HTML)
-            const id = el.getAttribute('data-card-id') || el.querySelector('[data-card-id]')?.getAttribute('data-card-id');
-            if (id) {
-                e.dataTransfer.setData('text/plain', id);
-                e.dataTransfer.effectAllowed = 'move';
-                setTimeout(() => el.style.opacity = '0.5', 0);
-            }
-        });
-
-        // Fin du glisser
-        el.addEventListener('dragend', () => {
-            el.style.opacity = '1';
-        });
-
-        // Double-clic pour définir le leader directement
-        el.addEventListener('dblclick', () => {
-            const id = el.getAttribute('data-card-id') || el.querySelector('[data-card-id]')?.getAttribute('data-card-id');
-            if (id) {
-                const card = allCards.find(c => c.id === id);
-                if (card) setAsLeader(card);
-            }
-        });
-    });
-}
-
-// 4. Hook pour lancer l'interactivité après chaque mise à jour de l'affichage
-// On cherche ta fonction updateDisplay ou renderCards et on l'enveloppe
-// Si tu ne trouves pas le nom exact, on utilise un MutationObserver pour détecter les nouvelles cartes automatiquement
-
-const observer = new MutationObserver((mutations) => {
-    let cardsAdded = false;
-    mutations.forEach((mutation) => {
-        if (mutation.addedNodes.length) {
-            mutation.addedNodes.forEach(node => {
-                if (node.nodeType === 1 && (node.classList?.contains('card') || node.classList?.contains('card-item') || node.querySelector('.card'))) {
-                    cardsAdded = true;
-                }
-            });
-        }
-    });
-    if (cardsAdded) {
-        enableCardInteractivity();
-    }
-});
-
-// Démarrer l'observateur sur le conteneur principal des cartes (ajuste l'ID si besoin)
-// Cherche l'ID de ton conteneur de cartes dans index.html (souvent 'card-list', 'results', 'gallery'...)
-const mainContainer = document.getElementById('card-list') || document.getElementById('results') || document.body;
-observer.observe(mainContainer, { childList: true, subtree: true });
-
-// Initialisation au chargement de la page
-document.addEventListener('DOMContentLoaded', () => {
-    initLeaderZone();
-    // Petit délai pour s'assurer que les premières cartes sont chargées
-    setTimeout(enableCardInteractivity, 1000);
-});
-
-console.log("✅ Système Leader activé : Glisser-déposer et Double-clic prêts !");
 });
