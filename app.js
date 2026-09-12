@@ -8,6 +8,7 @@ const CONFIG = {
 let allCards = [];
 let filteredCards = [];
 let isLeaderFilterActive = false;
+let selectedLeaderAttribute = null; // Attribut du leader sélectionné
 
 let deck = {
     leader: null,
@@ -174,6 +175,7 @@ window.setAsLeader = function(cardIdOrObj) {
     if (deck.leader && deck.leader.id === card.id) {
         // Si on clique sur le leader actuel, on le retire
         deck.leader = null;
+        selectedLeaderAttribute = null;
     } else {
         // Si un ancien leader existe, on le remet dans le deck
         if (deck.leader) {
@@ -181,6 +183,7 @@ window.setAsLeader = function(cardIdOrObj) {
         }
         // Nouveau leader
         deck.leader = card;
+        selectedLeaderAttribute = card.attribute || null;
         
         // Retirer du deck normal si présent
         const idx = deck.cards.findIndex(c => c.id === card.id);
@@ -201,6 +204,12 @@ window.addToDeck = function(cardId) {
             return;
         }
         // Si l'utilisateur annule, on ne fait rien (on n'ajoute pas au deck)
+        return;
+    }
+
+    // Vérifier la compatibilité avec l'attribut du leader
+    if (selectedLeaderAttribute && card.attribute !== selectedLeaderAttribute) {
+        alert(`Cette carte a l'attribut "${card.attribute || 'Inconnu'}" mais votre leader est de type "${selectedLeaderAttribute}". Vous ne pouvez ajouter que des cartes du même attribut !`);
         return;
     }
 
@@ -226,6 +235,7 @@ window.removeFromDeck = function(index) {
 
 window.removeLeader = function() {
     deck.leader = null;
+    selectedLeaderAttribute = null;
     updateUI();
 };
 
@@ -243,10 +253,9 @@ function renderLeader() {
 
     if (deck.leader) {
         container.innerHTML = `
-            <div class="card-in-deck" style="position:relative;">
-                <img src="${deck.leader.image}" alt="${deck.leader.name}" style="width:100%; border-radius:8px;">
-                <button class="btn-remove" onclick="removeLeader()" style="position:absolute; top:5px; right:5px; background:red; color:white; border:none; border-radius:50%; width:20px; height:20px; cursor:pointer;">×</button>
-                <div style="text-align:center; font-weight:bold; margin-top:5px;">${deck.leader.name}</div>
+            <div class="card-in-deck" style="position:relative; width:100%; height:100%;">
+                <img src="${deck.leader.image}" alt="${deck.leader.name}" style="width:100%; height:100%; object-fit:contain; border-radius:0;">
+                <button class="btn-remove" onclick="removeLeader()" style="position:absolute; top:5px; right:5px; background:red; color:white; border:none; border-radius:50%; width:20px; height:20px; cursor:pointer; z-index:10;">×</button>
             </div>
         `;
     } else {
@@ -309,9 +318,12 @@ const translations = {
     "폭풍": "Storm",
     "번개": "Lightning",
     "불꽃": "Fire",
+    "화염": "Flame",
     "물": "Water",
     "빛": "Light",
     "어둠": "Darkness",
+    "대지": "Earth",
+    "파동": "Wave",
     "코스트": "Cost",
     "파워": "Power",
     "히트": "Hit",
@@ -331,7 +343,15 @@ const translations = {
     "필드": "Field",
     "레이인": "Lane",
     "장착": "Equip",
-    "조우": "Encounter"
+    "조우": "Encounter",
+    "엔트리": "Entry",
+    "광전사": "Berserker",
+    "이펙트": "Effect",
+    "테트라": "Tetra",
+    "필그림": "Pilgrim",
+    "엘리시온": "Elysion",
+    "미실리스": "Missilis",
+    "승리의 여신: 니케": "Goddess of Victory: NIKKE"
 };
 
 // Fonction pour traduire un texte
