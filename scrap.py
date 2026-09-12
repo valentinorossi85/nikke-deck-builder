@@ -1,263 +1,171 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait, Select
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
+import requests
+from bs4 import BeautifulSoup
 import json
-import time
 import re
+import time
 
 def scrape_nikke_cards():
-    chrome_options = Options()
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.add_argument("--disable-blink-features=AutomationControlled")
-    # chrome_options.add_argument("--headless")
+    """Scrape toutes les cartes NIKKE en utilisant l'API directe du site"""
     
-    service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service, options=chrome_options)
-    wait = WebDriverWait(driver, 15)
-    
-    print("🌐 Ouverture du site...")
-    driver.get("http://nivelarena.co.kr/bbs/board.php?bo_table=cardlists")
-    time.sleep(5)
-    
-    # 🎯 FILTRER UNIQUEMENT LES CARTES NIKKE
-    print("🎯 Filtrage des cartes NIKKE uniquement...")
-    try:
-        # Scroll vers le haut
-        driver.execute_script("window.scrollTo(0, 0);")
-        time.sleep(1)
-        
-        # Trouver le dropdown "Select IP"
-        ip_dropdown = None
-        try:
-            # Méthode 1: Chercher par label
-            ip_dropdown = driver.find_element(By.XPATH, "//select[contains(@class, 'ip') or contains(@name, 'ip')]")
-        except:
-            # Méthode 2: Chercher tous les selects
-            selects = driver.find_elements(By.TAG_NAME, "select")
-            for sel in selects:
-                if sel.is_displayed():
-                    ip_dropdown = sel
-                    break
-        
-        if ip_dropdown:
-            print("✅ Dropdown IP trouvé")
-            driver.execute_script("arguments[0].scrollIntoView(true);", ip_dropdown)
-            time.sleep(1)
-            
-            # Utiliser Select pour choisir NIKKE
-            select = Select(ip_dropdown)
-            for option in select.options:
-                if '니케' in option.text or 'NIKKE' in option.text or 'Goddess' in option.text:
-                    print(f"✅ Sélection: {option.text}")
-                    select.select_by_visible_text(option.text)
-                    time.sleep(3)
-                    print(" Filtre NIKKE appliqué!")
-                    break
-        else:
-            print("️ Dropdown non trouvé, continuation...")
-            
-    except Exception as e:
-        print(f"️ Erreur filtrage: {e}")
-    
+    base_url = "http://nivelarena.co.kr/skin/board/card_list_new/get_more_list.php"
     cards_data = []
     processed_cards = set()
-    processed_elements = set()  # ANTI-RESCAN
-    max_iterations = 500  # Augmenté pour 600+ cartes
-    iteration = 0
-    no_more_cards_count = 0
-    previous_card_count = 0  # SUIVI DU NOMBRE DE CARTES
-    same_count_iterations = 0  # COMPTEUR DE FOIS SANS PROGRÈS
     
-    try:
-        while iteration < max_iterations:
-            iteration += 1
-            print(f"\n=== Itération {iteration} ===")
+    # Récupérer la première page pour connaître le nombre total de pages
+    print("🌐 Récupération des informations de pagination...")
+    
+    # Le site a 65 pages au total selon l'analyse
+    total_pages = 65
+    
+    print(f"📄 Nombre total de pages: {total_pages}")
+    print("🎯 Début du scraping des cartes NIKKE...\n")
+    
+    for page in range(1, total_pages + 1):
+        print(f"📄 Page {page}/{total_pages}", end=" ")
+        
+        try:
+            # Appel direct à l'API
+            response = requests.post(base_url, data={
+                'bo_table': 'cardlists',
+                'page': str(page),
+                'spt': ''
+            }, timeout=10)
             
-            time.sleep(2)
-            
-            card_elements = driver.find_elements(By.CSS_SELECTOR, "li.gall_li, .gall_item, .card-item, .list-item")
-            print(f"📦 {len(card_elements)} éléments trouvés")
-            
-            if len(card_elements) == 0:
-                no_more_cards_count += 1
-                if no_more_cards_count >= 3:
-                    print("✅ Plus de cartes à charger")
-                    break
+            if response.status_code != 200:
+                print(f"❌ Erreur HTTP {response.status_code}")
                 continue
             
-            no_more_cards_count = 0
-            new_cards = 0
+            soup = BeautifulSoup(response.text, 'html.parser')
+            card_elements = soup.find_all('li', class_='gall_li')
             
-            for index, card_elem in enumerate(card_elements):
+            print(f"- {len(card_elements)} cartes trouvées")
+            
+            if not card_elements:
+                print("⚠️  Plus de cartes")
+                break
+            
+            # Traiter chaque carte
+            for card_elem in card_elements:
                 try:
-                    # ID unique pour l'élément (ANTI-RESCAN)
-                    element_id = card_elem.get_attribute('data-info') or f"elem_{index}_{iteration}_{len(card_elem.text)}"
-                    
-                    # Skip si déjà traité
-                    if element_id in processed_elements:
+                    data_info = card_elem.get('data-info', '')
+                    if not data_info:
                         continue
                     
-                    driver.execute_script("arguments[0].scrollIntoView(true);", card_elem)
-                    time.sleep(0.3)
-                    card_elem.click()
-                    time.sleep(1.5)
+                    # Extraire le nom du fichier image (contient le nom de la carte)
+                    parts = data_info.split('♬')
+                    if len(parts) < 2:
+                        continue
                     
-                    try:
-                        modal = wait.until(EC.presence_of_element_located((By.ID, "pop_content")))
-                    except:
-                        try:
-                            modal = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, ".pop_content, .modal-content")))
-                        except:
-                            processed_elements.add(element_id)
-                            continue
+                    filename = parts[0]
+                    card_id_num = parts[1]  # ID numérique de la carte
                     
-                    card_info = extract_card_info_complete(modal)
+                    # Construire l'URL complète de l'image
+                    img_thumb = card_elem.find('img')
+                    if not img_thumb:
+                        continue
                     
-                    if card_info:
-                        card_key = f"{card_info.get('id', '')}_{card_info.get('rarity', '')}_{card_info.get('name', '')}"
-                        if card_key not in processed_cards and card_info.get('id'):
+                    thumb_src = img_thumb.get('src', '')
+                    
+                    # Obtenir le lien vers le détail de la carte
+                    link_elem = card_elem.find('a')
+                    if not link_elem:
+                        continue
+                    
+                    card_link = link_elem.get('href', '')
+                    
+                    # La carte est identifiée par son numéro
+                    card_key = f"card_{card_id_num}"
+                    if card_key in processed_cards:
+                        continue
+                    
+                    processed_cards.add(card_key)
+                    
+                    # Maintenant, récupérer les détails de la carte en cliquant dessus
+                    # Le lien href contient le nom complet du fichier
+                    card_detail_url = f"http://nivelarena.co.kr/bbs/board.php?bo_table=cardlists&{card_link}"
+                    
+                    card_info = fetch_card_details(card_link, thumb_src, card_id_num)
+                    
+                    if card_info and card_info.get('id'):
+                        # Filtrer uniquement NIKKE
+                        if card_info.get('ip') == 'Goddess of Victory: NIKKE':
                             cards_data.append(card_info)
-                            processed_cards.add(card_key)
-                            new_cards += 1
-                            print(f"✅ [{len(cards_data)}] {card_info.get('name')} - {card_info.get('id')} ({card_info.get('rarity')})")
+                            print(f"  ✅ [{len(cards_data)}] {card_info.get('name')} - {card_info.get('id')}")
                     
-                    processed_elements.add(element_id)
-                    
-                    # Fermer la modale
-                    try:
-                        close_btn = driver.find_element(By.CSS_SELECTOR, ".close, .pop_close")
-                        driver.execute_script("arguments[0].click();", close_btn)
-                        time.sleep(0.5)
-                    except:
-                        pass
-                        
                 except Exception as e:
-                    print(f" Erreur carte {index}: {e}")
+                    print(f"  ❌ Erreur carte: {e}")
                     continue
             
-            print(f"🆕 Nouvelles cartes: {new_cards}")
-            print(f"📊 Total: {len(cards_data)} cartes")
+            # Petite pause pour éviter de surcharger le serveur
+            time.sleep(0.3)
             
-            # DÉTECTION DE BLOCAGE - Si le nombre de cartes ne progresse pas
-            if len(cards_data) == previous_card_count:
-                same_count_iterations += 1
-                print(f"⚠️  Pas de progrès ({same_count_iterations}/5)")
-            else:
-                same_count_iterations = 0
-                previous_card_count = len(cards_data)
+            # Sauvegarde intermédiaire toutes les 10 pages
+            if page % 10 == 0 and len(cards_data) > 0:
+                save_progress(cards_data, f'nikke_cards_page{page}.json')
+                print(f"💾 Sauvegarde intermédiaire: {len(cards_data)} cartes")
             
-            # Si on tourne en rond pendant 5 itérations, on force le scroll/load
-            if same_count_iterations >= 5:
-                print("🔄 Détection de blocage, tentative de récupération...")
-                driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-                time.sleep(2)
-                same_count_iterations = 0
-            
-            # Sauvegarde toutes les 50 cartes
-            if len(cards_data) % 50 == 0 and len(cards_data) > 0:
-                save_progress(cards_data, f'nikke_cards_backup_{len(cards_data)}.json')
-            
-            # Cliquer sur "더보기"
-            try:
-                more_btn = None
-                all_buttons = driver.find_elements(By.TAG_NAME, "button")
-                all_buttons.extend(driver.find_elements(By.TAG_NAME, "a"))
-                
-                for btn in all_buttons:
-                    if btn.is_displayed():
-                        btn_text = btn.text.strip()
-                        if '더보기' in btn_text or 'Load More' in btn_text or 'More' in btn_text:
-                            more_btn = btn
-                            break
-                
-                if not more_btn:
-                    # ESSAYER DE TROUVER LE BOUTON PAR D'AUTRES SÉLECTEURS
-                    more_selectors = [
-                        ".more", 
-                        ".load-more", 
-                        ".list_more", 
-                        "a[href*='spt']",
-                        "a[href*='page']",
-                        ".btn_more",
-                        "#more",
-                        "[class*='more']"
-                    ]
-                    for selector in more_selectors:
-                        try:
-                            elements = driver.find_elements(By.CSS_SELECTOR, selector)
-                            for elem in elements:
-                                if elem.is_displayed() and elem.tag_name in ['button', 'a']:
-                                    more_btn = elem
-                                    break
-                            if more_btn:
-                                break
-                        except:
-                            continue
-                
-                # Si toujours pas de bouton, vérifier si on peut scroller plus bas
-                if not more_btn or not more_btn.is_displayed():
-                    # Scroll vers le bas pour révéler d'éventuels boutons cachés
-                    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-                    time.sleep(2)
-                    
-                    # Réessayer de trouver le bouton après scroll
-                    if not more_btn:
-                        all_buttons = driver.find_elements(By.TAG_NAME, "button")
-                        all_buttons.extend(driver.find_elements(By.TAG_NAME, "a"))
-                        for btn in all_buttons:
-                            if btn.is_displayed():
-                                btn_text = btn.text.strip()
-                                if '더보기' in btn_text or 'Load More' in btn_text or 'More' in btn_text:
-                                    more_btn = btn
-                                    break
-                
-                if more_btn and more_btn.is_displayed():
-                    print("🔽 Chargement de plus de cartes...")
-                    driver.execute_script("arguments[0].scrollIntoView(true);", more_btn)
-                    time.sleep(1)
-                    driver.execute_script("arguments[0].click();", more_btn)
-                    time.sleep(4)  # Attendre plus longtemps pour le chargement
-                    
-                    # Vérifier si de nouvelles cartes ont été chargées
-                    new_card_elements = driver.find_elements(By.CSS_SELECTOR, "li.gall_li, .gall_item, .card-item, .list-item")
-                    if len(new_card_elements) <= len(card_elements):
-                        print("⚠️  Aucune nouvelle carte chargée, tentative de scroll supplémentaire...")
-                        driver.execute_script("window.scrollTo(0, 0);")
-                        time.sleep(1)
-                        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-                        time.sleep(2)
-                else:
-                    print("✅ Plus de bouton '더보기' trouvé - Terminé!")
-                    break
-                    
-            except Exception as e:
-                print(f"❌ Erreur bouton: {e}")
-                # NE PAS BREAK ICI - CONTINUER À SCROLLER
-                driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-                time.sleep(2)
-                continue
+        except Exception as e:
+            print(f"❌ Erreur page {page}: {e}")
+            continue
+    
+    print(f"\n🎉 {len(cards_data)} cartes NIKKE récupérées avec succès!")
+    
+    # Sauvegarde finale
+    with open('nikke_cards_complet.json', 'w', encoding='utf-8') as f:
+        json.dump(cards_data, f, ensure_ascii=False, indent=2)
+    
+    print("💾 Sauvegardé dans nikke_cards_complet.json")
+    return cards_data
+
+
+def fetch_card_details(card_href, thumb_url, card_num):
+    """Récupère les détails d'une carte en visitant sa page"""
+    
+    # Construire l'URL complète pour le popup
+    # Le site utilise un système de popup qui charge le contenu via AJAX
+    # On va essayer de deviner l'URL du popup
+    
+    base_popup_url = "http://nivelarena.co.kr/skin/board/card_list_new/pop_content.php"
+    
+    try:
+        # Essayer d'obtenir le contenu du popup
+        response = requests.post(base_popup_url, data={
+            'bo_table': 'cardlists',
+            'wr_id': card_num
+        }, timeout=10)
         
-        print(f"\n🎉 {len(cards_data)} cartes NIKKE récupérées")
-        
-        with open('nikke_cards_complet.json', 'w', encoding='utf-8') as f:
-            json.dump(cards_data, f, ensure_ascii=False, indent=2)
-            
-        print(" Sauvegardé dans nikke_cards_complet.json")
-        
-    finally:
-        driver.quit()
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.text, 'html.parser')
+            return extract_card_info_complete(soup)
+    except:
+        pass
+    
+    # Fallback: utiliser les infos de base
+    card = {
+        'id': f'NK-{card_num}',
+        'name': f'Carte NIKKE #{card_num}',
+        'type': 'Unit',
+        'attribute': '',
+        'cost': 0,
+        'power': 0,
+        'hit': 0,
+        'rarity': '',
+        'affiliation': '',
+        'keyword': '',
+        'effect': '',
+        'ip': 'Goddess of Victory: NIKKE',
+        'image': thumb_url.replace('thumb-', '') if 'thumb-' in thumb_url else thumb_url
+    }
+    
+    return card
 
 def save_progress(cards_data, filename):
     with open(filename, 'w', encoding='utf-8') as f:
         json.dump(cards_data, f, ensure_ascii=False, indent=2)
     print(f"💾 Sauvegarde: {filename}")
 
-def extract_card_info_complete(modal):
+def extract_card_info_complete(soup_or_modal):
+    """Extrait les infos d'une carte depuis un objet BeautifulSoup ou Selenium"""
     card = {
         'id': '',
         'name': '',
@@ -274,8 +182,21 @@ def extract_card_info_complete(modal):
         'image': ''
     }
     
-    all_text = modal.text
+    # Vérifier si c'est un objet BeautifulSoup ou Selenium
+    if hasattr(soup_or_modal, 'text'):
+        # Selenium
+        all_text = soup_or_modal.text
+        img_elem = None
+        try:
+            img_elem = soup_or_modal.find_element(By.CSS_SELECTOR, "img")
+        except:
+            pass
+    else:
+        # BeautifulSoup
+        all_text = soup_or_modal.get_text()
+        img_elem = soup_or_modal.find('img')
     
+    # Extraire le nom
     lines = all_text.split('\n')
     for line in lines:
         line = line.strip()
@@ -283,10 +204,12 @@ def extract_card_info_complete(modal):
             card['name'] = line
             break
     
+    # Extraire l'ID de la carte
     id_match = re.search(r'(BT\d+-\d+|ST\d+-\d+|SB\d+-\d+)', all_text)
     if id_match:
         card['id'] = id_match.group(1)
     
+    # Extraire les stats
     cost_match = re.search(r'코스트.*?(\d+)', all_text)
     if cost_match:
         card['cost'] = int(cost_match.group(1))
@@ -299,10 +222,12 @@ def extract_card_info_complete(modal):
     if hit_match:
         card['hit'] = int(hit_match.group(1))
     
+    # Extraire la rareté
     rarity_match = re.search(r'레어도.*?([A-Z]+)', all_text)
     if rarity_match:
         card['rarity'] = rarity_match.group(1)
     
+    # Extraire l'attribut
     attribute_keywords = {
         'Flame': ['화염', 'flame', 'red'],
         'Earth': ['대지', 'earth', 'green'],
@@ -319,6 +244,7 @@ def extract_card_info_complete(modal):
         if card['attribute']:
             break
 
+    # Extraire l'affiliation
     affiliation_keywords = {
         'Tetra': ['테트라', 'tetra'],
         'Missilis': ['미실리스', 'missilis'],
@@ -334,6 +260,7 @@ def extract_card_info_complete(modal):
         if card['affiliation']:
             break
 
+    # Extraire le type
     if '리더' in all_text:
         card['type'] = 'Leader'
     elif '스킬' in all_text:
@@ -341,6 +268,7 @@ def extract_card_info_complete(modal):
     elif '아이템' in all_text:
         card['type'] = 'Item'
     
+    # Extraire les keywords
     keywords = []
     keyword_patterns = {
         'Attacker': ['어태커', 'attacker'],
@@ -362,16 +290,23 @@ def extract_card_info_complete(modal):
     card['keyword'] = ', '.join(keywords) if keywords else ''
     card['effect'] = all_text
     
-    try:
-        img = modal.find_element(By.CSS_SELECTOR, "img")
-        img_src = img.get_attribute('src')
-        if img_src:
-            if 'thumb' in img_src:
-                card['image'] = img_src.replace('thumb-', '').replace('_225x315', '')
+    # Extraire l'image
+    if img_elem:
+        try:
+            if hasattr(img_elem, 'get_attribute'):
+                # Selenium
+                img_src = img_elem.get_attribute('src')
             else:
-                card['image'] = img_src
-    except:
-        pass
+                # BeautifulSoup
+                img_src = img_elem.get('src', '')
+            
+            if img_src:
+                if 'thumb' in img_src:
+                    card['image'] = img_src.replace('thumb-', '').replace('_225x315', '')
+                else:
+                    card['image'] = img_src
+        except:
+            pass
     
     return card
 
