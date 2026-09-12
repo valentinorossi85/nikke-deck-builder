@@ -3,82 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nivel Arena Deck Builder</title>
+    <title>One Piece Card Builder</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>🎮 Nivel Arena Deck Builder</h1>
-        <nav>
-            <a href="rules.md">Règles</a>
-            <a href="#" onclick="alert('Aide: Cliquez sur une carte pour l\'ajouter au deck')">Aide</a>
-        </nav>
-    </header>
-
-    <main>
-        <section class="filters">
-            <input type="text" id="searchInput" placeholder="Rechercher une carte...">
-            <select id="ipFilter">
-                <option value="all">Tous les types</option>
-                <option value="Unit">Unités</option>
-                <option value="Leader">Leaders</option>
-                <option value="Skill">Compétences</option>
-            </select>
-             <label style="display: flex; align-items: center; gap: 5px; cursor: pointer;">
-        <input type="checkbox" id="leaderOnlyCheck" onchange="toggleLeaderFilter()">
-        <span>Masquer les cartes non-Leader</span>
-    </label>
-        </section>
-
-        <div class="builder-container">
-            <section class="card-pool">
-                <h2>Cartes Disponibles (<span id="cardCount">0</span>)</h2>
-                <div id="cardList" class="card-grid"></div>
-            </section>
-
-            <section class="deck-builder">
-                <h2>Mon Deck</h2>
-                
-                <div id="deckStats" class="deck-stats">
-                    <div class="stat">
-                        <span class="stat-label">Cartes:</span>
-                        <span class="stat-value">0/40</span>
-                    </div>
-                </div>
-
-                <div class="deck-section">
-                    <h3>Leader</h3>
-                    <div id="leader-slot" class="leader-zone">
-                        <!-- Le leader s'affichera ici -->
-                        <p style="color: #888; font-size: 0.9em;">Glissez une carte ici ou double-cliquez dessus</p>
-                    </div>
-                </div>
-
-                <h3>Cartes du deck</h3>
-                <div id="deckList" class="deck-grid"></div>
-
-                <div id="validationResult" class="validation"></div>
-
-                <div class="actions">
-                    <button id="exportBtn" class="btn btn-primary">Exporter</button>
-                    <label class="btn btn-secondary">
-                        Importer
-                        <input type="file" id="importBtn" accept=".json" style="display: none;">
-                    </label>
-                </div>
-            </section>
+    <div class="container">
+        <h1>Constructeur de Deck One Piece</h1>
+        
+        <div class="controls">
+            <label class="checkbox-container">
+                <input type="checkbox" id="leaderFilter" onchange="toggleLeaderFilter()">
+                Masquer les cartes non-Leader
+            </label>
+            <button onclick="clearDeck()" class="btn-clear">Vider le Deck</button>
+            <button onclick="saveDeck()" class="btn-save">Sauvegarder le Deck</button>
         </div>
-    </main>
 
-    <footer>
-        <p>Nivel Arena Deck Builder - Projet éducatif</p>
-    </footer>
+        <div class="main-layout">
+            <!-- Zone Gauche: Liste des cartes -->
+            <div class="card-list-section">
+                <h2>Liste des Cartes (<span id="cardCount">0</span>)</h2>
+                <div id="searchBox">
+                    <input type="text" id="searchInput" placeholder="Rechercher une carte..." onkeyup="filterCards()">
+                </div>
+                <div id="cardList" class="card-list"></div>
+            </div>
 
-    <!-- Modal pour afficher les détails de la carte -->
+            <!-- Zone Droite: Construction du Deck -->
+            <div class="deck-builder-section">
+                <div class="leader-zone-container">
+                    <h3>Leader</h3>
+                    <div id="leaderDropZone" class="drop-zone leader-drop" ondrop="drop(event, 'leader')" ondragover="allowDrop(event)">
+                        <p>Glissez un Leader ici</p>
+                    </div>
+                    <div id="leaderInfo" class="card-info-panel"></div>
+                </div>
+
+                <div class="deck-zone-container">
+                    <h3>Deck (<span id="deckCount">0</span>/50)</h3>
+                    <p class="attribute-lock-msg" id="attributeLockMsg"></p>
+                    <div id="deckDropZone" class="drop-zone deck-drop" ondrop="drop(event, 'deck')" ondragover="allowDrop(event)">
+                        <p>Glissez des cartes ici</p>
+                    </div>
+                    <div id="deckList" class="deck-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup Modal -->
     <div id="cardModal" class="modal" onclick="closeModal(event)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <button class="modal-close" onclick="closeModalDirect()">×</button>
-            <div id="modalBody"></div>
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModalDirect()">&times;</span>
+            <div class="modal-body">
+                <img id="modalImg" src="" alt="Card Image">
+                <div class="modal-details">
+                    <h2 id="modalName"></h2>
+                    <p><strong>Type:</strong> <span id="modalType"></span></p>
+                    <p><strong>Attribute:</strong> <span id="modalAttribute"></span></p>
+                    <p><strong>Cost:</strong> <span id="modalCost"></span></p>
+                    <p><strong>Power:</strong> <span id="modalPower"></span></p>
+                    <p><strong>Effect (EN):</strong> <span id="modalEffect"></span></p>
+                </div>
+            </div>
         </div>
     </div>
 
