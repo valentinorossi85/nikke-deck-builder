@@ -4,31 +4,64 @@ const CONFIG = {
     MAX_COPIES: 3
 };
 
-// État global
+// État
 let allCards = [];
 let filteredCards = [];
+let isLeaderFilterActive = false;
+
 let deck = {
     leader: null,
     cards: []
 };
 
-// 1. Chargement des cartes
+// --- CHARGEMENT ---
 async function loadCards() {
     try {
         const response = await fetch('./cards.json');
         if (!response.ok) throw new Error("Impossible de charger cards.json");
         allCards = await response.json();
-        filteredCards = [...allCards];
-        renderCardList();
-        updateStats();
-        checkDeckValidity();
+        console.log(`${allCards.length} cartes chargées.`);
+        
+        // Filtrage initial
+        applyFilters();
     } catch (error) {
         console.error(error);
         document.getElementById('cardList').innerHTML = `<div style="color:red">Erreur: ${error.message}</div>`;
     }
 }
 
-// 2. Affichage de la liste des cartes (Avec Drag & Drop activé)
+// --- FILTRES ---
+function toggleLeaderFilter() {
+    const checkbox = document.getElementById('leaderOnlyCheck');
+    isLeaderFilterActive = checkbox.checked;
+    applyFilters();
+}
+
+function applyFilters() {
+    const searchTerm = document.getElementById('searchInput')?.value.toLowerCase() || '';
+    
+    filteredCards = allCards.filter(card => {
+        // Filtre texte
+        const matchText = card.name.toLowerCase().includes(searchTerm) || 
+                          card.id.toLowerCase().includes(searchTerm);
+        
+        // Filtre Leader
+        let matchLeader = true;
+        if (isLeaderFilterActive) {
+            // On considère "Leader" si le type contient "Leader" (insensible à la casse)
+            matchLeader = card.type && card.type.toLowerCase().includes('leader');
+        }
+
+        return matchText && matchLeader;
+    });
+
+    renderCardList();
+}
+
+// Listener pour la recherche
+document.getElementById('searchInput')?.addEventListener('input', applyFilters);
+
+// --- AFFICHAGE CARTES (Avec Drag & Drop intégré) ---
 function renderCardList() {
     const container = document.getElementById('cardList');
     if (!container) return;
@@ -38,22 +71,35 @@ function renderCardList() {
         return;
     }
 
-    container.innerHTML = filteredCards.map(card => `
+    container.innerHTML = filteredCards.map((card, index) => {
+        // Déterminer si c'est une carte draggable (toujours oui, mais visuel différent si leader filter)
+        const isLeaderCard = card.type && card.type.toLowerCase().includes('leader');
+        const borderStyle = isLeaderCard ? 'border: 2px solid gold;' : '';
+
+        return `
         <div class="card-item" 
+             style="${borderStyle} cursor: grab;"
              draggable="true" 
              ondragstart="handleDragStart(event, '${card.id}')"
-             ondblclick="setLeader('${card.id}')">
-            <img src="${card.image}" alt="${card.name}" loading="lazy">
+             ondblclick="setAsLeader('${card.id}')">
+            
+            <img src="${card.image}" alt="${card.name}" class="card-thumbnail" 
+                 onerror="this.src='https://via.placeholder.com/150x200?text=No+Image'">
+            
             <div class="card-info">
                 <h4>${card.name}</h4>
-                <span class="rarity">${card.rarity || ''}</span>
+                <span class="card-rarity">${card.type}</span>
+                ${isLeaderCard && isLeaderFilterActive ? '<span style="color:gold; font-weight:bold;">★ LEADER</span>' : ''}
             </div>
+            
             <button class="btn-add" onclick="addToDeck('${card.id}')">+</button>
         </div>
-    `).join('');
+    `}).join('');
 }
 
-// 3. Gestion du Drag Start (Début du glisser)
+// --- GESTION DU DRAG & DROP ---
+
+// 1. Démarrage du glisser
 window.handleDragStart = function(event, cardId) {
     event.dataTransfer.setData('text/plain', cardId);
     event.dataTransfer.effectAllowed = 'move';
@@ -61,147 +107,155 @@ window.handleDragStart = function(event, cardId) {
     setTimeout(() => event.target.style.opacity = '0.5', 0);
 };
 
-// Nettoyer l'opacité après le drag (sur le body pour être sûr)
-document.addEventListener('dragend', (e) => {
-    if(e.target.classList.contains('card-item')) {
-        e.target.style.opacity = '1';
+// 2. Fin du glisser (reset opacité)
+// On délègue l'événement au document pour capturer la fin peu importe où on lâche
+document.addEventListener('dragend', (event) => {
+    if (event.target.classList.contains('card-item')) {
+        event.target.style.opacity = '1';
     }
 });
 
-// 4. Initialisation de la Zone Leader (Drop Zone)
+// 3. Configuration de la zone de drop (Leader Slot)
 function initLeaderZone() {
-    const leaderZone = document.getElementById('leader-slot');
-    if (!leaderZone) {
-        console.error("ERreur: L'élément avec id='leader-slot' est introuvable dans le HTML !");
-        return;
-    }
+    const zone = document.getElementById('leader-slot');
+    if (!zone) return;
 
-    // Survol
-    leaderZone.addEventListener('dragover', (e) => {
-        e.preventDefault(); // Obligatoire pour autoriser le drop
-        leaderZone.style.borderColor = '#ffd700';
-        leaderZone.style.backgroundColor = 'rgba(255, 215, 0, 0.2)';
-        leaderZone.style.transform = 'scale(1.02)';
+    // Empêcher le comportement par défaut (nécessaire pour autoriser le drop)
+    zone.addEventListener('dragover', (e) => {
+        e.preventDefault(); 
+        e.dataTransfer.dropEffect = 'move';
+        zone.style.borderColor = '#ffd700';
+        zone.style.backgroundColor = 'rgba(255, 215, 0, 0.2)';
+        zone.style.transform = 'scale(1.02)';
     });
 
-    // Sortie de zone
-    leaderZone.addEventListener('dragleave', () => {
-        leaderZone.style.borderColor = '#ccc';
-        leaderZone.style.backgroundColor = 'transparent';
-        leaderZone.style.transform = 'scale(1)';
+    zone.addEventListener('dragleave', () => {
+        zone.style.borderColor = '#ccc';
+        zone.style.backgroundColor = 'transparent';
+        zone.style.transform = 'scale(1)';
     });
 
-    // Drop (Relâcher la carte)
-    leaderZone.addEventListener('drop', (e) => {
+    zone.addEventListener('drop', (e) => {
         e.preventDefault();
-        leaderZone.style.borderColor = '#ccc';
-        leaderZone.style.backgroundColor = 'transparent';
-        leaderZone.style.transform = 'scale(1)';
+        zone.style.borderColor = '#ccc';
+        zone.style.backgroundColor = 'transparent';
+        zone.style.transform = 'scale(1)';
 
         const cardId = e.dataTransfer.getData('text/plain');
         if (cardId) {
-            setLeader(cardId);
+            const card = allCards.find(c => c.id === cardId);
+            if (card) {
+                setAsLeader(cardId);
+            }
         }
     });
 }
 
-// 5. Fonction Logique : Définir le Leader
-window.setLeader = function(cardId) {
-    const card = allCards.find(c => c.id === cardId);
+// --- LOGIQUE METIER ---
+
+window.setAsLeader = function(cardIdOrObj) {
+    let card;
+    if (typeof cardIdOrObj === 'string') {
+        card = allCards.find(c => c.id === cardIdOrObj);
+    } else {
+        card = cardIdOrObj;
+    }
+
     if (!card) return;
 
-    // Si c'est déjà le leader, on l'enlève (optionnel)
-    if (deck.leader && deck.leader.id === cardId) {
+    // Vérification optionnelle : est-ce vraiment un leader ? (On peut laisser souple)
+    // if (!card.type.toLowerCase().includes('leader')) { alert("Ce n'est pas un leader !"); return; }
+
+    if (deck.leader && deck.leader.id === card.id) {
+        // Si on clique sur le leader actuel, on le retire
         deck.leader = null;
     } else {
-        // Si on avait un ancien leader, on le remet dans le deck
+        // Si un ancien leader existe, on le remet dans le deck
         if (deck.leader) {
             deck.cards.push(deck.leader);
         }
-        // On définit le nouveau leader
+        // Nouveau leader
         deck.leader = card;
         
-        // On retire la carte du deck normal si elle y était
-        deck.cards = deck.cards.filter(c => c.id !== cardId);
+        // Retirer du deck normal si présent
+        const idx = deck.cards.findIndex(c => c.id === card.id);
+        if (idx > -1) deck.cards.splice(idx, 1);
     }
 
-    renderLeader();
-    renderDeck(); // Mettre à jour le deck au cas où une carte a bougé
-    updateStats();
-    checkDeckValidity();
+    updateUI();
 };
 
-// 6. Ajouter une carte normale au deck (Clic simple sur le +)
 window.addToDeck = function(cardId) {
     const card = allCards.find(c => c.id === cardId);
     if (!card) return;
 
-    // Vérif Leader : si on clique sur un leader via le bouton +, on le met en leader directement
-    if (card.type === 'Leader' || card.keyword?.includes('Leader')) {
-        setLeader(cardId);
-        return;
+    // Si c'est un leader, on propose de le mettre en leader directement
+    if (card.type && card.type.toLowerCase().includes('leader')) {
+        if(confirm(`Voulez-vous définir "${card.name}" comme Leader ?`)) {
+            setAsLeader(card);
+            return;
+        }
     }
 
-    // Vérif copies max
-    const count = deck.cards.filter(c => c.id === cardId).length;
-    if (count >= CONFIG.MAX_COPIES) {
-        alert(`Maximum ${CONFIG.MAX_COPIES} exemplaires autorisés.`);
-        return;
-    }
-
-    // Vérif taille deck
     if (deck.cards.length >= CONFIG.MAX_CARDS) {
-        alert("Deck plein (40 cartes max).");
+        alert("Deck complet (40 cartes)");
+        return;
+    }
+
+    const count = deck.cards.filter(c => c.id === card.id).length;
+    if (count >= CONFIG.MAX_COPIES) {
+        alert(`Maximum ${CONFIG.MAX_COPIES} exemplaires autorisés`);
         return;
     }
 
     deck.cards.push(card);
-    renderDeck();
-    updateStats();
-    checkDeckValidity();
+    updateUI();
 };
 
-// 7. Retirer une carte du deck
 window.removeFromDeck = function(index) {
     deck.cards.splice(index, 1);
-    renderDeck();
-    updateStats();
-    checkDeckValidity();
+    updateUI();
 };
 
-// 8. Retirer le leader
 window.removeLeader = function() {
     deck.leader = null;
-    renderLeader();
-    updateStats();
-    checkDeckValidity();
+    updateUI();
 };
 
-// 9. Rendu du Leader
+// --- MISE A JOUR INTERFACE ---
+function updateUI() {
+    renderLeader();
+    renderDeck();
+    updateStats();
+    validateDeck();
+}
+
 function renderLeader() {
     const container = document.getElementById('leader-slot');
     if (!container) return;
 
     if (deck.leader) {
         container.innerHTML = `
-            <div class="card-in-deck leader-card">
-                <img src="${deck.leader.image}" alt="${deck.leader.name}">
-                <div class="card-name-overlay">${deck.leader.name}</div>
-                <button class="btn-remove" onclick="removeLeader()">×</button>
+            <div class="card-in-deck" style="position:relative;">
+                <img src="${deck.leader.image}" alt="${deck.leader.name}" style="width:100%; border-radius:8px;">
+                <button class="btn-remove" onclick="removeLeader()" style="position:absolute; top:5px; right:5px; background:red; color:white; border:none; border-radius:50%; width:20px; height:20px; cursor:pointer;">×</button>
+                <div style="text-align:center; font-weight:bold; margin-top:5px;">${deck.leader.name}</div>
             </div>
         `;
     } else {
-        container.innerHTML = `<p style="color:#888; padding:20px; text-align:center;">Glissez un leader ici<br>ou double-cliquez sur une carte</p>`;
+        container.innerHTML = `
+            <p style="color: #888; font-size: 0.9em; text-align: center; margin-top: 20px; pointer-events:none;">
+                Glissez un Leader ici<br>ou double-cliquez sur une carte
+            </p>`;
     }
 }
 
-// 10. Rendu du Deck
 function renderDeck() {
     const container = document.getElementById('deckList');
     if (!container) return;
 
     if (deck.cards.length === 0) {
-        container.innerHTML = '<p style="color:#888; padding:20px;">Votre deck est vide</p>';
+        container.innerHTML = '<p>Votre deck est vide.</p>';
         return;
     }
 
@@ -213,35 +267,27 @@ function renderDeck() {
     `).join('');
 }
 
-// 11. Stats et Validation
 function updateStats() {
     const el = document.getElementById('deckStats');
-    if(el) el.innerHTML = `Cartes: ${deck.cards.length}/40 | Leader: ${deck.leader ? 'OK' : 'NON'}`;
+    if (!el) return;
+    el.innerHTML = `
+        <div>Cartes: <strong>${deck.cards.length}/40</strong></div>
+        <div>Leader: <strong>${deck.leader ? 'OK' : 'MANQUANT'}</strong></div>
+    `;
 }
 
-function checkDeckValidity() {
+function validateDeck() {
     const el = document.getElementById('validationResult');
-    if(!el) return;
+    if (!el) return;
     
-    let msg = [];
-    if(!deck.leader) msg.push("❌ Pas de leader");
-    if(deck.cards.length < 40) msg.push(`⚠️ ${40 - deck.cards.length} cartes manquantes`);
-    if(deck.cards.length === 40 && deck.leader) msg.push("✅ Deck Valide !");
-
-    el.innerHTML = msg.join('<br>');
-    el.className = (deck.cards.length === 40 && deck.leader) ? 'valid' : 'invalid';
+    const isValid = deck.leader && deck.cards.length === 40;
+    el.className = isValid ? 'validation valid' : 'validation invalid';
+    el.innerHTML = isValid ? '✅ Deck Valide !' : '❌ Deck Invalide (Il faut 1 Leader et 40 cartes)';
 }
 
-// Démarrage
+// Initialisation
 document.addEventListener('DOMContentLoaded', () => {
     loadCards();
-    initLeaderZone(); // Active la zone de drop
-    
-    // Filtres
-    const search = document.getElementById('searchInput');
-    if(search) search.addEventListener('input', (e) => {
-        const term = e.target.value.toLowerCase();
-        filteredCards = allCards.filter(c => c.name.toLowerCase().includes(term));
-        renderCardList();
-    });
+    initLeaderZone();
+    console.log("Application prête. Drag & Drop activé.");
 });
