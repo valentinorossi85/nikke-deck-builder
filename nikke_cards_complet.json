@@ -12,7 +12,7 @@
     "keyword": "Passive",
     "effect": "레드 후드\nBT01-001 / 리더 / 화염\n코스트 - 레어도 L\n파워 - 히트 -\n소속 필그림\n키워드 패시브\n효과\n기본면\n자신의 덱에 카드만 넣을 수 있다.\n자신의 리더 레벨이 6 이상이라면 이 카드를 뒤집는다.\n\n각성면\n자신의 턴 동안 필드에 있는 를 가진 모든 자신 유닛의 파워+2000.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_liwsYf3A_9098b689e08f6c4ee0ea9d85dd2b66f5e930ada0.jpg"
+    "image": "nikke_card_images/BT01-001_SPL_레드_후드.jpg"
   },
   {
     "id": "BT01-001",
@@ -27,7 +27,7 @@
     "keyword": "Passive",
     "effect": "레드 후드\nBT01-001 / 리더 / 화염\n코스트 - 레어도 SPL\n파워 - 히트 -\n소속 필그림\n키워드 패시브\n효과\n기본면\n자신의 덱에 카드만 넣을 수 있다.\n자신의 리더 레벨이 6 이상이라면 이 카드를 뒤집는다.\n\n각성면\n자신의 턴 동안 필드에 있는 를 가진 모든 자신 유닛의 파워+2000.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_sQ2FXl6w_c93ba25152acadac69f00ffa553dd9464d7097fd.jpg"
+    "image": "nikke_card_images/BT01-001_SPL_레드_후드.jpg"
   },
   {
     "id": "BT01-002",
@@ -42,7 +42,7 @@
     "keyword": "Attacker",
     "effect": "네온-블링 불렛\nBT01-002 / 유닛 / 화염\n코스트 1 레어도 C\n파워 2000 히트 1\n소속 이펙트 / 엘리시온\n키워드 어태커\n효과\n이 공격이 끝날 때까지 파워+2000.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_0sygmc2S_3e82c68b4652f2ee152d47f5888d0c1e6ba43bf6.jpg"
+    "image": "nikke_card_images/BT01-002_C_네온-블링_불렛.jpg"
   },
   {
     "id": "BT01-003",
@@ -57,7 +57,7 @@
     "keyword": "",
     "effect": "크로우\nBT01-003 / 유닛 / 화염\n코스트 1 레어도 C\n파워 3000 히트 1\n소속 베이스 / 미실리스\n키워드 -\n효과\n-\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_h7PnS2ax_f840233a795ef168e2fc8bdb8960483fa61d88c2.jpg"
+    "image": "nikke_card_images/BT01-003_C_크로우.jpg"
   },
   {
     "id": "BT01-004",
@@ -72,7 +72,7 @@
     "keyword": "Attacker",
     "effect": "노이즈-클래식 디바\nBT01-004 / 유닛 / 화염\n코스트 1 레어도 R\n파워 1500 히트 1\n소속 이펙트 / 테트라\n키워드 어태커\n효과\n관통[1](이 유닛이 공격하여 상대 유닛을 전투로 트래시했다면 상대에게 1대미지를 준다).\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_mRQvJVxi_b9c64a6d5a4adb86eef86d28fe1ca1fc5c43aee3.jpg"
+    "image": "nikke_card_images/BT01-004_R_노이즈-클래식_디바.jpg"
   },
   {
     "id": "BT01-005",
@@ -87,7 +87,7 @@
     "keyword": "Passive",
     "effect": "라피-클래식 바캉스\nBT01-005 / 유닛 / 화염\n코스트 2 레어도 R\n파워 5000 히트 1\n소속 이펙트 / 엘리시온\n키워드 패시브\n효과\n광전사(이 유닛은 가능하다면 반드시 공격해야 한다).\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_a0Asd4i7_50ea7ed9c8c330cca0bc32015c69ddf64255705a.jpg"
+    "image": "nikke_card_images/BT01-005_P_라피-클래식_바캉스.jpg"
   },
   {
     "id": "BT01-006",
@@ -102,7 +102,7 @@
     "keyword": "Attacker",
     "effect": "아니스 : 스파클링 서머\nBT01-006 / 유닛 / 화염\n코스트 2 레어도 SR\n파워 2500 히트 1\n소속 이펙트 / 테트라\n키워드 어태커\n효과\n이 공격이 끝날 때까지 파워+2000.\n약탈[1](이 유닛이 공격하여 상대 유닛을 전투로 트래시했다면 카드를 1장 드로우한다).\n트리거 / 이 카드를 트래시한다. 필드에 있는 상대 유닛을 1장 골라, 이 턴이 끝날 때까지 파워-5000.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_yBa0HrRQ_3664be7a4c812664279bbe1ad5975fad09ec7a04.jpg"
+    "image": "nikke_card_images/BT01-006_SPR_아니스___스파클링_서머.jpg"
   },
   {
     "id": "BT01-006",
@@ -117,7 +117,7 @@
     "keyword": "Attacker",
     "effect": "아니스 : 스파클링 서머\nBT01-006 / 유닛 / 화염\n코스트 2 레어도 SPR\n파워 2500 히트 1\n소속 이펙트 / 테트라\n키워드 어태커\n효과\n이 공격이 끝날 때까지 파워+2000.\n약탈[1](이 유닛이 공격하여 상대 유닛을 전투로 트래시했다면 카드를 1장 드로우한다).\n트리거 / 이 카드를 트래시한다. 필드에 있는 상대 유닛을 1장 골라, 이 턴이 끝날 때까지 파워-5000.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/cfbf01727a7e461ec5930f5d552f8bff_ODWfQorn_0d16dc414c1f5d81c923948646b8e2734423a915.jpg"
+    "image": "nikke_card_images/BT01-006_SPR_아니스___스파클링_서머.jpg"
   },
   {
     "id": "BT01-007",
@@ -132,7 +132,7 @@
     "keyword": "",
     "effect": "클레이\nBT01-007 / 유닛 / 화염\n코스트 2 레어도 C\n파워 4000 히트 1\n소속 베이스 / 테트라\n키워드 -\n효과\n-\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_sIc8PYdB_8e0fd8e3c2eaa63fd4a4156bf2a497e67615761c.jpg"
+    "image": "nikke_card_images/BT01-007_P_클레이.jpg"
   },
   {
     "id": "BT01-008",
@@ -147,7 +147,7 @@
     "keyword": "Passive",
     "effect": "볼륨\nBT01-008 / 유닛 / 화염\n코스트 3 레어도 C\n파워 4000 히트 1\n소속 이펙트 / 테트라\n키워드 패시브\n효과\n필드에 있는 관통을 가진 모든 자신 유닛의 파워+1500.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_5DKH7GFU_917480669bea05247cdff3813be5cf9b137af8f8.jpg"
+    "image": "nikke_card_images/BT01-008_C_볼륨.jpg"
   },
   {
     "id": "BT01-009",
@@ -162,7 +162,7 @@
     "keyword": "Attacker",
     "effect": "베이\nBT01-009 / 유닛 / 화염\n코스트 3 레어도 C\n파워 4500 히트 1\n소속 이펙트 / 테트라\n키워드 어태커\n효과\n이 공격이 끝날 때까지 파워+1000.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_t5qVaiM9_ffbc91baad773acc754ed876d4451f5caeae9944.jpg"
+    "image": "nikke_card_images/BT01-009_C_베이.jpg"
   },
   {
     "id": "BT01-010",
@@ -177,7 +177,7 @@
     "keyword": "",
     "effect": "아리아\nBT01-010 / 유닛 / 화염\n코스트 3 레어도 C\n파워 5000 히트 1\n소속 베이스 / 테트라\n키워드 -\n효과\n-\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_stN4QGpv_60ab6e544412653fd6b964fd01b57c12008f13c0.jpg"
+    "image": "nikke_card_images/BT01-010_C_아리아.jpg"
   },
   {
     "id": "BT01-011",
@@ -192,7 +192,7 @@
     "keyword": "Active",
     "effect": "네온 : 블루 오션\nBT01-011 / 유닛 / 화염\n코스트 4 레어도 R\n파워 4000 히트 2\n소속 이펙트 / 엘리시온\n키워드 액티브\n효과\n필드에 있는 상대 유닛을 1장 골라, 이 턴이 끝날 때까지 파워-1500.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_V5mJaSoK_463dc47c0c72a4561650f069deae3de96db3958a.jpg"
+    "image": "nikke_card_images/BT01-011_R_네온___블루_오션.jpg"
   },
   {
     "id": "BT01-012",
@@ -207,7 +207,7 @@
     "keyword": "Entry",
     "effect": "엠마-달링 레드\nBT01-012 / 유닛 / 화염\n코스트 4 레어도 C\n파워 5000 히트 2\n소속 이펙트 / 엘리시온\n키워드 엔트리\n효과\n이 턴이 끝날 때까지 필드에 있는 모든 자신 유닛은 「 이 공격이 끝날 때까지 파워+1000」을 얻는다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_Su3WEdcQ_18591bac205a8df2524c2079c7740966238d5e9b.jpg"
+    "image": "nikke_card_images/BT01-012_P_엠마-달링_레드.jpg"
   },
   {
     "id": "BT01-013",
@@ -222,7 +222,7 @@
     "keyword": "Attacker",
     "effect": "자칼\nBT01-013 / 유닛 / 화염\n코스트 4 레어도 C\n파워 5500 히트 2\n소속 이펙트 / 미실리스\n키워드 어태커\n효과\n이 공격이 끝날 때까지 파워+1000.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_vVLcdAiP_2729cd02f16f76dd155b923ed5dc74561417693d.jpg"
+    "image": "nikke_card_images/BT01-013_C_자칼.jpg"
   },
   {
     "id": "BT01-014",
@@ -237,7 +237,7 @@
     "keyword": "Passive",
     "effect": "홍련 : 흑영\nBT01-014 / 유닛 / 화염\n코스트 4 레어도 SR\n파워 7500 히트 2\n소속 이펙트 / 필그림\n키워드 패시브\n효과\n광전사(이 유닛은 가능하다면 반드시 공격해야 한다).\n트리거 / 이 카드를 트래시한다. 자신의 트래시 존에서 2코스트 이하인 유닛을 1장 골라 자신의 패에 넣는다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_ZlqQIMsX_aa24e44bbef6650ad6e7d34b20b9e63c7dedf213.jpg"
+    "image": "nikke_card_images/BT01-014_SPR_홍련___흑영.jpg"
   },
   {
     "id": "BT01-014",
@@ -252,7 +252,7 @@
     "keyword": "Passive",
     "effect": "홍련 : 흑영\nBT01-014 / 유닛 / 화염\n코스트 4 레어도 SPR\n파워 7500 히트 2\n소속 이펙트 / 필그림\n키워드 패시브\n효과\n광전사(이 유닛은 가능하다면 반드시 공격해야 한다).\n트리거 / 이 카드를 트래시한다. 자신의 트래시 존에서 2코스트 이하인 유닛을 1장 골라 자신의 패에 넣는다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_lBeigXEh_66f4d26a32e4002a4a1aabaa2d2468ce638c7745.jpg"
+    "image": "nikke_card_images/BT01-014_SPR_홍련___흑영.jpg"
   },
   {
     "id": "BT01-015",
@@ -267,7 +267,7 @@
     "keyword": "Entry",
     "effect": "누아르-흑묘\nBT01-015 / 유닛 / 화염\n코스트 5 레어도 R\n파워 4500 히트 2\n소속 이펙트 / 테트라\n키워드 엔트리\n효과\n이 턴이 끝날 때까지 조우 유닛의 파워-4000.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_pyWsVD28_cdc9bb7c682665c0de1395048bab227803967b9b.jpg"
+    "image": "nikke_card_images/BT01-015_SR_누아르-흑묘.jpg"
   },
   {
     "id": "BT01-016",
@@ -282,7 +282,7 @@
     "keyword": "Attacker",
     "effect": "스노우 화이트 : 이노센트 데이즈\nBT01-016 / 유닛 / 화염\n코스트 6 레어도 C\n파워 7000 히트 2\n소속 이펙트 / 필그림\n키워드 어태커\n효과\n이 공격이 끝날 때까지 파워+2000.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_Zz7SwD6X_5c6945307a3a7664adbc44b4f5171d461e8f39fa.jpg"
+    "image": "nikke_card_images/BT01-016_C_스노우_화이트___이노센트_데이즈.jpg"
   },
   {
     "id": "BT01-017",
@@ -297,7 +297,7 @@
     "keyword": "Entry",
     "effect": "바이퍼-샤인 오브 러브\nBT01-017 / 유닛 / 화염\n코스트 6 레어도 SR\n파워 5000 히트 2\n소속 이펙트 / 테트라\n키워드 엔트리\n효과\n이 턴이 끝날 때까지 조우 유닛의 파워가 1000이 된다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_7NQua6Jq_e8e0d98e216fa8ac0929980a1ed9224d3b050189.jpg"
+    "image": "nikke_card_images/BT01-017_SR_바이퍼-샤인_오브_러브.jpg"
   },
   {
     "id": "BT01-017",
@@ -312,7 +312,7 @@
     "keyword": "Entry",
     "effect": "바이퍼-샤인 오브 러브\nBT01-017 / 유닛 / 화염\n코스트 6 레어도 SPR\n파워 5000 히트 2\n소속 이펙트 / 테트라\n키워드 엔트리\n효과\n이 턴이 끝날 때까지 조우 유닛의 파워가 1000이 된다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_yFR4pB6J_6bdf34796eb9bb4f205ecd7539e39688accc2beb.jpg"
+    "image": "nikke_card_images/BT01-017_SR_바이퍼-샤인_오브_러브.jpg"
   },
   {
     "id": "BT01-018",
@@ -327,7 +327,7 @@
     "keyword": "Passive",
     "effect": "블랑-백묘\nBT01-018 / 유닛 / 화염\n코스트 7 레어도 R\n파워 7000 히트 3\n소속 이펙트 / 테트라\n키워드 패시브\n효과\n필드에 있는 를 가진 모든 자신 유닛의 파워+2000.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_Mj97Kr62_4e97dee8f1d225fe86cbaf5295207e6f1707314d.jpg"
+    "image": "nikke_card_images/BT01-018_R_블랑-백묘.jpg"
   },
   {
     "id": "BT01-019",
@@ -342,7 +342,7 @@
     "keyword": "Entry",
     "effect": "레드 후드\nBT01-019 / 유닛 / 화염\n코스트 8 레어도 UR\n파워 7000 히트 3\n소속 이펙트 / 필그림\n키워드 엔트리\n효과\n이 턴이 끝날 때까지 필드에 있는 모든 자신 유닛은 관통[1](이 유닛이 공격하여 상대 유닛을 전투로 트래시했다면 상대에게 1대미지를 준다)을 얻는다.\n트리거 / 이 카드를 자신의 패에 넣는다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_g7SLxE50_69a7acdafbe40095d1a0007ec3cee256ab808e09.jpg"
+    "image": "nikke_card_images/BT01-019_SPR_레드_후드.jpg"
   },
   {
     "id": "BT01-019",
@@ -357,7 +357,7 @@
     "keyword": "Entry",
     "effect": "레드 후드\nBT01-019 / 유닛 / 화염\n코스트 8 레어도 SPR\n파워 7000 히트 3\n소속 이펙트 / 필그림\n키워드 엔트리\n효과\n이 턴이 끝날 때까지 필드에 있는 모든 자신 유닛은 관통[1](이 유닛이 공격하여 상대 유닛을 전투로 트래시했다면 상대에게 1대미지를 준다)을 얻는다.\n트리거 / 이 카드를 자신의 패에 넣는다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_gI9tGwHp_872e71f12718ae2157e08c23c8b0deb318c3d3f1.jpg"
+    "image": "nikke_card_images/BT01-019_SPR_레드_후드.jpg"
   },
   {
     "id": "BT01-020",
@@ -372,7 +372,7 @@
     "keyword": "",
     "effect": "와일드 투스\nBT01-020 / 스킬 / 화염\n코스트 1 레어도 C\n파워 - 히트 -\n소속 -\n키워드 -\n효과\n필드에 있는 를 가진 유닛을 1장 고른다. 이 턴이 끝날 때까지 그 유닛은  관통[1](이 유닛이 공격하여 상대 유닛을 전투로 트래시했다면 상대에게 1대미지를 준다)을 얻는다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_fGuS2kPV_36739e7802db00e8ef3560907e710fa97550cbf2.jpg"
+    "image": "nikke_card_images/BT01-020_C_와일드_투스.jpg"
   },
   {
     "id": "BT01-021",
@@ -387,7 +387,7 @@
     "keyword": "",
     "effect": "포메이션 F.F\nBT01-021 / 스킬 / 화염\n코스트 2 레어도 C\n파워 - 히트 -\n소속 -\n키워드 -\n효과\n이 턴이 끝날 때까지 필드에 있는 모든 상대 유닛의 파워-1000.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_wo3k15z6_96578e68fccbd2d0aa60d2e5e718186904f2e8ca.jpg"
+    "image": "nikke_card_images/BT01-021_C_포메이션_F.F.jpg"
   },
   {
     "id": "BT01-022",
@@ -402,7 +402,7 @@
     "keyword": "",
     "effect": "압도\nBT01-022 / 스킬 / 화염\n코스트 3 레어도 C\n파워 - 히트 -\n소속 -\n키워드 -\n효과\n필드에 있는 상대 유닛을 2장까지 골라, 이 턴이 끝날 때까지 파워-2000.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_z3rCkK0u_d47635dade1a5f6c31a27063ecced70456d440e0.jpg"
+    "image": "nikke_card_images/BT01-022_C_압도.jpg"
   },
   {
     "id": "BT01-023",
@@ -417,7 +417,7 @@
     "keyword": "",
     "effect": "치얼업 투게더\nBT01-023 / 스킬 / 화염\n코스트 3 레어도 C\n파워 - 히트 -\n소속 -\n키워드 -\n효과\n이 턴이 끝날 때까지 필드에 있는 를 가진 모든 자신 유닛의 파워+2500.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_kiGHOnPj_3025aba23a082c58e72942db36b8b5f71d83679f.jpg"
+    "image": "nikke_card_images/BT01-023_C_치얼업_투게더.jpg"
   },
   {
     "id": "BT01-024",
@@ -432,7 +432,7 @@
     "keyword": "",
     "effect": "피날레\nBT01-024 / 스킬 / 화염\n코스트 3 레어도 R\n파워 - 히트 -\n소속 -\n키워드 -\n효과\n필드에 있는 상대 유닛을 1장 골라, 이 턴이 끝날 때까지 파워-3000. 이 효과로 그 유닛을 트래시했다면 카드를 1장 드로우한다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_vCzpBZ5n_8072c19fda453bd45694a00cdada20d327c95c3a.jpg"
+    "image": "nikke_card_images/BT01-024_SR_피날레.jpg"
   },
   {
     "id": "BT01-025",
@@ -447,7 +447,7 @@
     "keyword": "",
     "effect": "아군 합류\nBT01-025 / 스킬 / 화염\n코스트 4 레어도 C\n파워 - 히트 -\n소속 -\n키워드 -\n효과\n자신의 트래시 존에서 를 가진 유닛을 1장 골라 자신의 패에 넣는다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_TNWQjAdH_4780c1d7def65a8d258aaa650ccde96b61c6f8c4.jpg"
+    "image": "nikke_card_images/BT01-025_C_아군_합류.jpg"
   },
   {
     "id": "BT01-026",
@@ -462,7 +462,7 @@
     "keyword": "Attacker",
     "effect": "갓데시움 글러브\nBT01-026 / 아이템 / 화염\n코스트 2 레어도 C\n파워 - 히트 -\n소속 -\n키워드 어태커\n효과\n\n관통[1](이 유닛이 공격하여 상대 유닛을 전투로 트래시했다면 상대에게 1대미지를 준다).\n트리거 / 이 카드를 자신의 패에 넣는다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_6RleL2WS_d9dc65d551e2fa3f4580bc75ee632cab3ce61548.jpg"
+    "image": "nikke_card_images/BT01-026_C_갓데시움_글러브.jpg"
   },
   {
     "id": "BT01-027",
@@ -477,7 +477,7 @@
     "keyword": "Attacker",
     "effect": "노른 코드 고글\nBT01-027 / 아이템 / 화염\n코스트 3 레어도 C\n파워 - 히트 -\n소속 -\n키워드 어태커\n효과\n\n이 공격이 끝날 때까지 파워+2000.\n약탈[1](이 유닛이 공격하여 상대 유닛을 전투로 트래시했다면 카드를 1장 드로우한다).\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_1qJWSHrX_601d283490de8ed634e127a4d9a81ff5eed39f2d.jpg"
+    "image": "nikke_card_images/BT01-027_C_노른_코드_고글.jpg"
   },
   {
     "id": "BT01-028",
@@ -492,7 +492,7 @@
     "keyword": "Passive",
     "effect": "홍련\nBT01-028 / 리더 / 대지\n코스트 - 레어도 L\n파워 - 히트 -\n소속 필그림\n키워드 패시브\n효과\n기본면\n자신의 덱에 카드만 넣을 수 있다.\n자신의 리더 레벨이 5 이상이라면 이 카드를 뒤집는다.\n\n각성면\n필드에 있는 《베이스》를 가진 모든 자신 유닛의 파워+1000.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_q5Vgju1x_8f9da5f86c5af5c48a242488a78bae1f9ec81572.jpg"
+    "image": "nikke_card_images/BT01-028_L_홍련.jpg"
   },
   {
     "id": "BT01-028",
@@ -507,7 +507,7 @@
     "keyword": "Passive",
     "effect": "홍련\nBT01-028 / 리더 / 대지\n코스트 - 레어도 SPL\n파워 - 히트 -\n소속 필그림\n키워드 패시브\n효과\n기본면\n자신의 덱에 카드만 넣을 수 있다.\n자신의 리더 레벨이 5 이상이라면 이 카드를 뒤집는다.\n\n각성면\n필드에 있는 《베이스》를 가진 모든 자신 유닛의 파워+1000.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_VEJOYyxG_573c4afc56d490eb72f08bdefffdb9391225b516.jpg"
+    "image": "nikke_card_images/BT01-028_L_홍련.jpg"
   },
   {
     "id": "BT01-029",
@@ -522,7 +522,7 @@
     "keyword": "Entry",
     "effect": "벨로타\nBT01-029 / 유닛 / 대지\n코스트 1 레어도 C\n파워 3000 히트 1\n소속 이펙트 / 테트라\n키워드 엔트리\n효과\n상대의 턴이 끝날 때까지 파워+1000.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_QJDFcdex_de553c37736f8ce7f6ac0c267ecd6c1cc0647bf3.jpg"
+    "image": "nikke_card_images/BT01-029_C_벨로타.jpg"
   },
   {
     "id": "BT01-030",
@@ -537,7 +537,7 @@
     "keyword": "Passive",
     "effect": "미카 : 스노우 버디\nBT01-030 / 유닛 / 대지\n코스트 1 레어도 C\n파워 2000 히트 1\n소속 이펙트 / 테트라\n키워드 패시브, 전선구축\n효과\n전선구축[파워+3000](자신의 모든 유닛 존에 유닛이 존재한다면 파워+3000).\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_wM5qsOhg_213b7b37a19d7885390aa6e5df63aa096ee0444f.jpg"
+    "image": "nikke_card_images/BT01-030_C_미카___스노우_버디.jpg"
   },
   {
     "id": "BT01-031",
@@ -552,7 +552,7 @@
     "keyword": "",
     "effect": "앤 : 미라클 페어리\nBT01-031 / 유닛 / 대지\n코스트 1 레어도 C\n파워 3500 히트 1\n소속 베이스 / 미실리스\n키워드 -\n효과\n-\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_uYJcvHdE_0b9efd5930f568bb1c2c57dad6481d42267c8b8c.jpg"
+    "image": "nikke_card_images/BT01-031_C_앤___미라클_페어리.jpg"
   },
   {
     "id": "BT01-032",
@@ -567,7 +567,7 @@
     "keyword": "Passive",
     "effect": "신\nBT01-032 / 유닛 / 대지\n코스트 2 레어도 C\n파워 4000 히트 1\n소속 이펙트 / 미실리스\n키워드 패시브\n효과\n이 유닛의 파워가 필드에 있는 《베이스》를 가진 자신 유닛의 수×500만큼 증가한다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_dGky6B3K_8b0db2dabe49144f1a7d0970b6ddcf6a28d62aa2.jpg"
+    "image": "nikke_card_images/BT01-032_C_신.jpg"
   },
   {
     "id": "BT01-033",
@@ -582,7 +582,7 @@
     "keyword": "Entry",
     "effect": "도라-다크 로즈\nBT01-033 / 유닛 / 대지\n코스트 2 레어도 R\n파워 2500 히트 1\n소속 이펙트 / 테트라\n키워드 엔트리\n효과\n이 턴이 끝날 때까지 히트+1.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_tiMwjEKe_3bb7a37b6338ae164b474ad8d729ea734cc31595.jpg"
+    "image": "nikke_card_images/BT01-033_R_도라-다크_로즈.jpg"
   },
   {
     "id": "BT01-034",
@@ -597,7 +597,7 @@
     "keyword": "",
     "effect": "길티-디스빌리프 웨이브\nBT01-034 / 유닛 / 대지\n코스트 2 레어도 SR\n파워 5500 히트 1\n소속 베이스 / 미실리스\n키워드 -\n효과\n트리거 / 이 카드를 자신의 패에 넣는다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_8LEFthdv_eeca833673c86969ecc677bce309b0eb05d98104.jpg"
+    "image": "nikke_card_images/BT01-034_SPR_길티-디스빌리프_웨이브.jpg"
   },
   {
     "id": "BT01-034",
@@ -612,7 +612,7 @@
     "keyword": "",
     "effect": "길티-디스빌리프 웨이브\nBT01-034 / 유닛 / 대지\n코스트 2 레어도 SPR\n파워 5500 히트 1\n소속 베이스 / 미실리스\n키워드 -\n효과\n트리거 / 이 카드를 자신의 패에 넣는다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_GPFjDBoC_08525c565cf13469777ee87709b70fa329e887d1.jpg"
+    "image": "nikke_card_images/BT01-034_SPR_길티-디스빌리프_웨이브.jpg"
   },
   {
     "id": "BT01-035",
@@ -627,7 +627,7 @@
     "keyword": "Attacker",
     "effect": "솔린\nBT01-035 / 유닛 / 대지\n코스트 3 레어도 C\n파워 4500 히트 1\n소속 이펙트 / 엘리시온\n키워드 어태커\n효과\n돌파[1코스트 이하](1코스트 이하인 상대 유닛은 이 유닛의 공격을 방어할 수 없다).\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_8zNAmMW5_0a5c533d48bc6ca0f35c21d2130ef04afad8468e.jpg"
+    "image": "nikke_card_images/BT01-035_C_솔린.jpg"
   },
   {
     "id": "BT01-036",
@@ -642,7 +642,7 @@
     "keyword": "Passive",
     "effect": "퀀시\nBT01-036 / 유닛 / 대지\n코스트 3 레어도 C\n파워 3500 히트 1\n소속 이펙트 / 미실리스\n키워드 패시브\n효과\n필드에 있는 《베이스》를 가진 모든 자신 유닛의 파워+2000.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_V0tDThja_7fafbcbd0ce4c084d7f46369fc7505145dc313fd.jpg"
+    "image": "nikke_card_images/BT01-036_P_퀀시.jpg"
   },
   {
     "id": "BT01-037",
@@ -657,7 +657,7 @@
     "keyword": "Passive",
     "effect": "디젤-미드나잇 스트로베리\nBT01-037 / 유닛 / 대지\n코스트 3 레어도 R\n파워 4500 히트 1\n소속 이펙트 / 엘리시온\n키워드 패시브, 전선구축\n효과\n전선구축[히트+1](자신의 모든 유닛 존에 유닛이 존재한다면 히트+1).\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_cCS9HKoD_3fb1b9b3e1f53fa3b78659e794ebcb562fae2534.jpg"
+    "image": "nikke_card_images/BT01-037_R_디젤-미드나잇_스트로베리.jpg"
   },
   {
     "id": "BT01-038",
@@ -672,7 +672,7 @@
     "keyword": "Active",
     "effect": "루피\nBT01-038 / 유닛 / 대지\n코스트 4 레어도 C\n파워 4000 히트 2\n소속 이펙트 / 테트라\n키워드 액티브\n효과\n자신의 패를 1장 골라 트래시한다. 그러면 필드에 있는 자신 유닛을 1장 골라, 이 턴이 끝날 때까지 파워+4000.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/cfbf01727a7e461ec5930f5d552f8bff_l8Lcka2d_260664821da8db9382ffaff1a767dff8a891b6d4.jpg"
+    "image": "nikke_card_images/BT01-038_C_루피.jpg"
   },
   {
     "id": "BT01-039",
@@ -687,7 +687,7 @@
     "keyword": "Entry",
     "effect": "스노우 화이트-화이트 나이트\nBT01-039 / 유닛 / 대지\n코스트 4 레어도 R\n파워 5000 히트 2\n소속 이펙트 / 필그림\n키워드 엔트리\n효과\n상대의 턴이 끝날 때까지 파워+3000.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_Y1hfBqrV_bd22c7298ade91f0b2cb77ca8e64f77e0b401d51.jpg"
+    "image": "nikke_card_images/BT01-039_R_스노우_화이트-화이트_나이트.jpg"
   },
   {
     "id": "BT01-040",
@@ -702,7 +702,7 @@
     "keyword": "Passive",
     "effect": "루피 : 윈터 쇼퍼\nBT01-040 / 유닛 / 대지\n코스트 4 레어도 SR\n파워 4000 히트 2\n소속 이펙트 / 테트라\n키워드 패시브, 레벨링크\n효과\n이 유닛의 파워가 자신의 리더 레벨×500만큼 증가한다.\n레벨링크[10: 히트+1](자신의 리더 레벨이 10 이상이라면 히트+1).\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_gXvElAB7_e958315f3cb2c1f1f7e02f5ccf85da345432575e.jpg"
+    "image": "nikke_card_images/BT01-040_SR_루피___윈터_쇼퍼.jpg"
   },
   {
     "id": "BT01-040",
@@ -717,7 +717,7 @@
     "keyword": "Passive",
     "effect": "루피 : 윈터 쇼퍼\nBT01-040 / 유닛 / 대지\n코스트 4 레어도 SPR\n파워 4000 히트 2\n소속 이펙트 / 테트라\n키워드 패시브, 레벨링크\n효과\n이 유닛의 파워가 자신의 리더 레벨×500만큼 증가한다.\n레벨링크[10: 히트+1](자신의 리더 레벨이 10 이상이라면 히트+1).\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_RlQwJhFG_c25c3c407bf5939d18bdfa41a3f9ce48412193c7.jpg"
+    "image": "nikke_card_images/BT01-040_SR_루피___윈터_쇼퍼.jpg"
   },
   {
     "id": "BT01-041",
@@ -732,7 +732,7 @@
     "keyword": "Entry",
     "effect": "얀-선라이즈 마켓\nBT01-041 / 유닛 / 대지\n코스트 5 레어도 C\n파워 6500 히트 2\n소속 이펙트 / 테트라\n키워드 엔트리\n효과\n필드에 있는 자신 유닛을 1장 골라, 이 턴이 끝날 때까지 파워+2000.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_iOdxwmSH_c7fda26ee73a5845ddbe95f8272594851cce0c8e.jpg"
+    "image": "nikke_card_images/BT01-041_C_얀-선라이즈_마켓.jpg"
   },
   {
     "id": "BT01-042",
@@ -747,7 +747,7 @@
     "keyword": "",
     "effect": "나가\nBT01-042 / 유닛 / 대지\n코스트 5 레어도 R\n파워 7500 히트 2\n소속 베이스 / 미실리스\n키워드 -\n효과\n-\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_Yt0qCWeZ_42f8f6385c4ad7acc4237c43828d435ea963c96f.jpg"
+    "image": "nikke_card_images/BT01-042_R_나가.jpg"
   },
   {
     "id": "BT01-043",
@@ -762,7 +762,7 @@
     "keyword": "",
     "effect": "티아\nBT01-043 / 유닛 / 대지\n코스트 6 레어도 R\n파워 8500 히트 2\n소속 베이스 / 미실리스\n키워드 -\n효과\n-\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_uqE0dW64_eb8ff27c1c41ccd3df0ce40973ce722e52105afe.jpg"
+    "image": "nikke_card_images/BT01-043_R_티아.jpg"
   },
   {
     "id": "BT01-044",
@@ -777,7 +777,7 @@
     "keyword": "Entry",
     "effect": "라푼젤\nBT01-044 / 유닛 / 대지\n코스트 6 레어도 SR\n파워 8000 히트 2\n소속 이펙트 / 필그림\n키워드 엔트리\n효과\n자신의 덱 맨 위에서 카드를 3장 공개하고, 그 중 《베이스》를 가진 유닛을 1장 골라 자신의 패에 넣는다. 나머지는 모두 다시 덱에 넣고 섞는다.\n트리거 / 이 카드를 트래시한다. 자신의 리더 레벨+1.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_fh2Fy65K_92c6429ac726918730a6b071c96e5f775fd0e3cf.jpg"
+    "image": "nikke_card_images/BT01-044_SR_라푼젤.jpg"
   },
   {
     "id": "BT01-044",
@@ -792,7 +792,7 @@
     "keyword": "Entry",
     "effect": "라푼젤\nBT01-044 / 유닛 / 대지\n코스트 6 레어도 SPR\n파워 8000 히트 2\n소속 이펙트 / 필그림\n키워드 엔트리\n효과\n자신의 덱 맨 위에서 카드를 3장 공개하고, 그 중 《베이스》를 가진 유닛을 1장 골라 자신의 패에 넣는다. 나머지는 모두 다시 덱에 넣고 섞는다.\n트리거 / 이 카드를 트래시한다. 자신의 리더 레벨+1.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_8C7tIiTF_adb493571ae134f3008b58a4cd025b357e94b823.jpg"
+    "image": "nikke_card_images/BT01-044_SR_라푼젤.jpg"
   },
   {
     "id": "BT01-045",
@@ -807,7 +807,7 @@
     "keyword": "Passive",
     "effect": "브리드-블랙 문\nBT01-045 / 유닛 / 대지\n코스트 7 레어도 C\n파워 7500 히트 3\n소속 이펙트 / 엘리시온\n키워드 패시브\n효과\n필드에 있는 1코스트인 모든 자신 유닛의 파워+2000.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_oE9Yv5cU_4fad3a833a542a14c4c670fa4df24b9cefd4d3f2.jpg"
+    "image": "nikke_card_images/BT01-045_C_브리드-블랙_문.jpg"
   },
   {
     "id": "BT01-046",
@@ -822,7 +822,7 @@
     "keyword": "Entry",
     "effect": "홍련\nBT01-046 / 유닛 / 대지\n코스트 8 레어도 UR\n파워 8000 히트 3\n소속 이펙트 / 필그림\n키워드 엔트리\n효과\n필드에 있는 《베이스》를 가진 자신 유닛을 1장 고른다. 이 턴이 끝날 때까지 그 유닛은  돌파[3코스트 이하](3코스트 이하인 상대 유닛은 이 유닛의 공격을 방어할 수 없다)를 얻는다.\n트리거 / 이 카드를 자신의 패에 넣는다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_Xy1vs2fG_a374baba331e267cb694381654800bd90893ea83.jpg"
+    "image": "nikke_card_images/BT01-046_UR_홍련.jpg"
   },
   {
     "id": "BT01-046",
@@ -837,7 +837,7 @@
     "keyword": "Entry",
     "effect": "홍련\nBT01-046 / 유닛 / 대지\n코스트 8 레어도 SPR\n파워 8000 히트 3\n소속 이펙트 / 필그림\n키워드 엔트리\n효과\n필드에 있는 《베이스》를 가진 자신 유닛을 1장 고른다. 이 턴이 끝날 때까지 그 유닛은  돌파[3코스트 이하](3코스트 이하인 상대 유닛은 이 유닛의 공격을 방어할 수 없다)를 얻는다.\n트리거 / 이 카드를 자신의 패에 넣는다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_tuPpBeos_3c991da3350059503283f2099f4d99a7ea55838c.jpg"
+    "image": "nikke_card_images/BT01-046_UR_홍련.jpg"
   },
   {
     "id": "BT01-047",
@@ -852,7 +852,7 @@
     "keyword": "",
     "effect": "순백의 의지\nBT01-047 / 스킬 / 대지\n코스트 1 레어도 C\n파워 - 히트 -\n소속 -\n키워드 -\n효과\n필드에 있는 《베이스》를 가진 1코스트인 자신 유닛을 1장 고른다. 이 턴이 끝날 때까지 그 유닛의 히트가 2가 된다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_VXFYs2Ex_5c9ea271c47e1ab92ba1b48888da1f18b31dd249.jpg"
+    "image": "nikke_card_images/BT01-047_C_순백의_의지.jpg"
   },
   {
     "id": "BT01-048",
@@ -867,7 +867,7 @@
     "keyword": "",
     "effect": "파란 나비의 꿈\nBT01-048 / 스킬 / 대지\n코스트 2 레어도 C\n파워 - 히트 -\n소속 -\n키워드 -\n효과\n현재 필드에 있는 모든 자신 유닛은 상대의 턴이 끝날 때까지 파워+500.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_VZnMYemg_422275bd100e8ceeded842354028893bafd8348f.jpg"
+    "image": "nikke_card_images/BT01-048_C_파란_나비의_꿈.jpg"
   },
   {
     "id": "BT01-049",
@@ -882,7 +882,7 @@
     "keyword": "",
     "effect": "디저트 타임\nBT01-049 / 스킬 / 대지\n코스트 3 레어도 C\n파워 - 히트 -\n소속 -\n키워드 -\n효과\n필드에 있는 《베이스》를 가진 자신 유닛의 수만큼 카드를 드로우한다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_GtP6T0YZ_4a20acf46502b857bc31a49e7e97a47544bc8aac.jpg"
+    "image": "nikke_card_images/BT01-049_C_디저트_타임.jpg"
   },
   {
     "id": "BT01-050",
@@ -897,7 +897,7 @@
     "keyword": "",
     "effect": "설온제\nBT01-050 / 스킬 / 대지\n코스트 3 레어도 C\n파워 - 히트 -\n소속 -\n키워드 -\n효과\n자신의 모든 유닛 존에 유닛이 존재한다면 현재 필드에 있는 모든 자신 유닛은 상대의 턴이 끝날 때까지 파워+1500.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_bDtPvqyd_d00dcf0496d10ec5844bcbc31bdcf93d68f51fee.jpg"
+    "image": "nikke_card_images/BT01-050_C_설온제.jpg"
   },
   {
     "id": "BT01-051",
@@ -912,7 +912,7 @@
     "keyword": "",
     "effect": "VIP 기프트\nBT01-051 / 스킬 / 대지\n코스트 3 레어도 R\n파워 - 히트 -\n소속 -\n키워드 -\n효과\n자신의 덱 맨 위에서 카드를 3장 공개하고, 그 중 3코스트 이하인 카드를 모두 자신의 패에 넣는다. 나머지는 모두 다시 덱에 넣고 섞는다.\n트리거 / 이 카드를 트래시한다. 필드에 있는 3코스트 이하인 상대 유닛을 1장 골라 트래시한다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_HclLNvIy_15e8e879f7581b873c84f98afd47a3c1e2f91d0e.jpg"
+    "image": "nikke_card_images/BT01-051_R_VIP_기프트.jpg"
   },
   {
     "id": "BT01-052",
@@ -927,7 +927,7 @@
     "keyword": "",
     "effect": "검신합일\nBT01-052 / 스킬 / 대지\n코스트 4 레어도 C\n파워 - 히트 -\n소속 -\n키워드 -\n효과\n현재 필드에 있는 《베이스》를 가진 모든 자신 유닛은 이 턴이 끝날 때까지 히트+1.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_8owVkm7a_43f127afe728f99a504cbb65fffd1e522a2bdc8c.jpg"
+    "image": "nikke_card_images/BT01-052_C_검신합일.jpg"
   },
   {
     "id": "BT01-053",
@@ -942,7 +942,7 @@
     "keyword": "Attacker",
     "effect": "갓데시움 프로텍터\nBT01-053 / 아이템 / 대지\n코스트 2 레어도 C\n파워 - 히트 -\n소속 -\n키워드 어태커\n효과\n\n돌파[2코스트 이하](2코스트 이하인 상대 유닛은 이 유닛의 공격을 방어할 수 없다).\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_6haU2AYO_fc81a261b62dceff2a1be110985c93a98d8eb083.jpg"
+    "image": "nikke_card_images/BT01-053_C_갓데시움_프로텍터.jpg"
   },
   {
     "id": "BT01-054",
@@ -957,7 +957,7 @@
     "keyword": "",
     "effect": "아틀라스 패턴 건틀렛\nBT01-054 / 아이템 / 대지\n코스트 4 레어도 C\n파워 - 히트 -\n소속 -\n키워드 -\n효과\n\n파워+5000.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_6Ne1V2Lv_1976d9573e2da0b71b3d18bcb02381b938f0696e.jpg"
+    "image": "nikke_card_images/BT01-054_C_아틀라스_패턴_건틀렛.jpg"
   },
   {
     "id": "BT01-055",
@@ -972,7 +972,7 @@
     "keyword": "Passive",
     "effect": "신데렐라\nBT01-055 / 리더 / 폭풍\n코스트 - 레어도 L\n파워 - 히트 -\n소속 필그림\n키워드 패시브\n효과\n기본면\n자신의 덱에 카드만 넣을 수 있다.\n자신의 리더 레벨이 5 이상이라면 이 카드를 뒤집는다.\n\n각성면\n자신과 상대의 턴마다 한 번씩, 필드에서 5코스트 이상인 자신 유닛이 트래시되면 카드를 1장 드로우한다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_9OE3vAxl_d67bd86e4a4803662e9fa6bc3764c4c86f3e2374.jpg"
+    "image": "nikke_card_images/BT01-055_P_신데렐라.jpg"
   },
   {
     "id": "BT01-055",
@@ -987,7 +987,7 @@
     "keyword": "Passive",
     "effect": "신데렐라\nBT01-055 / 리더 / 폭풍\n코스트 - 레어도 SPL\n파워 - 히트 -\n소속 필그림\n키워드 패시브\n효과\n기본면\n자신의 덱에 카드만 넣을 수 있다.\n자신의 리더 레벨이 5 이상이라면 이 카드를 뒤집는다.\n\n각성면\n자신과 상대의 턴마다 한 번씩, 필드에서 5코스트 이상인 자신 유닛이 트래시되면 카드를 1장 드로우한다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_SQLBTlc2_cfdaa88df9082ae5419ad5713a3b9933b3da2776.jpg"
+    "image": "nikke_card_images/BT01-055_P_신데렐라.jpg"
   },
   {
     "id": "BT01-056",
@@ -1002,7 +1002,7 @@
     "keyword": "Exit",
     "effect": "에테르\nBT01-056 / 유닛 / 폭풍\n코스트 1 레어도 C\n파워 1500 히트 1\n소속 이펙트 / 미실리스\n키워드 엑시트\n효과\n필드에 있는 상대 유닛을 1장 골라, 이 턴이 끝날 때까지 파워-2000.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_anXfRPqC_60a188f24fdc4292f211ee3955c6c3ada9dd2dd0.jpg"
+    "image": "nikke_card_images/BT01-056_C_에테르.jpg"
   },
   {
     "id": "BT01-057",
@@ -1017,7 +1017,7 @@
     "keyword": "",
     "effect": "미하라\nBT01-057 / 유닛 / 폭풍\n코스트 1 레어도 C\n파워 2500 히트 1\n소속 베이스 / 미실리스\n키워드 -\n효과\n-\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_GeygTMsv_1e41842a56b259a988a828e926fa09f421950a0f.jpg"
+    "image": "nikke_card_images/BT01-057_C_미하라.jpg"
   },
   {
     "id": "BT01-058",
@@ -1032,7 +1032,7 @@
     "keyword": "Defender",
     "effect": "메이든-시크릿 너스\nBT01-058 / 유닛 / 폭풍\n코스트 1 레어도 R\n파워 3500 히트 1\n소속 이펙트 / 엘리시온\n키워드 디펜더\n효과\n종결(방어 선언 즉시 상대의 이번 공격을 종료하고 이 유닛을 트래시한다).\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_Iml98QCa_1259d8bb99c165aaa7c43257066b11b8ac150a22.jpg"
+    "image": "nikke_card_images/BT01-058_R_메이든-시크릿_너스.jpg"
   },
   {
     "id": "BT01-059",
@@ -1047,7 +1047,7 @@
     "keyword": "",
     "effect": "시그널\nBT01-059 / 유닛 / 폭풍\n코스트 2 레어도 C\n파워 3500 히트 1\n소속 베이스 / 엘리시온\n키워드 -\n효과\n-\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_JkX4BHTr_1ea76bf10d247bc2b45a63e47c556b51196b7277.jpg"
+    "image": "nikke_card_images/BT01-059_C_시그널.jpg"
   },
   {
     "id": "BT01-060",
@@ -1062,7 +1062,7 @@
     "keyword": "Passive",
     "effect": "애드미\nBT01-060 / 유닛 / 폭풍\n코스트 2 레어도 C\n파워 4500 히트 1\n소속 이펙트 / 미실리스\n키워드 패시브\n효과\n이 유닛으로 공격하려면 자신의 패를 1장 골라 트래시해야 한다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_NtA1QbLS_094a224174018479734abbc4d4cc54631481f818.jpg"
+    "image": "nikke_card_images/BT01-060_C_애드미.jpg"
   },
   {
     "id": "BT01-061",
@@ -1077,7 +1077,7 @@
     "keyword": "Active",
     "effect": "사쿠라 : 블룸 인 서머\nBT01-061 / 유닛 / 폭풍\n코스트 2 레어도 SR\n파워 2000 히트 1\n소속 이펙트 / 테트라\n키워드 액티브\n효과\n필드에 있는 자신 유닛을 2장 골라 그 중 1장을 트래시한다. 다른 유닛 1장은 이 턴이 끝날 때까지 파워+2000.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_xQqpWv3r_e2facf0392346d033440f334f11eda59566b266c.jpg"
+    "image": "nikke_card_images/BT01-061_SR_사쿠라___블룸_인_서머.jpg"
   },
   {
     "id": "BT01-061",
@@ -1092,7 +1092,7 @@
     "keyword": "Active",
     "effect": "사쿠라 : 블룸 인 서머\nBT01-061 / 유닛 / 폭풍\n코스트 2 레어도 SPR\n파워 2000 히트 1\n소속 이펙트 / 테트라\n키워드 액티브\n효과\n필드에 있는 자신 유닛을 2장 골라 그 중 1장을 트래시한다. 다른 유닛 1장은 이 턴이 끝날 때까지 파워+2000.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_R4Can5xS_ee6c73530e2e98a22218afc9412e57778be85e0c.jpg"
+    "image": "nikke_card_images/BT01-061_SR_사쿠라___블룸_인_서머.jpg"
   },
   {
     "id": "BT01-062",
@@ -1107,7 +1107,7 @@
     "keyword": "",
     "effect": "유니-러블리 핑크\nBT01-062 / 유닛 / 폭풍\n코스트 3 레어도 C\n파워 4500 히트 1\n소속 베이스 / 미실리스\n키워드 -\n효과\n-\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_rjDltJgY_ea17c179728cf12d79e440023e06a1e0aea0825d.jpg"
+    "image": "nikke_card_images/BT01-062_C_유니-러블리_핑크.jpg"
   },
   {
     "id": "BT01-063",
@@ -1122,7 +1122,7 @@
     "keyword": "Passive",
     "effect": "엑시아-게이머즈\nBT01-063 / 유닛 / 폭풍\n코스트 3 레어도 C\n파워 3000 히트 1\n소속 이펙트 / 테트라\n키워드 패시브\n효과\n필드에 있는 공멸을 가진 모든 자신 유닛의 파워+2000.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_Le0n8bgf_d50de899038cbdcd74ff674ea7da236f45289411.jpg"
+    "image": "nikke_card_images/BT01-063_C_엑시아-게이머즈.jpg"
   },
   {
     "id": "BT01-064",
@@ -1137,7 +1137,7 @@
     "keyword": "Entry",
     "effect": "프리바티-연회의 공주\nBT01-064 / 유닛 / 폭풍\n코스트 3 레어도 R\n파워 3500 히트 1\n소속 이펙트 / 엘리시온\n키워드 엔트리\n효과\n자신의 패를 2장 골라 트래시할 수 있다. 트래시했다면 조우 유닛을 트래시한다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_Ouw1EJPM_58309551f843c546544b5fd804b20e469ec7c969.jpg"
+    "image": "nikke_card_images/BT01-064_R_프리바티-연회의_공주.jpg"
   },
   {
     "id": "BT01-065",
@@ -1152,7 +1152,7 @@
     "keyword": "Passive",
     "effect": "율하\nBT01-065 / 유닛 / 폭풍\n코스트 4 레어도 C\n파워 6500 히트 2\n소속 이펙트 / 테트라\n키워드 패시브\n효과\n이 유닛으로 공격하려면 자신의 패를 1장 골라 트래시해야 한다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_W5wM0Rku_7db003673a29d80f05111a64b76d57d920f3f87c.jpg"
+    "image": "nikke_card_images/BT01-065_C_율하.jpg"
   },
   {
     "id": "BT01-066",
@@ -1167,7 +1167,7 @@
     "keyword": "Exit",
     "effect": "노벨-펭귄 홈즈\nBT01-066 / 유닛 / 폭풍\n코스트 4 레어도 C\n파워 4000 히트 2\n소속 이펙트 / 테트라\n키워드 엑시트\n효과\n상대의 패가 3장 이상이라면 상대는 상대의 패를 1장 골라 트래시해야 한다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_L4C1NleD_0f1063e5ab0bdcc7fe6e6908b18da5ce4b029c67.jpg"
+    "image": "nikke_card_images/BT01-066_C_노벨-펭귄_홈즈.jpg"
   },
   {
     "id": "BT01-067",
@@ -1182,7 +1182,7 @@
     "keyword": "Exit",
     "effect": "목단\nBT01-067 / 유닛 / 폭풍\n코스트 4 레어도 R\n파워 5000 히트 2\n소속 이펙트 / 테트라\n키워드 엑시트\n효과\n공멸(이 유닛을 전투로 트래시한 상대 유닛의 코스트가 이 유닛의 코스트 이하라면 그 유닛을 트래시한다).\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_0OrxRt81_5aaeb2f284b8e2623d692c2b97db87ba7b70e9d7.jpg"
+    "image": "nikke_card_images/BT01-067_R_목단.jpg"
   },
   {
     "id": "BT01-068",
@@ -1197,7 +1197,7 @@
     "keyword": "Exit",
     "effect": "D : 킬러 와이프\nBT01-068 / 유닛 / 폭풍\n코스트 5 레어도 R\n파워 5000 히트 2\n소속 이펙트 / 엘리시온\n키워드 엑시트\n효과\n카드를 2장 드로우하고, 그 중 1장을 골라 트래시한다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_eTbOmBH8_890c0f2d32eab97c7df3b71bc8fcd4f1c653af1a.jpg"
+    "image": "nikke_card_images/BT01-068_P_D___킬러_와이프.jpg"
   },
   {
     "id": "BT01-069",
@@ -1212,7 +1212,7 @@
     "keyword": "Entry",
     "effect": "니힐리스타\nBT01-069 / 유닛 / 폭풍\n코스트 5 레어도 SR\n파워 4500 히트 2\n소속 이펙트 / 필그림\n키워드 엔트리\n효과\n조우 유닛이 2코스트 이하라면 그 유닛을 트래시한다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_kaVpJTOv_332e47d042c700e6344da293f4a0bd84a716bdfe.jpg"
+    "image": "nikke_card_images/BT01-069_SPR_니힐리스타.jpg"
   },
   {
     "id": "BT01-069",
@@ -1227,7 +1227,7 @@
     "keyword": "Entry",
     "effect": "니힐리스타\nBT01-069 / 유닛 / 폭풍\n코스트 5 레어도 SPR\n파워 4500 히트 2\n소속 이펙트 / 필그림\n키워드 엔트리\n효과\n조우 유닛이 2코스트 이하라면 그 유닛을 트래시한다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_wTUYXS4i_c1c1e29008fbe5c411c4cd05c274d47a52db8908.jpg"
+    "image": "nikke_card_images/BT01-069_SPR_니힐리스타.jpg"
   },
   {
     "id": "BT01-070",
@@ -1242,7 +1242,7 @@
     "keyword": "Defender",
     "effect": "길로틴\nBT01-070 / 유닛 / 폭풍\n코스트 6 레어도 C\n파워 8500 히트 2\n소속 이펙트 / 엘리시온\n키워드 디펜더\n효과\n종결(방어 선언 즉시 상대의 이번 공격을 종료하고 이 유닛을 트래시한다).\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_erqJmFvc_f25805c7023c94a4dd47ef25059b1c5f3f67845f.jpg"
+    "image": "nikke_card_images/BT01-070_C_길로틴.jpg"
   },
   {
     "id": "BT01-071",
@@ -1257,7 +1257,7 @@
     "keyword": "Entry",
     "effect": "로산나 : 시크 오션\nBT01-071 / 유닛 / 폭풍\n코스트 6 레어도 SR\n파워 7000 히트 2\n소속 이펙트 / 테트라\n키워드 엔트리\n효과\n필드에 있는 자신 유닛을 1장 골라 트래시한다. 그러면 카드를 1장 드로우한다.\n트리거 / 이 카드를 자신의 패에 넣는다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/cfbf01727a7e461ec5930f5d552f8bff_oC8V1GmL_40981132ba10ac0896fed6e2d2df145857ba91cd.jpg"
+    "image": "nikke_card_images/BT01-071_SR_로산나___시크_오션.jpg"
   },
   {
     "id": "BT01-071",
@@ -1272,7 +1272,7 @@
     "keyword": "Entry",
     "effect": "로산나 : 시크 오션\nBT01-071 / 유닛 / 폭풍\n코스트 6 레어도 SPR\n파워 7000 히트 2\n소속 이펙트 / 테트라\n키워드 엔트리\n효과\n필드에 있는 자신 유닛을 1장 골라 트래시한다. 그러면 카드를 1장 드로우한다.\n트리거 / 이 카드를 자신의 패에 넣는다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/cfbf01727a7e461ec5930f5d552f8bff_StqA19WU_ec840ded6454887c63bb0a014e522d50eb1726cd.jpg"
+    "image": "nikke_card_images/BT01-071_SR_로산나___시크_오션.jpg"
   },
   {
     "id": "BT01-072",
@@ -1287,7 +1287,7 @@
     "keyword": "Passive",
     "effect": "모더니아-세컨드 어펙션\nBT01-072 / 유닛 / 폭풍\n코스트 7 레어도 R\n파워 7000 히트 3\n소속 이펙트 / 필그림\n키워드 패시브\n효과\n필드에 있는 다른 모든 자신 유닛은 「 카드를 1장 드로우한다」를 얻는다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_lvObnaMh_cf3eda7795ab68e6b4fe7d91c2a25c08c081d1a7.jpg"
+    "image": "nikke_card_images/BT01-072_R_모더니아-세컨드_어펙션.jpg"
   },
   {
     "id": "BT01-073",
@@ -1302,7 +1302,7 @@
     "keyword": "Entry",
     "effect": "신데렐라\nBT01-073 / 유닛 / 폭풍\n코스트 8 레어도 UR\n파워 7500 히트 3\n소속 이펙트 / 필그림\n키워드 엔트리\n효과\n자신의 패에 조우 유닛보다 코스트가 높은 유닛을 1장 골라 트래시할 수 있다. 트래시했다면 조우 유닛을 트래시한다.\n트리거 / 이 카드를 트래시한다. 상대의 패가 3장 이상이라면 상대는 상대의 패를 1장 골라 트래시한다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_BdzrWQvP_4430f21f7a939d0e4f1859b3b3b41941df760fc7.jpg"
+    "image": "nikke_card_images/BT01-073_UR_신데렐라.jpg"
   },
   {
     "id": "BT01-073",
@@ -1317,7 +1317,7 @@
     "keyword": "Entry",
     "effect": "신데렐라\nBT01-073 / 유닛 / 폭풍\n코스트 8 레어도 SPR\n파워 7500 히트 3\n소속 이펙트 / 필그림\n키워드 엔트리\n효과\n자신의 패에 조우 유닛보다 코스트가 높은 유닛을 1장 골라 트래시할 수 있다. 트래시했다면 조우 유닛을 트래시한다.\n트리거 / 이 카드를 트래시한다. 상대의 패가 3장 이상이라면 상대는 상대의 패를 1장 골라 트래시한다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_MKcH1dx3_6c1d41930d41357bdc5b757a6b41693ff7ed01c1.jpg"
+    "image": "nikke_card_images/BT01-073_UR_신데렐라.jpg"
   },
   {
     "id": "BT01-074",
@@ -1332,7 +1332,7 @@
     "keyword": "",
     "effect": "시크릿 코드\nBT01-074 / 스킬 / 폭풍\n코스트 2 레어도 C\n파워 - 히트 -\n소속 -\n키워드 -\n효과\n자신의 필드에서 유닛을 1장 골라 트래시한다. 그 유닛의 히트만큼 카드를 드로우한다.\n트리거 / 이 카드를 자신의 패에 넣는다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_htO1x3wu_573118fd840574c58a22acee3c69e66c5b7ddeed.jpg"
+    "image": "nikke_card_images/BT01-074_C_시크릿_코드.jpg"
   },
   {
     "id": "BT01-075",
@@ -1347,7 +1347,7 @@
     "keyword": "",
     "effect": "버닝 샷\nBT01-075 / 스킬 / 폭풍\n코스트 2 레어도 C\n파워 - 히트 -\n소속 -\n키워드 -\n효과\n자신의 패를 1장 골라 트래시한다. 그 카드와 같은 코스트를 가진 유닛을 필드에서 1장 골라 트래시한다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_I5Fx6ta1_de0defbd6a8e5c8eec1038c4e8914848bee63c5a.jpg"
+    "image": "nikke_card_images/BT01-075_C_버닝_샷.jpg"
   },
   {
     "id": "BT01-076",
@@ -1362,7 +1362,7 @@
     "keyword": "",
     "effect": "마계흑룡파\nBT01-076 / 스킬 / 폭풍\n코스트 2 레어도 C\n파워 - 히트 -\n소속 -\n키워드 -\n효과\n필드에 있는 공멸을 가진 자신 유닛을 1장 골라, 이 턴이 끝날 때까지 파워+4500.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_QGX9a8kI_004c9ffc707a4fe1e99c5bfb79e307b656756575.jpg"
+    "image": "nikke_card_images/BT01-076_C_마계흑룡파.jpg"
   },
   {
     "id": "BT01-077",
@@ -1377,7 +1377,7 @@
     "keyword": "",
     "effect": "여긴 내가 맡는다!\nBT01-077 / 스킬 / 폭풍\n코스트 3 레어도 C\n파워 - 히트 -\n소속 -\n키워드 -\n효과\n필드에 있는 유닛을 1장 골라 그 유닛의 히트만큼 자신의 패를 트래시한다. 그러면 그 유닛을 트래시한다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/cfbf01727a7e461ec5930f5d552f8bff_EeIkuzR3_f468c4d9e95035178a84f0f19ab245d9183a90d4.jpg"
+    "image": "nikke_card_images/BT01-077_C_여긴_내가_맡는다!.jpg"
   },
   {
     "id": "BT01-078",
@@ -1392,7 +1392,7 @@
     "keyword": "",
     "effect": "뷰티 풀 샷\nBT01-078 / 스킬 / 폭풍\n코스트 4 레어도 R\n파워 - 히트 -\n소속 -\n키워드 -\n효과\n고른 유닛의 코스트 합이 4코스트 이하가 되도록 필드에 있는 상대 유닛을 2장까지 골라 트래시한다.\n트리거 / 이 카드를 트래시한다. 자신의 트래시 존에서 를 가진 유닛을 1장 골라 자신의 패에 넣는다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_g1SFKlVJ_085442e27212367d32ae2ad1082d7d8187e8865f.jpg"
+    "image": "nikke_card_images/BT01-078_R_뷰티_풀_샷.jpg"
   },
   {
     "id": "BT01-079",
@@ -1407,7 +1407,7 @@
     "keyword": "",
     "effect": "EX 매거진\nBT01-079 / 스킬 / 폭풍\n코스트 5 레어도 C\n파워 - 히트 -\n소속 -\n키워드 -\n효과\n자신의 트래시 존에서 를 가진 2코스트 이하인 유닛을 2장까지 골라 자신의 패에 넣는다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_OVTEIDWh_586f42c7c40e1af1063ebfd055dbb9798270352b.jpg"
+    "image": "nikke_card_images/BT01-079_C_EX_매거진.jpg"
   },
   {
     "id": "BT01-080",
@@ -1422,7 +1422,7 @@
     "keyword": "Exit",
     "effect": "갓데시움 바이저\nBT01-080 / 아이템 / 폭풍\n코스트 2 레어도 C\n파워 - 히트 -\n소속 -\n키워드 엑시트\n효과\n\n카드를 2장 드로우한다.\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_l5oQO80f_b0f886cc303e60e2db77524c255d42aa69ac9636.jpg"
+    "image": "nikke_card_images/BT01-080_C_갓데시움_바이저.jpg"
   },
   {
     "id": "BT01-081",
@@ -1437,6 +1437,6 @@
     "keyword": "Exit",
     "effect": "티탄 매터 부츠\nBT01-081 / 아이템 / 폭풍\n코스트 3 레어도 C\n파워 - 히트 -\n소속 -\n키워드 엑시트\n효과\n\n귀환(이 턴이 끝날 때 이 유닛을 자신의 트래시 존에서 자신의 패로 되돌린다).\n제품명 승리의 여신: 니케 니벨아레나 부스터 팩 BT01 <인카운터>\nIP 승리의 여신: 니케",
     "ip": "Goddess of Victory: NIKKE",
-    "image": "http://nivelarena.co.kr/data/file/cardlists/5abf82a892f0549c26939bd53be4bda8_sLbn9RWE_05f22dad8c786611580b87ef01256dbf60dda936.jpg"
+    "image": "nikke_card_images/BT01-081_C_티탄_매터_부츠.jpg"
   }
 ]
