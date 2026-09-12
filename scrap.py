@@ -67,9 +67,11 @@ def scrape_nikke_cards():
     cards_data = []
     processed_cards = set()
     processed_elements = set()  # ANTI-RESCAN
-    max_iterations = 200
+    max_iterations = 500  # Augmenté pour 600+ cartes
     iteration = 0
     no_more_cards_count = 0
+    previous_card_count = 0  # SUIVI DU NOMBRE DE CARTES
+    same_count_iterations = 0  # COMPTEUR DE FOIS SANS PROGRÈS
     
     try:
         while iteration < max_iterations:
@@ -139,6 +141,22 @@ def scrape_nikke_cards():
                     continue
             
             print(f"🆕 Nouvelles cartes: {new_cards}")
+            print(f"📊 Total: {len(cards_data)} cartes")
+            
+            # DÉTECTION DE BLOCAGE - Si le nombre de cartes ne progresse pas
+            if len(cards_data) == previous_card_count:
+                same_count_iterations += 1
+                print(f"⚠️  Pas de progrès ({same_count_iterations}/5)")
+            else:
+                same_count_iterations = 0
+                previous_card_count = len(cards_data)
+            
+            # Si on tourne en rond pendant 5 itérations, on force le scroll/load
+            if same_count_iterations >= 5:
+                print("🔄 Détection de blocage, tentative de récupération...")
+                driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+                time.sleep(2)
+                same_count_iterations = 0
             
             # Sauvegarde toutes les 50 cartes
             if len(cards_data) % 50 == 0 and len(cards_data) > 0:
@@ -153,17 +171,27 @@ def scrape_nikke_cards():
                 for btn in all_buttons:
                     if btn.is_displayed():
                         btn_text = btn.text.strip()
-                        if '더보기' in btn_text:
+                        if '더보기' in btn_text or 'Load More' in btn_text or 'More' in btn_text:
                             more_btn = btn
                             break
                 
                 if not more_btn:
-                    more_selectors = [".more", ".load-more", ".list_more", "a[href*='spt']"]
+                    # ESSAYER DE TROUVER LE BOUTON PAR D'AUTRES SÉLECTEURS
+                    more_selectors = [
+                        ".more", 
+                        ".load-more", 
+                        ".list_more", 
+                        "a[href*='spt']",
+                        "a[href*='page']",
+                        ".btn_more",
+                        "#more",
+                        "[class*='more']"
+                    ]
                     for selector in more_selectors:
                         try:
                             elements = driver.find_elements(By.CSS_SELECTOR, selector)
                             for elem in elements:
-                                if elem.is_displayed():
+                                if elem.is_displayed() and elem.tag_name in ['button', 'a']:
                                     more_btn = elem
                                     break
                             if more_btn:
@@ -171,21 +199,48 @@ def scrape_nikke_cards():
                         except:
                             continue
                 
-                if more_btn and more_btn.is_displayed():
-                    print("🔽 Chargement...")
+                # Si toujours pas de bouton, vérifier si on peut scroller plus bas
+                if not more_btn or not more_btn.is_displayed():
+                    # Scroll vers le bas pour révéler d'éventuels boutons cachés
                     driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-                    time.sleep(1)
+                    time.sleep(2)
+                    
+                    # Réessayer de trouver le bouton après scroll
+                    if not more_btn:
+                        all_buttons = driver.find_elements(By.TAG_NAME, "button")
+                        all_buttons.extend(driver.find_elements(By.TAG_NAME, "a"))
+                        for btn in all_buttons:
+                            if btn.is_displayed():
+                                btn_text = btn.text.strip()
+                                if '더보기' in btn_text or 'Load More' in btn_text or 'More' in btn_text:
+                                    more_btn = btn
+                                    break
+                
+                if more_btn and more_btn.is_displayed():
+                    print("🔽 Chargement de plus de cartes...")
                     driver.execute_script("arguments[0].scrollIntoView(true);", more_btn)
                     time.sleep(1)
                     driver.execute_script("arguments[0].click();", more_btn)
-                    time.sleep(3)
+                    time.sleep(4)  # Attendre plus longtemps pour le chargement
+                    
+                    # Vérifier si de nouvelles cartes ont été chargées
+                    new_card_elements = driver.find_elements(By.CSS_SELECTOR, "li.gall_li, .gall_item, .card-item, .list-item")
+                    if len(new_card_elements) <= len(card_elements):
+                        print("⚠️  Aucune nouvelle carte chargée, tentative de scroll supplémentaire...")
+                        driver.execute_script("window.scrollTo(0, 0);")
+                        time.sleep(1)
+                        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+                        time.sleep(2)
                 else:
-                    print("✅ Terminé!")
+                    print("✅ Plus de bouton '더보기' trouvé - Terminé!")
                     break
                     
             except Exception as e:
                 print(f"❌ Erreur bouton: {e}")
-                break
+                # NE PAS BREAK ICI - CONTINUER À SCROLLER
+                driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+                time.sleep(2)
+                continue
         
         print(f"\n🎉 {len(cards_data)} cartes NIKKE récupérées")
         
