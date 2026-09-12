@@ -114,9 +114,15 @@ function removeLeader() {
     validateDeck();
 }
 
-// Définir une carte comme leader
+// Définir une carte comme leader (par index)
 function setAsLeader(index) {
     const card = filteredCards[index];
+    setAsLeaderByCard(card);
+}
+
+// Définir une carte comme leader (par objet carte)
+function setAsLeaderByCard(card) {
+    if (!card) return;
     
     // Si c'était déjà dans le deck, on l'enlève
     const deckIndex = deck.cards.findIndex(c => c.id === card.id);
@@ -139,7 +145,11 @@ function setAsLeader(index) {
 
 // Gérer le début du drag & drop
 function handleDragStart(event, index) {
-    event.dataTransfer.setData('text/plain', index.toString());
+    const card = filteredCards[index];
+    event.dataTransfer.setData('text/plain', JSON.stringify({
+        id: card.id,
+        action: 'setLeader'
+    }));
     event.dataTransfer.effectAllowed = 'copy';
 }
 
@@ -165,9 +175,23 @@ function initLeaderDropZone() {
         leaderZone.style.borderColor = '#ccc';
         leaderZone.style.backgroundColor = 'transparent';
         
-        const index = e.dataTransfer.getData('text/plain');
-        if (index !== '') {
-            setAsLeader(parseInt(index));
+        const data = e.dataTransfer.getData('text/plain');
+        if (data) {
+            try {
+                const parsed = JSON.parse(data);
+                if (parsed.action === 'setLeader') {
+                    const card = allCards.find(c => c.id === parsed.id);
+                    if (card) {
+                        setAsLeaderByCard(card);
+                    }
+                }
+            } catch (err) {
+                // Ancien format (juste un index)
+                const index = parseInt(data);
+                if (!isNaN(index)) {
+                    setAsLeader(index);
+                }
+            }
         }
     });
 }
