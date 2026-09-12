@@ -51,7 +51,10 @@ function renderCardList() {
     }
 
     container.innerHTML = filteredCards.map((card, index) => `
-        <div class="card-item" onclick="addToDeck(${index})">
+        <div class="card-item" onclick="addToDeck(${index})" 
+             draggable="true" 
+             ondragstart="handleDragStart(event, ${index})"
+             ondblclick="setAsLeader(${index})">
             <img src="${card.image}" alt="${card.name}" class="card-thumbnail" 
                  onerror="this.src='https://via.placeholder.com/150x200?text=Erreur'">
             <div class="card-info">
@@ -109,6 +112,64 @@ function removeLeader() {
     renderLeader();
     updateStats();
     validateDeck();
+}
+
+// Définir une carte comme leader
+function setAsLeader(index) {
+    const card = filteredCards[index];
+    
+    // Si c'était déjà dans le deck, on l'enlève
+    const deckIndex = deck.cards.findIndex(c => c.id === card.id);
+    if (deckIndex > -1) {
+        deck.cards.splice(deckIndex, 1);
+    }
+    
+    // Si un leader existait déjà, on le remet dans le deck
+    if (deck.leader) {
+        deck.cards.push(deck.leader);
+    }
+    
+    deck.leader = card;
+    renderLeader();
+    renderDeck();
+    updateStats();
+    validateDeck();
+    saveDeck();
+}
+
+// Gérer le début du drag & drop
+function handleDragStart(event, index) {
+    event.dataTransfer.setData('text/plain', index.toString());
+    event.dataTransfer.effectAllowed = 'copy';
+}
+
+// Initialiser la zone de drop pour le leader
+function initLeaderDropZone() {
+    const leaderZone = document.getElementById('leaderSlot');
+    if (!leaderZone) return;
+    
+    leaderZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'copy';
+        leaderZone.style.borderColor = '#ffd700';
+        leaderZone.style.backgroundColor = 'rgba(255, 215, 0, 0.1)';
+    });
+    
+    leaderZone.addEventListener('dragleave', () => {
+        leaderZone.style.borderColor = '#ccc';
+        leaderZone.style.backgroundColor = 'transparent';
+    });
+    
+    leaderZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        leaderZone.style.borderColor = '#ccc';
+        leaderZone.style.backgroundColor = 'transparent';
+        
+        const index = e.dataTransfer.getData('text/plain');
+        if (index !== '') {
+            setAsLeader(parseInt(index));
+        }
+    });
 }
 
 // Afficher le leader
@@ -200,6 +261,34 @@ function filterByType(type) {
     renderCardList();
 }
 
+// Sauvegarder le deck dans le localStorage
+function saveDeck() {
+    localStorage.setItem('nikkeDeck', JSON.stringify({
+        leader: deck.leader,
+        cards: deck.cards
+    }));
+}
+
+// Charger le deck depuis le localStorage
+function loadSavedDeck() {
+    const saved = localStorage.getItem('nikkeDeck');
+    if (saved) {
+        try {
+            const deckData = JSON.parse(saved);
+            deck = {
+                leader: deckData.leader || null,
+                cards: deckData.cards || []
+            };
+            renderLeader();
+            renderDeck();
+            updateStats();
+            validateDeck();
+        } catch (error) {
+            console.error('Erreur lors du chargement du deck:', error);
+        }
+    }
+}
+
 // Exporter le deck
 function exportDeck() {
     const deckData = {
@@ -244,6 +333,12 @@ function importDeck(file) {
 document.addEventListener('DOMContentLoaded', () => {
     console.log("🚀 Application démarrée");
     loadCards();
+
+    // Initialiser la zone de drop pour le leader
+    initLeaderDropZone();
+    
+    // Charger un deck sauvegardé s'il existe
+    setTimeout(() => loadSavedDeck(), 500);
 
     // Event listeners
     const searchInput = document.getElementById('searchInput');

@@ -1,41 +1,49 @@
-```
+```gitignore
+# Compiled and build artifacts
+*.pyc
+__pycache__/
+*.o
+*.obj
+*.class
+*.exe
+*.dll
+*.so
+*.a
+*.out
+
 # Dependencies
 node_modules/
-
-# Logs and temp files
-*.log
-*.tmp
-
-# Environment
+venv/
+.venv/
 .env
 .env.local
 *.env.*
+
+# Build directories
+dist/
+build/
+target/
+*.log
+*.tmp
+*.swp
 
 # Editors
 .vscode/
 .idea/
 
-# Python
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-env/
-venv/
-.venv/
-pip-log.txt
-pip-delete-this-directory.txt
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.log
-.git*
-!.gitignore
+# System files
 .DS_Store
 Thumbs.db
+```
+
+Wait, I need to reconsider this. Looking at the input again:
+
+### Added files: []
+### Deleted files: []
+### Modified files: ['app.js', 'index.html']
+
+Only source files (.js and .html) are being modified, no build artifacts, dependencies, or temporary files are in the changes. According to rule #6, if the change list contains ONLY source or config files and NO build artifacts, dependencies, or temp files, I should output an EMPTY .gitignore.
+
+```gitignore
+
 ```
