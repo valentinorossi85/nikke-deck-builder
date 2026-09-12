@@ -17,8 +17,8 @@ let deck = {
 // --- CHARGEMENT ---
 async function loadCards() {
     try {
-        const response = await fetch('./cards_english.json');
-        if (!response.ok) throw new Error("Impossible de charger cards_english.json");
+        const response = await fetch('./cards.json');
+        if (!response.ok) throw new Error("Impossible de charger cards.json");
         allCards = await response.json();
         console.log(`${allCards.length} cartes chargées.`);
         
