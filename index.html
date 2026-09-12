@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,39 +10,38 @@
     <header>
         <h1>🎮 Nivel Arena Deck Builder</h1>
         <nav>
-            <a href="rules.md">Règles</a>
-            <a href="#" onclick="alert('Aide: Cliquez sur une carte pour l\'ajouter au deck')">Aide</a>
-            <button id="langToggle" class="btn-lang" onclick="toggleLanguage()">English / 한국어</button>
+            <a href="rules.md">Rules</a>
+            <a href="#" onclick="alert('Help: Click on a card to add it to your deck')">Help</a>
         </nav>
     </header>
 
     <main>
         <section class="filters">
-            <input type="text" id="searchInput" placeholder="Rechercher une carte...">
+            <input type="text" id="searchInput" placeholder="Search for a card...">
             <select id="ipFilter">
-                <option value="all">Tous les types</option>
-                <option value="Unit">Unités</option>
+                <option value="all">All Types</option>
+                <option value="Unit">Units</option>
                 <option value="Leader">Leaders</option>
-                <option value="Skill">Compétences</option>
+                <option value="Skill">Skills</option>
             </select>
              <label style="display: flex; align-items: center; gap: 5px; cursor: pointer;">
         <input type="checkbox" id="leaderOnlyCheck" onchange="toggleLeaderFilter()">
-        <span>Masquer les cartes non-Leader</span>
+        <span>Hide non-Leader cards</span>
     </label>
         </section>
 
         <div class="builder-container">
             <section class="card-pool">
-                <h2>Cartes Disponibles (<span id="cardCount">0</span>)</h2>
+                <h2>Available Cards (<span id="cardCount">0</span>)</h2>
                 <div id="cardList" class="card-grid"></div>
             </section>
 
             <section class="deck-builder">
-                <h2>Mon Deck</h2>
+                <h2>My Deck</h2>
                 
                 <div id="deckStats" class="deck-stats">
                     <div class="stat">
-                        <span class="stat-label">Cartes:</span>
+                        <span class="stat-label">Cards:</span>
                         <span class="stat-value">0/40</span>
                     </div>
                 </div>
@@ -50,20 +49,19 @@
                 <div class="deck-section">
                     <h3>Leader</h3>
                     <div id="leader-slot" class="leader-zone">
-                        <!-- Le leader s'affichera ici -->
-                        <p style="color: #888; font-size: 0.9em;">Glissez une carte ici ou double-cliquez dessus</p>
+                        <p style="color: #888; font-size: 0.9em;">Drag a card here or double-click on it</p>
                     </div>
                 </div>
 
-                <h3>Cartes du deck</h3>
+                <h3>Deck Cards</h3>
                 <div id="deckList" class="deck-grid"></div>
 
                 <div id="validationResult" class="validation"></div>
 
                 <div class="actions">
-                    <button id="exportBtn" class="btn btn-primary">Exporter</button>
+                    <button id="exportBtn" class="btn btn-primary">Export</button>
                     <label class="btn btn-secondary">
-                        Importer
+                        Import
                         <input type="file" id="importBtn" accept=".json" style="display: none;">
                     </label>
                 </div>
@@ -72,7 +70,7 @@
     </main>
 
     <footer>
-        <p>Nivel Arena Deck Builder - Projet éducatif</p>
+        <p>Nivel Arena Deck Builder - Educational Project</p>
     </footer>
 
     <!-- Modal pour afficher les détails de la carte -->
