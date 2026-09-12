@@ -75,10 +75,11 @@ function renderCardList() {
         // Déterminer si c'est une carte draggable (toujours oui, mais visuel différent si leader filter)
         const isLeaderCard = card.type && card.type.toLowerCase().includes('leader');
         const borderStyle = isLeaderCard ? 'border: 2px solid gold;' : '';
+        const opacityStyle = isLeaderFilterActive && !isLeaderCard ? 'opacity: 0.3;' : '';
 
         return `
         <div class="card-item" 
-             style="${borderStyle} cursor: grab;"
+             style="${borderStyle} ${opacityStyle} cursor: grab;"
              draggable="true" 
              ondragstart="handleDragStart(event, '${card.id}')"
              ondblclick="setAsLeader('${card.id}')">
@@ -163,8 +164,11 @@ window.setAsLeader = function(cardIdOrObj) {
 
     if (!card) return;
 
-    // Vérification optionnelle : est-ce vraiment un leader ? (On peut laisser souple)
-    // if (!card.type.toLowerCase().includes('leader')) { alert("Ce n'est pas un leader !"); return; }
+    // Vérification : est-ce vraiment un leader ?
+    if (!card.type.toLowerCase().includes('leader')) { 
+        alert("Cette carte n'est pas un Leader !"); 
+        return; 
+    }
 
     if (deck.leader && deck.leader.id === card.id) {
         // Si on clique sur le leader actuel, on le retire
@@ -195,6 +199,8 @@ window.addToDeck = function(cardId) {
             setAsLeader(card);
             return;
         }
+        // Si l'utilisateur annule, on ne fait rien (on n'ajoute pas au deck)
+        return;
     }
 
     if (deck.cards.length >= CONFIG.MAX_CARDS) {
