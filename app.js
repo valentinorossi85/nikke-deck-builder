@@ -39,20 +39,26 @@ function toggleLeaderFilter() {
 
 function applyFilters() {
     const searchTerm = document.getElementById('searchInput')?.value.toLowerCase() || '';
-    
+    const typeFilter = document.getElementById('ipFilter')?.value || 'all';
+
     filteredCards = allCards.filter(card => {
-        // Filtre texte
+        // Text filter
         const matchText = card.name.toLowerCase().includes(searchTerm) || 
                           card.id.toLowerCase().includes(searchTerm);
-        
-        // Filtre Leader
+
+        // Type filter (Unit, Leader, Skill)
+        let matchType = true;
+        if (typeFilter !== 'all') {
+            matchType = card.type && card.type.toLowerCase() === typeFilter.toLowerCase();
+        }
+
+        // Leader filter
         let matchLeader = true;
         if (isLeaderFilterActive) {
-            // On considère "Leader" si le type contient "Leader" (insensible à la casse)
             matchLeader = card.type && card.type.toLowerCase().includes('leader');
         }
 
-        return matchText && matchLeader;
+        return matchText && matchType && matchLeader;
     });
 
     renderCardList();
@@ -61,13 +67,16 @@ function applyFilters() {
 // Listener pour la recherche
 document.getElementById('searchInput')?.addEventListener('input', applyFilters);
 
+// Listener pour le filtre par type
+document.getElementById('ipFilter')?.addEventListener('change', applyFilters);
+
 // --- AFFICHAGE CARTES (Avec Drag & Drop intégré) ---
 function renderCardList() {
     const container = document.getElementById('cardList');
     if (!container) return;
 
     if (filteredCards.length === 0) {
-        container.innerHTML = '<p>Aucune carte trouvée.</p>';
+        container.innerHTML = '<p>No cards found.</p>';
         return;
     }
 
@@ -77,8 +86,6 @@ function renderCardList() {
         const borderStyle = isLeaderCard ? 'border: 2px solid gold;' : '';
         const opacityStyle = isLeaderFilterActive && !isLeaderCard ? 'opacity: 0.3;' : '';
         
-        // Get effect based on current language
-        const cardEffect = getCardEffect(card);
 
         return `
         <div class="card-item" 
