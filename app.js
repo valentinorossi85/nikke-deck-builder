@@ -25,8 +25,9 @@ async function loadCards() {
         console.log(`✅ ${allCards.length} cartes chargées`);
         filteredCards = [...allCards];
         renderCardList();
-        // Initialiser les interactions après chargement
-        setTimeout(initLeaderSystem, 100); 
+        updateStats();
+        // Initialiser les événements après chargement
+        initLeaderZone();
     } catch (error) {
         console.error("❌ Erreur de chargement:", error);
         document.getElementById('cardList').innerHTML = 
@@ -37,7 +38,7 @@ async function loadCards() {
     }
 }
 
-// Afficher la liste des cartes
+// Afficher la liste des cartes (Avec support Drag & Drop natif)
 function renderCardList() {
     const container = document.getElementById('cardList');
     if (!container) return;
@@ -47,8 +48,13 @@ function renderCardList() {
         return;
     }
 
+    // On génère le HTML en ajoutant draggable="true" et des data-attributes
     container.innerHTML = filteredCards.map((card) => `
-        <div class="card-item" data-id="${card.id}" onclick="handleCardClick('${card.id}')">
+        <div class="card-item" 
+             draggable="true" 
+             data-card-id="${card.id}"
+             onclick="handleCardClick('${card.id}')"
+             ondblclick="handleLeaderDoubleClick('${card.id}')">
             <img src="${card.image}" alt="${card.name}" class="card-thumbnail" 
                  onerror="this.src='https://via.placeholder.com/150x200?text=Erreur'">
             <div class="card-info">
@@ -58,25 +64,52 @@ function renderCardList() {
             <button class="btn-add">+</button>
         </div>
     `).join('');
-    
-    // Réactiver les listeners drag&drop après réaffichage
-    initLeaderSystem();
+
+    // Attacher les événements dragstart maintenant que les éléments existent
+    attachDragEvents();
 }
 
-// Gestionnaire de clic unique (remplace l'ancien addToDeck direct)
+// Attacher les événements de drag aux éléments créés
+function attachDragEvents() {
+    const cards = document.querySelectorAll('.card-item');
+    cards.forEach(cardEl => {
+        cardEl.addEventListener('dragstart', (e) => {
+            const cardId = cardEl.getAttribute('data-card-id');
+            e.dataTransfer.setData('text/plain', cardId);
+            e.dataTransfer.effectAllowed = 'move';
+            setTimeout(() => cardEl.style.opacity = '0.5', 0);
+        });
+
+        cardEl.addEventListener('dragend', () => {
+            cardEl.style.opacity = '1';
+        });
+    });
+}
+
+// Gestion du clic simple (Ajout au deck ou Leader si type spécial)
 function handleCardClick(cardId) {
     const card = allCards.find(c => c.id === cardId);
     if (!card) return;
 
-    // Si c'est un Leader, on le définit comme tel directement
-    if (card.type === 'Leader' || card.type === 'leader') {
+    // Si c'est un Leader par type, on le met en leader directement
+    if (card.type && card.type.toLowerCase() === 'leader') {
         setAsLeader(card);
-    } else {
-        addToDeck(card);
+        return;
+    }
+
+    // Sinon ajout normal au deck
+    addToDeck(card);
+}
+
+// Gestion du double-clic (Forcer mise en leader)
+function handleLeaderDoubleClick(cardId) {
+    const card = allCards.find(c => c.id === cardId);
+    if (card) {
+        setAsLeader(card);
     }
 }
 
-// Ajouter une carte au deck (logique existante adaptée)
+// Ajouter une carte au deck (logique normale)
 function addToDeck(card) {
     // Vérifier le nombre de copies
     const copies = deck.cards.filter(c => c.id === card.id).length;
@@ -97,17 +130,7 @@ function addToDeck(card) {
     validateDeck();
 }
 
-// Retirer une carte du deck
-function removeFromDeck(index) {
-    deck.cards.splice(index, 1);
-    renderDeck();
-    updateStats();
-    validateDeck();
-}
-
-// --- NOUVEAU SYSTÈME LEADER UNIFIÉ ---
-
-// Fonction centrale pour définir le leader
+// Définir une carte comme Leader (Logique centrale)
 function setAsLeader(card) {
     if (!card) return;
 
@@ -134,91 +157,49 @@ function setAsLeader(card) {
     }
 
     renderLeader();
-    renderDeck(); // Mettre à jour le deck au cas où une carte a bougé
+    renderDeck(); // Mettre à jour au cas où une carte a bougé
     updateStats();
     validateDeck();
 }
 
-// Initialisation du Drag & Drop et Double Clic
-function initLeaderSystem() {
-    // 1. Configurer la zone de drop (Leader Slot)
-    const leaderZone = document.getElementById('leaderSlot'); // Utilise l'ID de ton HTML
-    if (leaderZone) {
-        leaderZone.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            leaderZone.style.borderColor = '#ffd700';
-            leaderZone.style.backgroundColor = 'rgba(255, 215, 0, 0.2)';
-            leaderZone.style.transform = 'scale(1.02)';
-        });
+// Retirer une carte du deck
+function removeFromDeck(index) {
+    deck.cards.splice(index, 1);
+    renderDeck();
+    updateStats();
+    validateDeck();
+}
 
-        leaderZone.addEventListener('dragleave', () => {
-            leaderZone.style.borderColor = '#ccc';
-            leaderZone.style.backgroundColor = 'transparent';
-            leaderZone.style.transform = 'scale(1)';
-        });
-
-        leaderZone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            leaderZone.style.borderColor = '#ccc';
-            leaderZone.style.backgroundColor = 'transparent';
-            leaderZone.style.transform = 'scale(1)';
-
-            const cardId = e.dataTransfer.getData('text/plain');
-            if (cardId) {
-                const card = allCards.find(c => c.id === cardId);
-                if (card) setAsLeader(card);
-            }
-        });
+// Retirer le leader
+function removeLeader() {
+    if (deck.leader) {
+        // Optionnel : remettre le leader dans le deck ou juste le supprimer
+        // Ici on le remet dans le deck s'il n'y est pas déjà
+        if (!deck.cards.some(c => c.id === deck.leader.id)) {
+             deck.cards.push(deck.leader);
+        }
+        deck.leader = null;
     }
-
-    // 2. Rendre les cartes "dragables" et ajouter le double-clic
-    const cardElements = document.querySelectorAll('.card-item');
-    cardElements.forEach(el => {
-        // Éviter les doublons de listeners
-        if (el.dataset.leaderInit === "true") return;
-        el.dataset.leaderInit = "true";
-
-        el.setAttribute('draggable', 'true');
-        el.style.cursor = 'grab';
-
-        el.addEventListener('dragstart', (e) => {
-            const id = el.getAttribute('data-id');
-            if (id) {
-                e.dataTransfer.setData('text/plain', id);
-                e.dataTransfer.effectAllowed = 'move';
-                el.style.opacity = '0.5';
-            }
-        });
-
-        el.addEventListener('dragend', () => {
-            el.style.opacity = '1';
-        });
-
-        el.addEventListener('dblclick', () => {
-            const id = el.getAttribute('data-id');
-            if (id) {
-                const card = allCards.find(c => c.id === id);
-                if (card) setAsLeader(card);
-            }
-        });
-    });
+    renderLeader();
+    updateStats();
+    validateDeck();
 }
 
 // Afficher le leader
 function renderLeader() {
-    const container = document.getElementById('leaderSlot');
+    const container = document.getElementById('leaderSlot'); // Ou 'leader-zone' selon ton HTML
     if (!container) return;
 
     if (deck.leader) {
         container.innerHTML = `
-            <div class="card-in-deck" style="border: 2px solid #ffd700;">
+            <div class="card-in-deck" style="border: 2px solid gold;">
                 <img src="${deck.leader.image}" alt="${deck.leader.name}">
-                <div style="position:absolute; top:2px; right:2px; background:red; color:white; border-radius:50%; width:20px; height:20px; text-align:center; line-height:20px; cursor:pointer;" onclick="setAsLeader(deck.leader)">×</button>
+                <div class="card-name-overlay">${deck.leader.name}</div>
+                <button class="btn-remove" onclick="removeLeader()">×</button>
             </div>
-            <div style="text-align:center; font-size:0.8em; margin-top:5px; color:#ffd700;">LEADER</div>
         `;
     } else {
-        container.innerHTML = '<div class="empty-slot" style="display:flex; align-items:center; justify-content:center; height:100%;">Glisser ou Double-cliquer<br>pour mettre un Leader</div>';
+        container.innerHTML = '<div class="empty-slot">Glissez ou Double-cliquez ici</div>';
     }
 }
 
@@ -228,13 +209,14 @@ function renderDeck() {
     if (!container) return;
 
     if (deck.cards.length === 0) {
-        container.innerHTML = '<div class="empty-slot">Votre deck est vide</div>';
+        container.innerHTML = '<p class="empty-slot">Votre deck est vide</p>';
         return;
     }
 
     container.innerHTML = deck.cards.map((card, index) => `
         <div class="card-in-deck">
             <img src="${card.image}" alt="${card.name}">
+            <div class="card-count">${index + 1}</div>
             <button class="btn-remove" onclick="removeFromDeck(${index})">×</button>
         </div>
     `).join('');
@@ -301,6 +283,47 @@ function filterByType(type) {
     renderCardList();
 }
 
+// Initialisation de la zone de Drop (Leader)
+function initLeaderZone() {
+    // On cherche à la fois 'leaderSlot' (pour l'affichage) et 'leader-zone' (si tu as une zone dédiée au drop)
+    const leaderZone = document.getElementById('leader-zone') || document.getElementById('leaderSlot');
+    
+    if (!leaderZone) {
+        console.warn("Zone leader introuvable dans le HTML");
+        return;
+    }
+
+    leaderZone.addEventListener('dragover', (e) => {
+        e.preventDefault(); // Obligatoire pour autoriser le drop
+        leaderZone.style.borderColor = '#ffd700';
+        leaderZone.style.backgroundColor = 'rgba(255, 215, 0, 0.2)';
+        leaderZone.style.transform = 'scale(1.02)';
+    });
+
+    leaderZone.addEventListener('dragleave', () => {
+        leaderZone.style.borderColor = '#ccc';
+        leaderZone.style.backgroundColor = 'transparent';
+        leaderZone.style.transform = 'scale(1)';
+    });
+
+    leaderZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        leaderZone.style.borderColor = '#ccc';
+        leaderZone.style.backgroundColor = 'transparent';
+        leaderZone.style.transform = 'scale(1)';
+
+        const cardId = e.dataTransfer.getData('text/plain');
+        if (cardId) {
+            const card = allCards.find(c => c.id === cardId);
+            if (card) {
+                setAsLeader(card);
+            } else {
+                console.error("Carte non trouvée:", cardId);
+            }
+        }
+    });
+}
+
 // Exporter le deck
 function exportDeck() {
     const deckData = {
@@ -313,7 +336,7 @@ function exportDeck() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `deck-${Date.now()}.json`;
+    a.download = `deck-nikke-${Date.now()}.json`;
     a.click();
     URL.revokeObjectURL(url);
 }
@@ -327,7 +350,7 @@ function importDeck(file) {
         try {
             const deckData = JSON.parse(e.target.result);
             deck = {
-                leader: deckData.leader,
+                leader: deckData.leader || null,
                 cards: deckData.cards || []
             };
             renderLeader();
@@ -341,12 +364,12 @@ function importDeck(file) {
     reader.readAsText(file);
 }
 
-// Initialisation
+// Initialisation au chargement du DOM
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("🚀 Application démarrée");
+    console.log("🚀 Application NIKKE Deck Builder démarrée");
     loadCards();
 
-    // Event listeners
+    // Event listeners pour les filtres
     const searchInput = document.getElementById('searchInput');
     if (searchInput) {
         searchInput.addEventListener('input', (e) => filterCards(e.target.value));
