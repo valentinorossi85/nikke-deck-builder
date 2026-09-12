@@ -1,358 +1,417 @@
-// Données simulées (à remplacer par ton appel API réel si nécessaire)
-// J'inclus quelques exemples avec des attributs différents pour tester le filtre
-const cardsData = [
-    { id: 1, name: "Monkey D. Luffy", type: "Leader", attribute: "RED", cost: 0, power: 5000, effect: "[Activate: Main] Give up to 1 of your Characters +2000 power.", image: "https://en.onepiece-cardgame.com/images/products/romance_dawn/rd01-001_p1.png" },
-    { id: 2, name: "Roronoa Zoro", type: "Character", attribute: "RED", cost: 5, power: 8000, effect: "[Blocker] After this Character blocks, K.O. up to 1 of your opponent's Characters with 4000 power or less.", image: "https://en.onepiece-cardgame.com/images/products/romance_dawn/rd01-002.png" },
-    { id: 3, name: "Nami", type: "Character", attribute: "BLUE", cost: 3, power: 4000, effect: "[On Play] Draw 1 card.", image: "https://en.onepiece-cardgame.com/images/products/romance_dawn/rd01-003.png" },
-    { id: 4, name: "Sanji", type: "Character", attribute: "GREEN", cost: 4, power: 6000, effect: "[On Play] Rest up to 1 of your opponent's Characters with cost 4 or less.", image: "https://en.onepiece-cardgame.com/images/products/romance_dawn/rd01-004.png" },
-    { id: 5, name: "Trafalgar Law", type: "Leader", attribute: "GREEN", cost: 0, power: 5000, effect: "[Your Turn] All your {Straw Hat Pirates} gain +1000 power.", image: "https://en.onepiece-cardgame.com/images/products/romance_dawn/rd01-005_p1.png" },
-    { id: 6, name: "Eustass Kid", type: "Leader", attribute: "YELLOW", cost: 0, power: 5000, effect: "[Opponent's Turn] Once per turn, when your opponent plays a Character, give it -2000 power during this turn.", image: "https://en.onepiece-cardgame.com/images/products/romance_dawn/rd01-006_p1.png" },
-    { id: 7, name: "Crocodile", type: "Leader", attribute: "SAND", cost: 0, power: 5000, effect: "[Activate: Main] You may trash 1 card from your hand: K.O. up to 1 of your opponent's Characters with 2000 power or less.", image: "https://en.onepiece-cardgame.com/images/products/romance_dawn/rd01-007_p1.png" },
-    { id: 8, name: "Magellan", type: "Leader", attribute: "PURPLE", cost: 0, power: 5000, effect: "[Your Turn] All your Characters gain [Poison].", image: "https://en.onepiece-cardgame.com/images/products/romance_dawn/rd01-008_p1.png" },
-    { id: 9, name: "Kaido", type: "Leader", attribute: "BLACK", cost: 0, power: 5000, effect: "[Your Turn] All your Characters gain +1000 power.", image: "https://en.onepiece-cardgame.com/images/products/romance_dawn/rd01-009_p1.png" },
-    { id: 10, name: "Boa Hancock", type: "Leader", attribute: "PINK", cost: 0, power: 5000, effect: "[Activate: Main] You may rest this Leader: Look at 5 cards from the top of your deck...", image: "https://en.onepiece-cardgame.com/images/products/romance_dawn/rd01-010_p1.png" },
-    // Ajoute plus de cartes ici pour tester
-];
-
-let currentDeck = [];
-let currentLeader = null;
-let isLeaderFilterActive = false;
-
-// Initialisation
-window.onload = () => {
-    renderCardList(cardsData);
-    updateDeckUI();
+// Configuration
+const CONFIG = {
+    MAX_CARDS: 40,
+    MAX_COPIES: 3
 };
 
-// Rendu de la liste des cartes
-function renderCardList(cards) {
-    const listContainer = document.getElementById('cardList');
-    listContainer.innerHTML = '';
-    
-    cards.forEach(card => {
-        const cardEl = document.createElement('div');
-        cardEl.className = 'card-item';
-        if (card.type !== 'Leader') {
-            cardEl.classList.add('non-leader');
-        }
+// État
+let allCards = [];
+let filteredCards = [];
+let isLeaderFilterActive = false;
+
+let deck = {
+    leader: null,
+    cards: []
+};
+
+// --- CHARGEMENT ---
+async function loadCards() {
+    try {
+        const response = await fetch('./cards.json');
+        if (!response.ok) throw new Error("Impossible de charger cards.json");
+        allCards = await response.json();
+        console.log(`${allCards.length} cartes chargées.`);
         
-        // Badge Leader
-        const badge = document.createElement('div');
-        badge.className = 'card-leader-badge';
-        badge.innerText = '★ LEADER';
-        cardEl.appendChild(badge);
-
-        const img = document.createElement('img');
-        img.src = card.image;
-        img.alt = card.name;
-        img.onclick = () => showCardDetails(card);
-        
-        // Drag & Drop events
-        cardEl.draggable = true;
-        cardEl.ondragstart = (e) => drag(e, card.id);
-        // Double click pour ajouter rapidement
-        cardEl.ondblclick = () => quickAddCard(card);
-
-        cardEl.appendChild(img);
-        listContainer.appendChild(cardEl);
-    });
-
-    document.getElementById('cardCount').innerText = cards.length;
-    applyLeaderFilter();
-}
-
-// Filtrage des leaders
-function toggleLeaderFilter() {
-    isLeaderFilterActive = document.getElementById('leaderFilter').checked;
-    applyLeaderFilter();
-}
-
-function applyLeaderFilter() {
-    const listContainer = document.getElementById('cardList');
-    const cards = listContainer.getElementsByClassName('card-item');
-    
-    if (isLeaderFilterActive) {
-        listContainer.classList.add('show-leaders-only');
-        for (let card of cards) {
-            if (card.classList.contains('non-leader')) {
-                card.classList.add('hidden-card');
-            } else {
-                card.classList.remove('hidden-card');
-            }
-        }
-    } else {
-        listContainer.classList.remove('show-leaders-only');
-        for (let card of cards) {
-            card.classList.remove('hidden-card');
-        }
+        // Filtrage initial
+        applyFilters();
+    } catch (error) {
+        console.error(error);
+        document.getElementById('cardList').innerHTML = `<div style="color:red">Erreur: ${error.message}</div>`;
     }
 }
 
-// Recherche
-function filterCards() {
-    const query = document.getElementById('searchInput').value.toLowerCase();
-    const filtered = cardsData.filter(card => 
-        card.name.toLowerCase().includes(query) || 
-        card.effect.toLowerCase().includes(query)
-    );
-    renderCardList(filtered);
+// --- FILTRES ---
+function toggleLeaderFilter() {
+    const checkbox = document.getElementById('leaderOnlyCheck');
+    isLeaderFilterActive = checkbox.checked;
+    applyFilters();
 }
 
-// Drag & Drop Logic
-function allowDrop(ev) {
-    ev.preventDefault();
-    ev.currentTarget.classList.add('drag-over');
+function applyFilters() {
+    const searchTerm = document.getElementById('searchInput')?.value.toLowerCase() || '';
+    
+    filteredCards = allCards.filter(card => {
+        // Filtre texte
+        const matchText = card.name.toLowerCase().includes(searchTerm) || 
+                          card.id.toLowerCase().includes(searchTerm);
+        
+        // Filtre Leader
+        let matchLeader = true;
+        if (isLeaderFilterActive) {
+            // On considère "Leader" si le type contient "Leader" (insensible à la casse)
+            matchLeader = card.type && card.type.toLowerCase().includes('leader');
+        }
+
+        return matchText && matchLeader;
+    });
+
+    renderCardList();
 }
 
-// Gestion de la sortie de la zone de drop pour retirer la classe
-document.addEventListener('dragleave', (ev) => {
-    if (ev.target.classList && ev.target.classList.contains('drop-zone')) {
-        ev.target.classList.remove('drag-over');
+// Listener pour la recherche
+document.getElementById('searchInput')?.addEventListener('input', applyFilters);
+
+// --- AFFICHAGE CARTES (Avec Drag & Drop intégré) ---
+function renderCardList() {
+    const container = document.getElementById('cardList');
+    if (!container) return;
+
+    if (filteredCards.length === 0) {
+        container.innerHTML = '<p>Aucune carte trouvée.</p>';
+        return;
+    }
+
+    container.innerHTML = filteredCards.map((card, index) => {
+        // Déterminer si c'est une carte draggable (toujours oui, mais visuel différent si leader filter)
+        const isLeaderCard = card.type && card.type.toLowerCase().includes('leader');
+        const borderStyle = isLeaderCard ? 'border: 2px solid gold;' : '';
+        const opacityStyle = isLeaderFilterActive && !isLeaderCard ? 'opacity: 0.3;' : '';
+
+        return `
+        <div class="card-item" 
+             style="${borderStyle} ${opacityStyle} cursor: grab;"
+             draggable="true" 
+             ondragstart="handleDragStart(event, '${card.id}')"
+             ondblclick="setAsLeader('${card.id}')"
+             onclick="showCardDetails('${card.id}')">
+            
+            <img src="${card.image}" alt="${card.name}" class="card-thumbnail" 
+                 onerror="this.src='https://via.placeholder.com/150x200?text=No+Image'">
+            
+            <div class="card-info">
+                <h4>${card.name}</h4>
+                <span class="card-rarity">${card.type}</span>
+                ${isLeaderCard && isLeaderFilterActive ? '<span style="color:gold; font-weight:bold;">★ LEADER</span>' : ''}
+            </div>
+            
+            <button class="btn-add" onclick="event.stopPropagation(); addToDeck('${card.id}')">+</button>
+        </div>
+    `}).join('');
+}
+
+// --- GESTION DU DRAG & DROP ---
+
+// 1. Démarrage du glisser
+window.handleDragStart = function(event, cardId) {
+    event.dataTransfer.setData('text/plain', cardId);
+    event.dataTransfer.effectAllowed = 'move';
+    // Petit effet visuel
+    setTimeout(() => event.target.style.opacity = '0.5', 0);
+};
+
+// 2. Fin du glisser (reset opacité)
+// On délègue l'événement au document pour capturer la fin peu importe où on lâche
+document.addEventListener('dragend', (event) => {
+    if (event.target.classList.contains('card-item')) {
+        event.target.style.opacity = '1';
     }
 });
 
-function drag(ev, id) {
-    ev.dataTransfer.setData("text", id);
+// 3. Configuration de la zone de drop (Leader Slot)
+function initLeaderZone() {
+    const zone = document.getElementById('leader-slot');
+    if (!zone) return;
+
+    // Empêcher le comportement par défaut (nécessaire pour autoriser le drop)
+    zone.addEventListener('dragover', (e) => {
+        e.preventDefault(); 
+        e.dataTransfer.dropEffect = 'move';
+        zone.style.borderColor = '#ffd700';
+        zone.style.backgroundColor = 'rgba(255, 215, 0, 0.2)';
+        zone.style.transform = 'scale(1.02)';
+    });
+
+    zone.addEventListener('dragleave', () => {
+        zone.style.borderColor = '#ccc';
+        zone.style.backgroundColor = 'transparent';
+        zone.style.transform = 'scale(1)';
+    });
+
+    zone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        zone.style.borderColor = '#ccc';
+        zone.style.backgroundColor = 'transparent';
+        zone.style.transform = 'scale(1)';
+
+        const cardId = e.dataTransfer.getData('text/plain');
+        if (cardId) {
+            const card = allCards.find(c => c.id === cardId);
+            if (card) {
+                setAsLeader(cardId);
+            }
+        }
+    });
 }
 
-function drop(ev, zoneType) {
-    ev.preventDefault();
-    const zone = ev.currentTarget;
-    zone.classList.remove('drag-over');
-    
-    const cardId = parseInt(ev.dataTransfer.getData("text"));
-    const card = cardsData.find(c => c.id === cardId);
+// --- LOGIQUE METIER ---
+
+window.setAsLeader = function(cardIdOrObj) {
+    let card;
+    if (typeof cardIdOrObj === 'string') {
+        card = allCards.find(c => c.id === cardIdOrObj);
+    } else {
+        card = cardIdOrObj;
+    }
 
     if (!card) return;
 
-    if (zoneType === 'leader') {
-        setLeader(card);
-    } else if (zoneType === 'deck') {
-        addToDeck(card);
-    }
-}
-
-// Définir le Leader
-function setLeader(card) {
-    if (card.type !== 'Leader') {
-        alert("Seules les cartes de type 'Leader' peuvent être placées dans la zone Leader !");
-        return;
+    // Vérification : est-ce vraiment un leader ?
+    if (!card.type.toLowerCase().includes('leader')) { 
+        alert("Cette carte n'est pas un Leader !"); 
+        return; 
     }
 
-    currentLeader = card;
-    
-    const dropZone = document.getElementById('leaderDropZone');
-    dropZone.innerHTML = ''; // Clear placeholder
-    
-    const cardEl = createCardElement(card, false);
-    // On retire le draggable une fois dans la zone leader pour éviter les bugs
-    cardEl.draggable = false; 
-    
-    dropZone.appendChild(cardEl);
-
-    checkAttributeLock();
-    updateDeckUI();
-}
-
-// Vérifier l'attribut du leader pour verrouiller le deck
-function checkAttributeLock() {
-    const msgEl = document.getElementById('attributeLockMsg');
-    if (currentLeader) {
-        msgEl.innerText = `Verrouillé sur l'attribut : ${currentLeader.attribute}. Seules les cartes compatibles peuvent être ajoutées.`;
-        msgEl.style.display = 'block';
+    if (deck.leader && deck.leader.id === card.id) {
+        // Si on clique sur le leader actuel, on le retire
+        deck.leader = null;
     } else {
-        msgEl.innerText = '';
-        msgEl.style.display = 'none';
+        // Si un ancien leader existe, on le remet dans le deck
+        if (deck.leader) {
+            deck.cards.push(deck.leader);
+        }
+        // Nouveau leader
+        deck.leader = card;
+        
+        // Retirer du deck normal si présent
+        const idx = deck.cards.findIndex(c => c.id === card.id);
+        if (idx > -1) deck.cards.splice(idx, 1);
     }
-}
 
-// Ajouter au Deck
-function addToDeck(card) {
-    if (currentDeck.length >= 50) {
-        alert("Le deck est plein (max 50 cartes).");
+    updateUI();
+};
+
+window.addToDeck = function(cardId) {
+    const card = allCards.find(c => c.id === cardId);
+    if (!card) return;
+
+    // Si c'est un leader, on propose de le mettre en leader directement
+    if (card.type && card.type.toLowerCase().includes('leader')) {
+        if(confirm(`Voulez-vous définir "${card.name}" comme Leader ?`)) {
+            setAsLeader(card);
+            return;
+        }
+        // Si l'utilisateur annule, on ne fait rien (on n'ajoute pas au deck)
         return;
     }
 
-    // Règle de l'attribut
-    if (currentLeader) {
-        // On autorise toujours les cartes de l'attribut du leader
-        // Note: Dans One Piece TCG, certaines cartes sont multicolores ou sans couleur, 
-        // mais pour simplifier ici on compare strictement sauf si c'est une carte événement/base
-        if (card.attribute !== currentLeader.attribute && card.type !== 'Event') {
-             // Petite tolérance : si la carte n'a pas d'attribut défini ou est spéciale
-             if(card.attribute && card.attribute !== "NONE") {
-                 alert(`Impossible d'ajouter ${card.name} ! Votre leader est ${currentLeader.attribute}, vous ne pouvez mettre que des cartes de cet attribut.`);
-                 return;
-             }
-        }
+    if (deck.cards.length >= CONFIG.MAX_CARDS) {
+        alert("Deck complet (40 cartes)");
+        return;
     }
 
-    currentDeck.push(card);
-    updateDeckUI();
+    const count = deck.cards.filter(c => c.id === card.id).length;
+    if (count >= CONFIG.MAX_COPIES) {
+        alert(`Maximum ${CONFIG.MAX_COPIES} exemplaires autorisés`);
+        return;
+    }
+
+    deck.cards.push(card);
+    updateUI();
+};
+
+window.removeFromDeck = function(index) {
+    deck.cards.splice(index, 1);
+    updateUI();
+};
+
+window.removeLeader = function() {
+    deck.leader = null;
+    updateUI();
+};
+
+// --- MISE A JOUR INTERFACE ---
+function updateUI() {
+    renderLeader();
+    renderDeck();
+    updateStats();
+    validateDeck();
 }
 
-// Ajout rapide (double clic)
-function quickAddCard(card) {
-    if (card.type === 'Leader') {
-        if (!currentLeader) {
-            setLeader(card);
-        } else {
-            const confirmSwitch = confirm("Vous avez déjà un leader. Voulez-vous le remplacer par " + card.name + " ?");
-            if (confirmSwitch) setLeader(card);
-        }
+function renderLeader() {
+    const container = document.getElementById('leader-slot');
+    if (!container) return;
+
+    if (deck.leader) {
+        container.innerHTML = `
+            <div class="card-in-deck" style="position:relative;">
+                <img src="${deck.leader.image}" alt="${deck.leader.name}" style="width:100%; border-radius:8px;">
+                <button class="btn-remove" onclick="removeLeader()" style="position:absolute; top:5px; right:5px; background:red; color:white; border:none; border-radius:50%; width:20px; height:20px; cursor:pointer;">×</button>
+                <div style="text-align:center; font-weight:bold; margin-top:5px;">${deck.leader.name}</div>
+            </div>
+        `;
     } else {
-        addToDeck(card);
+        container.innerHTML = `
+            <p style="color: #888; font-size: 0.9em; text-align: center; margin-top: 20px; pointer-events:none;">
+                Glissez un Leader ici<br>ou double-cliquez sur une carte
+            </p>`;
     }
 }
 
-// Création d'un élément carte HTML
-function createCardElement(card, isRemovable = true) {
-    const div = document.createElement('div');
-    div.className = 'card-item';
-    
-    const img = document.createElement('img');
-    img.src = card.image;
-    img.alt = card.name;
-    img.onclick = (e) => {
-        e.stopPropagation(); // Empêcher le removal si on clique juste pour voir
-        showCardDetails(card);
-    };
+function renderDeck() {
+    const container = document.getElementById('deckList');
+    if (!container) return;
 
-    div.appendChild(img);
-
-    if (isRemovable) {
-        const removeBtn = document.createElement('div');
-        removeBtn.className = 'remove-btn';
-        removeBtn.innerText = '×';
-        removeBtn.onclick = (e) => {
-            e.stopPropagation();
-            removeFromDeck(card.id);
-        };
-        div.appendChild(removeBtn);
-        
-        // Permettre de re-dragger depuis le deck
-        div.draggable = true;
-        div.ondragstart = (e) => drag(e, card.id);
-    }
-
-    return div;
-}
-
-// Mise à jour de l'interface du Deck
-function updateDeckUI() {
-    const deckList = document.getElementById('deckList');
-    const deckCount = document.getElementById('deckCount');
-    
-    deckList.innerHTML = '';
-    deckCount.innerText = currentDeck.length;
-
-    currentDeck.forEach((card, index) => {
-        const cardEl = createCardElement(card, true);
-        deckList.appendChild(cardEl);
-    });
-}
-
-// Retirer du Deck
-function removeFromDeck(id) {
-    const index = currentDeck.findIndex(c => c.id === id);
-    if (index > -1) {
-        currentDeck.splice(index, 1);
-        updateDeckUI();
-    }
-}
-
-// Vider le Deck
-function clearDeck() {
-    if(confirm("Voulez-vous vraiment vider tout le deck ?")) {
-        currentDeck = [];
-        currentLeader = null;
-        document.getElementById('leaderDropZone').innerHTML = '<p>Glissez un Leader ici</p>';
-        checkAttributeLock();
-        updateDeckUI();
-    }
-}
-
-// Sauvegarder (Simulation)
-function saveDeck() {
-    if (!currentLeader) {
-        alert("Choisissez d'abord un Leader !");
+    if (deck.cards.length === 0) {
+        container.innerHTML = '<p>Votre deck est vide.</p>';
         return;
     }
-    if (currentDeck.length < 40) {
-        alert("Un deck doit contenir au moins 40 cartes.");
-        return;
-    }
-    
-    const deckSummary = {
-        leader: currentLeader.name,
-        attribute: currentLeader.attribute,
-        count: currentDeck.length,
-        cards: currentDeck.map(c => c.name)
-    };
-    
-    console.log("Deck Sauvegardé:", deckSummary);
-    alert(`Deck sauvegardé !\nLeader: ${currentLeader.name}\nCartes: ${currentDeck.length}`);
+
+    container.innerHTML = deck.cards.map((card, index) => `
+        <div class="card-in-deck">
+            <img src="${card.image}" alt="${card.name}">
+            <button class="btn-remove" onclick="removeFromDeck(${index})">×</button>
+        </div>
+    `).join('');
 }
 
-// --- Système de Popup et Traduction ---
+function updateStats() {
+    const el = document.getElementById('deckStats');
+    if (!el) return;
+    el.innerHTML = `
+        <div>Cartes: <strong>${deck.cards.length}/40</strong></div>
+        <div>Leader: <strong>${deck.leader ? 'OK' : 'MANQUANT'}</strong></div>
+    `;
+}
 
-async function showCardDetails(card) {
-    const modal = document.getElementById('cardModal');
-    const img = document.getElementById('modalImg');
-    const nameEl = document.getElementById('modalName');
-    const typeEl = document.getElementById('modalType');
-    const attrEl = document.getElementById('modalAttribute');
-    const costEl = document.getElementById('modalCost');
-    const powerEl = document.getElementById('modalPower');
-    const effectEl = document.getElementById('modalEffect');
-
-    img.src = card.image;
-    nameEl.innerText = card.name;
-    typeEl.innerText = card.type;
-    attrEl.innerText = card.attribute;
-    costEl.innerText = card.cost;
-    powerEl.innerText = card.power;
+function validateDeck() {
+    const el = document.getElementById('validationResult');
+    if (!el) return;
     
-    // Indicateur de chargement
-    effectEl.innerHTML = '<span class="loading-trans">Traduction en cours...</span>';
-    
-    modal.style.display = "block";
-
-    // Appel API de traduction (MyMemory Translation API - Gratuit sans clé pour usage limité)
-    try {
-        // On traduit le nom et l'effet du Japonais/Coréen vers l'Anglais
-        // Si tes données sont déjà en anglais, cette étape peut être sautée ou adaptée.
-        // Ici je simule une traduction depuis le texte fourni.
-        
-        const textToTranslate = card.effect;
-        const response = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(textToTranslate)}&langpair=ja|en`);
-        const data = await response.json();
-        
-        if (data.responseStatus === 200) {
-            effectEl.innerText = data.responseData.translatedText;
-        } else {
-            // Fallback si l'API échoue ou si c'est déjà en anglais
-            effectEl.innerText = card.effect; 
-        }
-    } catch (error) {
-        console.error("Erreur traduction:", error);
-        effectEl.innerText = card.effect; // Affiche l'original en cas d'erreur
-    }
+    const isValid = deck.leader && deck.cards.length === 40;
+    el.className = isValid ? 'validation valid' : 'validation invalid';
+    el.innerHTML = isValid ? '✅ Deck Valide !' : '❌ Deck Invalide (Il faut 1 Leader et 40 cartes)';
 }
 
-function closeModal(event) {
-    if (event.target == document.getElementById('cardModal')) {
-        document.getElementById('cardModal').style.display = "none";
-    }
-}
-
-function closeModalDirect() {
-    document.getElementById('cardModal').style.display = "none";
-}
-
-// Fermer avec Echap
-document.addEventListener('keydown', function(event) {
-    if (event.key === "Escape") {
-        document.getElementById('cardModal').style.display = "none";
-    }
+// Initialisation
+document.addEventListener('DOMContentLoaded', () => {
+    loadCards();
+    initLeaderZone();
+    console.log("Application prête. Drag & Drop activé.");
 });
+
+// --- GESTION DE LA MODALE (Popup détails carte) ---
+
+// Dictionnaire de traduction Coréen -> Anglais
+const translations = {
+    "유닛": "Unit",
+    "리더": "Leader",
+    "스킬": "Skill",
+    "폭풍": "Storm",
+    "번개": "Lightning",
+    "불꽃": "Fire",
+    "물": "Water",
+    "빛": "Light",
+    "어둠": "Darkness",
+    "코스트": "Cost",
+    "파워": "Power",
+    "히트": "Hit",
+    "레어도": "Rarity",
+    "소속": "Affiliation",
+    "키워드": "Keyword",
+    "효과": "Effect",
+    "디펜더": "Defender",
+    "패시브": "Passive",
+    "어태커": "Attacker",
+    "가디언": "Guardian",
+    "종결": "Finisher",
+    "희생": "Sacrifice",
+    "플레이": "Play",
+    "트래시": "Trash",
+    "드로우": "Draw",
+    "필드": "Field",
+    "레이인": "Lane",
+    "장착": "Equip",
+    "조우": "Encounter"
+};
+
+// Fonction pour traduire un texte
+function translateToEnglish(text) {
+    if (!text) return "";
+    let translated = text;
+    for (const [ko, en] of Object.entries(translations)) {
+        const regex = new RegExp(ko, 'g');
+        translated = translated.replace(regex, en);
+    }
+    return translated;
+}
+
+// Afficher la modale avec les détails de la carte
+window.showCardDetails = function(cardId) {
+    const card = allCards.find(c => c.id === cardId);
+    if (!card) return;
+
+    const modal = document.getElementById('cardModal');
+    const modalBody = document.getElementById('modalBody');
+    
+    // Traduction des informations
+    const translatedType = translateToEnglish(card.type || "");
+    const translatedAttribute = translateToEnglish(card.attribute || "");
+    const translatedAffiliation = translateToEnglish(card.affiliation || "");
+    const translatedKeywords = translateToEnglish(card.keyword || "");
+    const translatedEffect = translateToEnglish(card.effect || "");
+
+    modalBody.innerHTML = `
+        <div class="modal-body">
+            <h2>${card.name}</h2>
+            <img src="${card.image}" alt="${card.name}" class="card-image" onerror="this.src='https://via.placeholder.com/300x400?text=No+Image'">
+            
+            <div class="modal-info-row">
+                <span class="modal-info-label">ID:</span>
+                <span class="modal-info-value">${card.id}</span>
+            </div>
+            <div class="modal-info-row">
+                <span class="modal-info-label">Type:</span>
+                <span class="modal-info-value">${translatedType}</span>
+            </div>
+            <div class="modal-info-row">
+                <span class="modal-info-label">Attribute:</span>
+                <span class="modal-info-value">${translatedAttribute || '-'}</span>
+            </div>
+            <div class="modal-info-row">
+                <span class="modal-info-label">Cost:</span>
+                <span class="modal-info-value">${card.cost || '-'}</span>
+            </div>
+            <div class="modal-info-row">
+                <span class="modal-info-label">Power:</span>
+                <span class="modal-info-value">${card.power || '-'}</span>
+            </div>
+            <div class="modal-info-row">
+                <span class="modal-info-label">Hit:</span>
+                <span class="modal-info-value">${card.hit || '-'}</span>
+            </div>
+            <div class="modal-info-row">
+                <span class="modal-info-label">Affiliation:</span>
+                <span class="modal-info-value">${translatedAffiliation || '-'}</span>
+            </div>
+            <div class="modal-info-row">
+                <span class="modal-info-label">Keywords:</span>
+                <span class="modal-info-value">${translatedKeywords || '-'}</span>
+            </div>
+            
+            ${translatedEffect ? `<div class="modal-effect"><strong>Effect:</strong><br>${translatedEffect}</div>` : ''}
+        </div>
+    `;
+    
+    modal.classList.add('active');
+};
+
+// Fermer la modale
+window.closeModal = function(event) {
+    if (event.target.id === 'cardModal') {
+        document.getElementById('cardModal').classList.remove('active');
+    }
+};
+
+window.closeModalDirect = function() {
+    document.getElementById('cardModal').classList.remove('active');
+};
