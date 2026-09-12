@@ -25,7 +25,7 @@
     "rarity": "",
     "affiliation": "Pilgrim",
     "keyword": "Attacker",
-    "effect": "unit Equip 0cost item choose any number of discard it. Then Until the end of this turn With this effect discard card 1 Encounter unit power-2000. With this effect Encounter unit discardIf you do card 1 draw.",
+    "effect": "Unit - Equip: Choose any number of items with cost 0 or less and discard them. Then Until the end of this turn, you may discard a card. If you do, when this unit encounters another unit, that unit gets power -2000. When this unit encounters another unit, you may discard a card. If you do, draw a card.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-075_P_크라운_-_영화.jpg"
   },
@@ -40,7 +40,7 @@
     "rarity": "",
     "affiliation": "Elysion",
     "keyword": "Defender, Guardian",
-    "effect": "Sacrifice[1] (opponent's units On the field your units 1 discardIf you do unit). Finisher (When declaring defense, immediately end the opponent's current attack and discard this unit).",
+    "effect": "Sacrifice[1] (opponent's units On the field, your units get +1 discard If you do unit). Finisher (When declaring defense, immediately end the opponent's current attack and discard this unit).",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-044_P_프리바티_-_샤프_레슨.jpg"
   },
@@ -70,7 +70,7 @@
     "rarity": "",
     "affiliation": "Missilis",
     "keyword": "Entry",
-    "effect": "On the field your units 1 . Then Until the end of this turn hit+1. Until the end of this turn With this effect unit cost cost card unit .",
+    "effect": "On the field, your units get +1 . Then Until the end of this turn hit+1. Until the end of this turn, when unit cost cost card unit .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-022_C_길티_-_디스빌리프_웨이브.jpg"
   },
@@ -100,7 +100,7 @@
     "rarity": "",
     "affiliation": "Tetra Line",
     "keyword": "Attacker",
-    "effect": "Encounter unit 5cost Encounter unit unit Equip item .",
+    "effect": "Encounter unit 5 cost Encounter unit unit Equip item .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-059_C_메어리___베이_갓데스.jpg"
   },
@@ -115,13 +115,13 @@
     "rarity": "",
     "affiliation": "Tetra Line",
     "keyword": "Attacker",
-    "effect": "deck card 1 . card 0cost item card 1 discard it.",
+    "effect": "deck card 1 . Card 0 cost item card 1 discard it.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-071_C_에이드___에이전트_바니.jpg"
   },
   {
     "id": "BT08-001",
-    "name": "아니스 : 스타 - 스타라이트",
+    "name": "Anis : 스타 - 스타Light",
     "type": "Leader",
     "attribute": "Flame",
     "cost": 0,
@@ -130,13 +130,13 @@
     "rarity": "",
     "affiliation": "Tetra Line",
     "keyword": "Passive, Active",
-    "effect": "deck card . 5 card . unit . unit . Berserker unit 1 Until the end of this turn 「 Encounter unit 2cost card 1 discard it. Then unit 」 power+2000.",
+    "effect": "deck card . 5 card . Unit . Unit . Berserker unit 1 Until the end of this turn 「 Encounter unit 2 cost card 1 discard it. Then unit 」 power+2000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-001_L_아니스___스타_-_스타라이트.jpg"
   },
   {
     "id": "BT08-001",
-    "name": "아니스 : 스타 - 스타라이트",
+    "name": "Anis : 스타 - 스타Light",
     "type": "Leader",
     "attribute": "Flame",
     "cost": 0,
@@ -145,13 +145,13 @@
     "rarity": "S",
     "affiliation": "Tetra Line",
     "keyword": "Passive, Active",
-    "effect": "deck card . 5 card . unit . unit . Berserker unit 1 Until the end of this turn 「 Encounter unit 2cost card 1 discard it. Then unit 」 power+2000.",
+    "effect": "deck card . 5 card . Unit . Unit . Berserker unit 1 Until the end of this turn 「 Encounter unit 2 cost card 1 discard it. Then unit 」 power+2000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-001_L_아니스___스타_-_스타라이트.jpg"
   },
   {
     "id": "BT08-001",
-    "name": "아니스 : 스타 - 스타라이트",
+    "name": "Anis : 스타 - 스타Light",
     "type": "Leader",
     "attribute": "Flame",
     "cost": 0,
@@ -160,13 +160,13 @@
     "rarity": "S",
     "affiliation": "Tetra Line",
     "keyword": "Passive, Active",
-    "effect": "deck card . 5 card . unit . unit . Berserker unit 1 Until the end of this turn 「 Encounter unit 2cost card 1 discard it. Then unit 」 power+2000.",
+    "effect": "deck card . 5 card . Unit . Unit . Berserker unit 1 Until the end of this turn 「 Encounter unit 2 cost card 1 discard it. Then unit 」 power+2000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-001_L_아니스___스타_-_스타라이트.jpg"
   },
   {
     "id": "BT08-001",
-    "name": "아니스 : 스타 - 스타라이트",
+    "name": "Anis : 스타 - 스타Light",
     "type": "Leader",
     "attribute": "Flame",
     "cost": 0,
@@ -175,7 +175,7 @@
     "rarity": "SS",
     "affiliation": "Tetra Line",
     "keyword": "Passive, Active",
-    "effect": "deck card . 5 card . unit . unit . Berserker unit 1 Until the end of this turn 「 Encounter unit 2cost card 1 discard it. Then unit 」 power+2000.",
+    "effect": "deck card . 5 card . Unit . Unit . Berserker unit 1 Until the end of this turn 「 Encounter unit 2 cost card 1 discard it. Then unit 」 power+2000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-001_L_아니스___스타_-_스타라이트.jpg"
   },
@@ -256,7 +256,7 @@
   },
   {
     "id": "BT08-007",
-    "name": "라피 : 레드 후드 - 샤인 라이트",
+    "name": "Rapi : 레드 후드 - 샤인 Light",
     "type": "Unit",
     "attribute": "Flame",
     "cost": 2,
@@ -265,13 +265,13 @@
     "rarity": "SR",
     "affiliation": "Elysion",
     "keyword": "Active",
-    "effect": "Berserker (unit). 2cost card 1 discard it. Then On the field hit 1 Berserker your units 1 . Encounter unit unit . / card .",
+    "effect": "Berserker (unit). 2 cost card 1 discard it. Then On the field hit 1 Berserker your units 1 . Encounter unit unit . / card .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-007_SPR_라피___레드_후드_-_샤인_라이트.jpg"
   },
   {
     "id": "BT08-007",
-    "name": "라피 : 레드 후드 - 샤인 라이트",
+    "name": "Rapi : 레드 후드 - 샤인 Light",
     "type": "Unit",
     "attribute": "Flame",
     "cost": 2,
@@ -280,7 +280,7 @@
     "rarity": "S",
     "affiliation": "Elysion",
     "keyword": "Active",
-    "effect": "Berserker (unit). 2cost card 1 discard it. Then On the field hit 1 Berserker your units 1 . Encounter unit unit . / card .",
+    "effect": "Berserker (unit). 2 cost card 1 discard it. Then On the field hit 1 Berserker your units 1 . Encounter unit unit . / card .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-007_SPR_라피___레드_후드_-_샤인_라이트.jpg"
   },
@@ -346,7 +346,7 @@
   },
   {
     "id": "BT08-011",
-    "name": "아니스 : 스타 - 스타라이트",
+    "name": "Anis : 스타 - 스타Light",
     "type": "Unit",
     "attribute": "Flame",
     "cost": 5,
@@ -355,13 +355,13 @@
     "rarity": "UR",
     "affiliation": "Tetra Line",
     "keyword": "Active",
-    "effect": "Berserker (unit). On the field Berserker your units 2 . Then 1 , Until the end of this turn [1] (unit opponent's units discard 1)power+2000. 1 Until the end of this turn [1] (unit opponent's units discard card 1 draw)power+2000. / card discard it. discard 2cost unit card 1 .",
+    "effect": "Berserker (unit). On the field Berserker your units 2 . Then 1 , Until the end of this turn [1] (unit opponent's units discard 1)power+2000. 1 Until the end of this turn [1] (unit opponent's units discard card 1 draw)power+2000. / card discard it. Discard 2 cost unit card 1 .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-011_SPR_아니스___스타_-_스타라이트.jpg"
   },
   {
     "id": "BT08-011",
-    "name": "아니스 : 스타 - 스타라이트",
+    "name": "Anis : 스타 - 스타Light",
     "type": "Unit",
     "attribute": "Flame",
     "cost": 5,
@@ -370,7 +370,7 @@
     "rarity": "S",
     "affiliation": "Tetra Line",
     "keyword": "Active",
-    "effect": "Berserker (unit). On the field Berserker your units 2 . Then 1 , Until the end of this turn [1] (unit opponent's units discard 1)power+2000. 1 Until the end of this turn [1] (unit opponent's units discard card 1 draw)power+2000. / card discard it. discard 2cost unit card 1 .",
+    "effect": "Berserker (unit). On the field Berserker your units 2 . Then 1 , Until the end of this turn [1] (unit opponent's units discard 1)power+2000. 1 Until the end of this turn [1] (unit opponent's units discard card 1 draw)power+2000. / card discard it. Discard 2 cost unit card 1 .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-011_SPR_아니스___스타_-_스타라이트.jpg"
   },
@@ -391,7 +391,7 @@
   },
   {
     "id": "BT08-013",
-    "name": "스타 아니스",
+    "name": "스타 Anis",
     "type": "Skill",
     "attribute": "Flame",
     "cost": 2,
@@ -430,7 +430,7 @@
     "rarity": "R",
     "affiliation": "",
     "keyword": "Active",
-    "effect": "On the field your units 1 . unit Until the end of this turn [2] (unit opponent's units discard 2). [1] (unit opponent's units discard 1).",
+    "effect": "On the field, your units get +1 . Unit Until the end of this turn [2] (unit opponent's units discard 2). [1] (unit opponent's units discard 1).",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-015_R_TRACING_THE_STARS.jpg"
   },
@@ -466,7 +466,7 @@
   },
   {
     "id": "BT08-018",
-    "name": "마르차나 : 마린 스터디",
+    "name": "마르차나 : 마린 스터D",
     "type": "Leader",
     "attribute": "Earth",
     "cost": 0,
@@ -475,13 +475,13 @@
     "rarity": "",
     "affiliation": "Elysion",
     "keyword": "Passive, Active",
-    "effect": "deck card . 5 card . unit . unit . On the field hit 1 your units 1 . Until the end of this turn With this effect unit cost cost card unit .",
+    "effect": "deck card . 5 card . Unit . Unit . On the field hit 1 your units 1 . Until the end of this turn, when unit cost cost card unit .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-018_L_마르차나___마린_스터디.jpg"
   },
   {
     "id": "BT08-018",
-    "name": "마르차나 : 마린 스터디",
+    "name": "마르차나 : 마린 스터D",
     "type": "Leader",
     "attribute": "Earth",
     "cost": 0,
@@ -490,13 +490,13 @@
     "rarity": "S",
     "affiliation": "Elysion",
     "keyword": "Passive, Active",
-    "effect": "deck card . 5 card . unit . unit . On the field hit 1 your units 1 . Until the end of this turn With this effect unit cost cost card unit .",
+    "effect": "deck card . 5 card . Unit . Unit . On the field hit 1 your units 1 . Until the end of this turn, when unit cost cost card unit .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-018_L_마르차나___마린_스터디.jpg"
   },
   {
     "id": "BT08-018",
-    "name": "마르차나 : 마린 스터디",
+    "name": "마르차나 : 마린 스터D",
     "type": "Leader",
     "attribute": "Earth",
     "cost": 0,
@@ -505,13 +505,13 @@
     "rarity": "S",
     "affiliation": "Elysion",
     "keyword": "Passive, Active",
-    "effect": "deck card . 5 card . unit . unit . On the field hit 1 your units 1 . Until the end of this turn With this effect unit cost cost card unit .",
+    "effect": "deck card . 5 card . Unit . Unit . On the field hit 1 your units 1 . Until the end of this turn, when unit cost cost card unit .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-018_L_마르차나___마린_스터디.jpg"
   },
   {
     "id": "BT08-018",
-    "name": "마르차나 : 마린 스터디",
+    "name": "마르차나 : 마린 스터D",
     "type": "Leader",
     "attribute": "Earth",
     "cost": 0,
@@ -520,7 +520,7 @@
     "rarity": "SS",
     "affiliation": "Elysion",
     "keyword": "Passive, Active",
-    "effect": "deck card . 5 card . unit . unit . On the field hit 1 your units 1 . Until the end of this turn With this effect unit cost cost card unit .",
+    "effect": "deck card . 5 card . Unit . Unit . On the field hit 1 your units 1 . Until the end of this turn, when unit cost cost card unit .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-018_L_마르차나___마린_스터디.jpg"
   },
@@ -535,7 +535,7 @@
     "rarity": "C",
     "affiliation": "Missilis",
     "keyword": "Entry",
-    "effect": "On the field your units 1 . Then On the field your units 1 , power+2000. Until the end of this turn With this effect unit cost cost card unit .",
+    "effect": "On the field, your units get +1 . Then On the field, your units get +1 , power+2000. Until the end of this turn, when unit cost cost card unit .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-019_C_플로라.jpg"
   },
@@ -550,7 +550,7 @@
     "rarity": "C",
     "affiliation": "Tetra Line",
     "keyword": "Entry",
-    "effect": "On the field your units 1 . Then On the field your units 1 , power+3000. Until the end of this turn With this effect unit cost cost card unit .",
+    "effect": "On the field, your units get +1 . Then On the field, your units get +1 , power+3000. Until the end of this turn, when unit cost cost card unit .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-020_C_루피_-_럭셔리_래빗.jpg"
   },
@@ -580,7 +580,7 @@
     "rarity": "C",
     "affiliation": "Missilis",
     "keyword": "Entry",
-    "effect": "On the field your units 1 . Then Until the end of this turn hit+1. Until the end of this turn With this effect unit cost cost card unit .",
+    "effect": "On the field, your units get +1 . Then Until the end of this turn hit+1. Until the end of this turn, when unit cost cost card unit .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-022_C_길티_-_디스빌리프_웨이브.jpg"
   },
@@ -616,7 +616,7 @@
   },
   {
     "id": "BT08-025",
-    "name": "소라 - 스프링 플라이트",
+    "name": "소라 - 스프링 플Light",
     "type": "Unit",
     "attribute": "Earth",
     "cost": 3,
@@ -625,13 +625,13 @@
     "rarity": "R",
     "affiliation": "Elysion",
     "keyword": "Passive",
-    "effect": "On the field your units deck card 3 , 1 . discard it.",
+    "effect": "On the field your units deck card 3 , 1 . Discard it.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-025_R_소라_-_스프링_플라이트.jpg"
   },
   {
     "id": "BT08-026",
-    "name": "티아 - 씨 리지",
+    "name": "Tia - 씨 리지",
     "type": "Unit",
     "attribute": "Earth",
     "cost": 4,
@@ -640,13 +640,13 @@
     "rarity": "R",
     "affiliation": "Missilis",
     "keyword": "Passive",
-    "effect": "On the field your units On the field your units 1 , Until the end of this turn hit+1.",
+    "effect": "On the field your units On the field, your units get +1 , Until the end of this turn hit+1.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-026_R_티아_-_씨_리지.jpg"
   },
   {
     "id": "BT08-027",
-    "name": "마르차나 : 마린 스터디",
+    "name": "마르차나 : 마린 스터D",
     "type": "Unit",
     "attribute": "Earth",
     "cost": 4,
@@ -655,13 +655,13 @@
     "rarity": "UR",
     "affiliation": "Elysion",
     "keyword": "Passive, Entry",
-    "effect": "1, On the field your units Until the end of this turn [1] (unit opponent's units discard 1). On the field your units 1 . Then power+2000, hit+1. Until the end of this turn With this effect unit cost cost card unit . / card discard it. +1.",
+    "effect": "1, On the field your units Until the end of this turn [1] (unit opponent's units discard 1). On the field, your units get +1 . Then power+2000, hit+1. Until the end of this turn, when unit cost cost card unit . / card discard it. +1.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-027_SPR_마르차나___마린_스터디.jpg"
   },
   {
     "id": "BT08-027",
-    "name": "마르차나 : 마린 스터디",
+    "name": "마르차나 : 마린 스터D",
     "type": "Unit",
     "attribute": "Earth",
     "cost": 4,
@@ -670,7 +670,7 @@
     "rarity": "S",
     "affiliation": "Elysion",
     "keyword": "Passive, Entry",
-    "effect": "1, On the field your units Until the end of this turn [1] (unit opponent's units discard 1). On the field your units 1 . Then power+2000, hit+1. Until the end of this turn With this effect unit cost cost card unit . / card discard it. +1.",
+    "effect": "1, On the field your units Until the end of this turn [1] (unit opponent's units discard 1). On the field, your units get +1 . Then power+2000, hit+1. Until the end of this turn, when unit cost cost card unit . / card discard it. +1.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-027_SPR_마르차나___마린_스터디.jpg"
   },
@@ -685,7 +685,7 @@
     "rarity": "SR",
     "affiliation": "Missilis",
     "keyword": "Passive",
-    "effect": "On the field your units 1 discard . Then On the field unit power opponent's units 1 discard it. / card .",
+    "effect": "On the field, your units get +1 discard . Then On the field unit power opponent's units 1 discard it. / card .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-028_SPR_나가_-_링_앙상블.jpg"
   },
@@ -700,7 +700,7 @@
     "rarity": "S",
     "affiliation": "Missilis",
     "keyword": "Passive",
-    "effect": "On the field your units 1 discard . Then On the field unit power opponent's units 1 discard it. / card .",
+    "effect": "On the field, your units get +1 discard . Then On the field unit power opponent's units 1 discard it. / card .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-028_SPR_나가_-_링_앙상블.jpg"
   },
@@ -715,7 +715,7 @@
     "rarity": "SR",
     "affiliation": "Pilgrim",
     "keyword": "Passive",
-    "effect": "1, On the field your units On the field 3cost opponent's units 1 . Then unit .",
+    "effect": "1, On the field your units On the field 3 cost opponent's units 1 . Then unit .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-029_SPR_나유타_-_무위.jpg"
   },
@@ -730,7 +730,7 @@
     "rarity": "S",
     "affiliation": "Pilgrim",
     "keyword": "Passive",
-    "effect": "1, On the field your units On the field 3cost opponent's units 1 . Then unit .",
+    "effect": "1, On the field your units On the field 3 cost opponent's units 1 . Then unit .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-029_SPR_나유타_-_무위.jpg"
   },
@@ -745,7 +745,7 @@
     "rarity": "C",
     "affiliation": "",
     "keyword": "",
-    "effect": "On the field your units 1 . Then unit cost unit card 1 unit .",
+    "effect": "On the field, your units get +1 . Then unit cost unit card 1 unit .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-030_C_고행.jpg"
   },
@@ -760,7 +760,7 @@
     "rarity": "C",
     "affiliation": "",
     "keyword": "",
-    "effect": "On the field 《》 your units 1 . unit hit 1 power+1000. unit hit card draw.",
+    "effect": "On the field 《》 your units 1 . Unit hit 1 power+1000. Unit hit card draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-031_C_졸업_여행.jpg"
   },
@@ -775,7 +775,7 @@
     "rarity": "R",
     "affiliation": "",
     "keyword": "",
-    "effect": "On the field cost 《》 your units 1 . unit power Encounter unit power Encounter unit discard it.",
+    "effect": "On the field cost 《》 your units 1 . Unit power Encounter unit power Encounter unit discard it.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-032_R_펭군_스파이럴.jpg"
   },
@@ -820,7 +820,7 @@
     "rarity": "",
     "affiliation": "Pilgrim",
     "keyword": "Passive",
-    "effect": "deck card . 4 card . unit . unit . 1, On the field your unitsWith this effect discard cost unit cost Finisher with unit card 1 unit . Then card 1 draw.",
+    "effect": "deck card . 4 card . Unit . Unit . 1, On the field your units With this effect discard cost unit cost Finisher with unit card 1 unit . Then card 1 draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-035_L_리버렐리오_-_드리밍_레이크.jpg"
   },
@@ -835,7 +835,7 @@
     "rarity": "S",
     "affiliation": "Pilgrim",
     "keyword": "Passive",
-    "effect": "deck card . 4 card . unit . unit . 1, On the field your unitsWith this effect discard cost unit cost Finisher with unit card 1 unit . Then card 1 draw.",
+    "effect": "deck card . 4 card . Unit . Unit . 1, On the field your units With this effect discard cost unit cost Finisher with unit card 1 unit . Then card 1 draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-035_L_리버렐리오_-_드리밍_레이크.jpg"
   },
@@ -850,7 +850,7 @@
     "rarity": "S",
     "affiliation": "Pilgrim",
     "keyword": "Passive",
-    "effect": "deck card . 4 card . unit . unit . 1, On the field your unitsWith this effect discard cost unit cost Finisher with unit card 1 unit . Then card 1 draw.",
+    "effect": "deck card . 4 card . Unit . Unit . 1, On the field your units With this effect discard cost unit cost Finisher with unit card 1 unit . Then card 1 draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-035_L_리버렐리오_-_드리밍_레이크.jpg"
   },
@@ -865,7 +865,7 @@
     "rarity": "SS",
     "affiliation": "Pilgrim",
     "keyword": "Passive",
-    "effect": "deck card . 4 card . unit . unit . 1, On the field your unitsWith this effect discard cost unit cost Finisher with unit card 1 unit . Then card 1 draw.",
+    "effect": "deck card . 4 card . Unit . Unit . 1, On the field your units With this effect discard cost unit cost Finisher with unit card 1 unit . Then card 1 draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-035_L_리버렐리오_-_드리밍_레이크.jpg"
   },
@@ -940,7 +940,7 @@
     "rarity": "SR",
     "affiliation": "Pilgrim",
     "keyword": "Passive, Exit",
-    "effect": "1, discardIf you do card 1 draw . discard 6cost unit card 1 .",
+    "effect": "1, discard If you do card 1 draw . Discard 6 cost unit card 1 .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-040_SPR_리틀_머메이드_-_쉘_프린세스.jpg"
   },
@@ -955,7 +955,7 @@
     "rarity": "S",
     "affiliation": "Pilgrim",
     "keyword": "Passive, Exit",
-    "effect": "1, discardIf you do card 1 draw . discard 6cost unit card 1 .",
+    "effect": "1, discard If you do card 1 draw . Discard 6 cost unit card 1 .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-040_SPR_리틀_머메이드_-_쉘_프린세스.jpg"
   },
@@ -1006,7 +1006,7 @@
   },
   {
     "id": "BT08-043",
-    "name": "모더니아 - 퍼스트 어펙션",
+    "name": "Modernia - 퍼스트 어펙션",
     "type": "Unit",
     "attribute": "Storm",
     "cost": 5,
@@ -1015,7 +1015,7 @@
     "rarity": "C",
     "affiliation": "Pilgrim",
     "keyword": "Exit",
-    "effect": " (unit discard opponent's units cost unit card cost unit discard it).",
+    "effect": "(unit discard opponent's units cost unit card cost unit discard it).",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-043_C_모더니아_-_퍼스트_어펙션.jpg"
   },
@@ -1030,13 +1030,13 @@
     "rarity": "R",
     "affiliation": "Elysion",
     "keyword": "Defender, Guardian",
-    "effect": "Sacrifice[1] (opponent's units On the field your units 1 discardIf you do unit). Finisher (When declaring defense, immediately end the opponent's current attack and discard this unit).",
+    "effect": "Sacrifice[1] (opponent's units On the field, your units get +1 discard If you do unit). Finisher (When declaring defense, immediately end the opponent's current attack and discard this unit).",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-044_P_프리바티_-_샤프_레슨.jpg"
   },
   {
     "id": "BT08-045",
-    "name": "신데렐라 : 크리스탈 웨이브",
+    "name": "Cinderella : 크리스탈 웨이브",
     "type": "Unit",
     "attribute": "Storm",
     "cost": 7,
@@ -1045,13 +1045,13 @@
     "rarity": "SR",
     "affiliation": "Pilgrim",
     "keyword": "Defender, Exit",
-    "effect": "Finisher (When declaring defense, immediately end the opponent's current attack and discard this unit). discard Finisher with 6cost unit card 1 . / card discard it. 3 1 discard it.",
+    "effect": "Finisher (When declaring defense, immediately end the opponent's current attack and discard this unit). Discard Finisher with 6 cost unit card 1 . / card discard it. 3 1 discard it.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-045_SPR_신데렐라___크리스탈_웨이브.jpg"
   },
   {
     "id": "BT08-045",
-    "name": "신데렐라 : 크리스탈 웨이브",
+    "name": "Cinderella : 크리스탈 웨이브",
     "type": "Unit",
     "attribute": "Storm",
     "cost": 7,
@@ -1060,7 +1060,7 @@
     "rarity": "S",
     "affiliation": "Pilgrim",
     "keyword": "Defender, Exit",
-    "effect": "Finisher (When declaring defense, immediately end the opponent's current attack and discard this unit). discard Finisher with 6cost unit card 1 . / card discard it. 3 1 discard it.",
+    "effect": "Finisher (When declaring defense, immediately end the opponent's current attack and discard this unit). Discard Finisher with 6 cost unit card 1 . / card discard it. 3 1 discard it.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-045_SPR_신데렐라___크리스탈_웨이브.jpg"
   },
@@ -1075,7 +1075,7 @@
     "rarity": "C",
     "affiliation": "",
     "keyword": "",
-    "effect": "Until the end of this turn discardIf you do card 1 draw. Until the end of this turn 〈-〉 .",
+    "effect": "Until the end of this turn discard If you do card 1 draw. Until the end of this turn 〈-〉 .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-046_C_뷰티-풀.jpg"
   },
@@ -1156,7 +1156,7 @@
   },
   {
     "id": "BT08-052",
-    "name": "앨리스 - 메르헨 드림",
+    "name": "Alice - 메르헨 드림",
     "type": "Leader",
     "attribute": "Wave",
     "cost": 0,
@@ -1165,13 +1165,13 @@
     "rarity": "",
     "affiliation": "Tetra Line",
     "keyword": "Passive, Active",
-    "effect": "deck card . 4 card . unit . unit . 1 discard it. Then On the field opponent's units 1 , Until the end of this turn cost+3.",
+    "effect": "deck card . 4 card . Unit . Unit . 1 discard it. Then On the field opponent's units 1 , Until the end of this turn cost+3.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-052_L_앨리스_-_메르헨_드림.jpg"
   },
   {
     "id": "BT08-052",
-    "name": "앨리스 - 메르헨 드림",
+    "name": "Alice - 메르헨 드림",
     "type": "Leader",
     "attribute": "Wave",
     "cost": 0,
@@ -1180,13 +1180,13 @@
     "rarity": "S",
     "affiliation": "Tetra Line",
     "keyword": "Passive, Active",
-    "effect": "deck card . 4 card . unit . unit . 1 discard it. Then On the field opponent's units 1 , Until the end of this turn cost+3.",
+    "effect": "deck card . 4 card . Unit . Unit . 1 discard it. Then On the field opponent's units 1 , Until the end of this turn cost+3.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-052_L_앨리스_-_메르헨_드림.jpg"
   },
   {
     "id": "BT08-052",
-    "name": "앨리스 - 메르헨 드림",
+    "name": "Alice - 메르헨 드림",
     "type": "Leader",
     "attribute": "Wave",
     "cost": 0,
@@ -1195,13 +1195,13 @@
     "rarity": "S",
     "affiliation": "Tetra Line",
     "keyword": "Passive, Active",
-    "effect": "deck card . 4 card . unit . unit . 1 discard it. Then On the field opponent's units 1 , Until the end of this turn cost+3.",
+    "effect": "deck card . 4 card . Unit . Unit . 1 discard it. Then On the field opponent's units 1 , Until the end of this turn cost+3.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-052_L_앨리스_-_메르헨_드림.jpg"
   },
   {
     "id": "BT08-052",
-    "name": "앨리스 - 메르헨 드림",
+    "name": "Alice - 메르헨 드림",
     "type": "Leader",
     "attribute": "Wave",
     "cost": 0,
@@ -1210,7 +1210,7 @@
     "rarity": "SS",
     "affiliation": "Tetra Line",
     "keyword": "Passive, Active",
-    "effect": "deck card . 4 card . unit . unit . 1 discard it. Then On the field opponent's units 1 , Until the end of this turn cost+3.",
+    "effect": "deck card . 4 card . Unit . Unit . 1 discard it. Then On the field opponent's units 1 , Until the end of this turn cost+3.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-052_L_앨리스_-_메르헨_드림.jpg"
   },
@@ -1240,7 +1240,7 @@
     "rarity": "C",
     "affiliation": "Tetra Line",
     "keyword": "Attacker",
-    "effect": "1 discard . Then [3cost ] (3cost opponent's units unit).",
+    "effect": "1 discard . Then [3 cost ] (3 cost opponent's units unit).",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-054_C_폴크방_-_모이스트_래빗.jpg"
   },
@@ -1255,7 +1255,7 @@
     "rarity": "R",
     "affiliation": "Tetra Line",
     "keyword": "Attacker",
-    "effect": "Encounter unit 2cost 1 discard . Then Encounter unit unit Equip item .",
+    "effect": "Encounter unit 2 cost 1 discard . Then Encounter unit unit Equip item .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-055_R_아크레인저_블랙.jpg"
   },
@@ -1270,7 +1270,7 @@
     "rarity": "R",
     "affiliation": "Elysion",
     "keyword": "Passive",
-    "effect": "field with your units card 1 draw. field with your units card 1 draw.",
+    "effect": "field with your units card 1 draw. Field with your units card 1 draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-056_R_폴리_-_치얼_업_폴리스.jpg"
   },
@@ -1300,7 +1300,7 @@
     "rarity": "R",
     "affiliation": "Missilis",
     "keyword": "Guardian, Passive",
-    "effect": "1, On the field with your unitsWith this effect discard unit discard . Then unit discard . [1] (opponent's units 1 discardIf you do unit).",
+    "effect": "1, On the field with your units With this effect discard unit discard . Then unit discard . [1] (opponent's units 1 discard If you do unit).",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-058_R_백학.jpg"
   },
@@ -1315,7 +1315,7 @@
     "rarity": "C",
     "affiliation": "Tetra Line",
     "keyword": "Attacker",
-    "effect": "Encounter unit 5cost Encounter unit unit Equip item .",
+    "effect": "Encounter unit 5 cost Encounter unit unit Equip item .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-059_C_메어리___베이_갓데스.jpg"
   },
@@ -1330,7 +1330,7 @@
     "rarity": "SR",
     "affiliation": "Elysion",
     "keyword": "Attacker",
-    "effect": "1 discard . Then [5cost ] (5cost opponent's units unit).",
+    "effect": "1 discard . Then [5 cost ] (5 cost opponent's units unit).",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-060_SPR_메카미_시프티.jpg"
   },
@@ -1345,7 +1345,7 @@
     "rarity": "S",
     "affiliation": "Elysion",
     "keyword": "Attacker",
-    "effect": "1 discard . Then [5cost ] (5cost opponent's units unit).",
+    "effect": "1 discard . Then [5 cost ] (5 cost opponent's units unit).",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-060_SPR_메카미_시프티.jpg"
   },
@@ -1360,7 +1360,7 @@
     "rarity": "SR",
     "affiliation": "Elysion",
     "keyword": "Guardian, Passive",
-    "effect": "1 power+1000. 8 hit+1. [2] (opponent's units 2 discardIf you do unit). / card .",
+    "effect": "1 power+1000. 8 hit+1. [2] (opponent's units 2 discard If you do unit). / card .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-061_SPR_마스트___로망틱_메이드_-_티_서비스.jpg"
   },
@@ -1375,13 +1375,13 @@
     "rarity": "S",
     "affiliation": "Elysion",
     "keyword": "Guardian, Passive",
-    "effect": "1 power+1000. 8 hit+1. [2] (opponent's units 2 discardIf you do unit). / card .",
+    "effect": "1 power+1000. 8 hit+1. [2] (opponent's units 2 discard If you do unit). / card .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-061_SPR_마스트___로망틱_메이드_-_티_서비스.jpg"
   },
   {
     "id": "BT08-062",
-    "name": "앨리스 - 메르헨 드림",
+    "name": "Alice - 메르헨 드림",
     "type": "Unit",
     "attribute": "Wave",
     "cost": 5,
@@ -1390,13 +1390,13 @@
     "rarity": "UR",
     "affiliation": "Tetra Line",
     "keyword": "Attacker",
-    "effect": "Encounter unit 6cost Encounter unit . [2] (opponent's units unit card 2 draw). / card .",
+    "effect": "Encounter unit 6 cost Encounter unit . [2] (opponent's units unit card 2 draw). / card .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-062_SPR_앨리스_-_메르헨_드림.jpg"
   },
   {
     "id": "BT08-062",
-    "name": "앨리스 - 메르헨 드림",
+    "name": "Alice - 메르헨 드림",
     "type": "Unit",
     "attribute": "Wave",
     "cost": 5,
@@ -1405,7 +1405,7 @@
     "rarity": "S",
     "affiliation": "Tetra Line",
     "keyword": "Attacker",
-    "effect": "Encounter unit 6cost Encounter unit . [2] (opponent's units unit card 2 draw). / card .",
+    "effect": "Encounter unit 6 cost Encounter unit . [2] (opponent's units unit card 2 draw). / card .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-062_SPR_앨리스_-_메르헨_드림.jpg"
   },
@@ -1435,7 +1435,7 @@
     "rarity": "C",
     "affiliation": "",
     "keyword": "",
-    "effect": "On the field with your units 1 . unit 「 Encounter unit Berserker (unit)」 .",
+    "effect": "On the field with your units 1 . Unit 「 Encounter unit Berserker (unit)」 .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-064_C_메뉴_준비됐수다!.jpg"
   },
@@ -1450,7 +1450,7 @@
     "rarity": "C",
     "affiliation": "",
     "keyword": "",
-    "effect": "On the field your units Encounter unit 1 , Until the end of this turn cost+1. unit cost 3 On the field your units Until the end of this turn [1] (opponent's units unit card 1 draw).",
+    "effect": "On the field your units Encounter unit 1 , Until the end of this turn cost+1. Unit cost 3 On the field your units Until the end of this turn [1] (opponent's units unit card 1 draw).",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-065_C_특약_효력.jpg"
   },
@@ -1465,7 +1465,7 @@
     "rarity": "R",
     "affiliation": "",
     "keyword": "",
-    "effect": "On the field your units Encounter unit 1 , Until the end of this turn cost+3. unit 6cost card 1 draw.",
+    "effect": "On the field your units Encounter unit 1 , Until the end of this turn cost+3. Unit 6 cost card 1 draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-066_R_아크레인저.jpg"
   },
@@ -1510,7 +1510,7 @@
     "rarity": "",
     "affiliation": "Pilgrim",
     "keyword": "Passive",
-    "effect": "deck card . 5 card . unit . unit . discard 0cost item card 1 . Then On the field card card item Equip your units 1 , Until the end of this turn hit+1.",
+    "effect": "deck card . 5 card . Unit . Unit . Discard 0 cost item card 1 . Then On the field card card item Equip your units 1 , Until the end of this turn hit+1.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-069_L_지즈.jpg"
   },
@@ -1525,7 +1525,7 @@
     "rarity": "S",
     "affiliation": "Pilgrim",
     "keyword": "Passive",
-    "effect": "deck card . 5 card . unit . unit . discard 0cost item card 1 . Then On the field card card item Equip your units 1 , Until the end of this turn hit+1.",
+    "effect": "deck card . 5 card . Unit . Unit . Discard 0 cost item card 1 . Then On the field card card item Equip your units 1 , Until the end of this turn hit+1.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-069_L_지즈.jpg"
   },
@@ -1540,7 +1540,7 @@
     "rarity": "S",
     "affiliation": "Pilgrim",
     "keyword": "Passive",
-    "effect": "deck card . 5 card . unit . unit . discard 0cost item card 1 . Then On the field card card item Equip your units 1 , Until the end of this turn hit+1.",
+    "effect": "deck card . 5 card . Unit . Unit . Discard 0 cost item card 1 . Then On the field card card item Equip your units 1 , Until the end of this turn hit+1.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-069_L_지즈.jpg"
   },
@@ -1555,7 +1555,7 @@
     "rarity": "SS",
     "affiliation": "Pilgrim",
     "keyword": "Passive",
-    "effect": "deck card . 5 card . unit . unit . discard 0cost item card 1 . Then On the field card card item Equip your units 1 , Until the end of this turn hit+1.",
+    "effect": "deck card . 5 card . Unit . Unit . Discard 0 cost item card 1 . Then On the field card card item Equip your units 1 , Until the end of this turn hit+1.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-069_L_지즈.jpg"
   },
@@ -1570,7 +1570,7 @@
     "rarity": "C",
     "affiliation": "Tetra Line",
     "keyword": "Entry",
-    "effect": "discard 0cost item card 1 .",
+    "effect": "discard 0 cost item card 1 .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-070_C_네로.jpg"
   },
@@ -1585,7 +1585,7 @@
     "rarity": "C",
     "affiliation": "Tetra Line",
     "keyword": "Attacker",
-    "effect": "deck card 1 . card 0cost item card 1 discard it.",
+    "effect": "deck card 1 . Card 0 cost item card 1 discard it.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-071_C_에이드___에이전트_바니.jpg"
   },
@@ -1600,7 +1600,7 @@
     "rarity": "C",
     "affiliation": "Missilis",
     "keyword": "Entry",
-    "effect": "discard 1cost item card 1 On the field your units Equip .",
+    "effect": "discard 1 cost item card 1 On the field your units Equip .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-072_C_일레그___붐_앤_쇼크.jpg"
   },
@@ -1615,7 +1615,7 @@
     "rarity": "R",
     "affiliation": "Tetra Line",
     "keyword": "Entry",
-    "effect": "field item Equip your units discard 3cost card 1 .",
+    "effect": "field item Equip your units discard 3 cost card 1 .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-073_R_에이드_-_메이드_인_스프링.jpg"
   },
@@ -1630,7 +1630,7 @@
     "rarity": "R",
     "affiliation": "Pilgrim",
     "keyword": "Passive",
-    "effect": "1, On the field your units 0cost item EquipIf you do card 1 draw.",
+    "effect": "1, On the field your units 0 cost item Equip If you do card 1 draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-074_R_차임.jpg"
   },
@@ -1645,7 +1645,7 @@
     "rarity": "R",
     "affiliation": "Pilgrim",
     "keyword": "Attacker",
-    "effect": "unit Equip 0cost item choose any number of discard it. Then Until the end of this turn With this effect discard card 1 Encounter unit power-2000. With this effect Encounter unit discardIf you do card 1 draw.",
+    "effect": "Unit - Equip: Choose any number of items with cost 0 or less and discard them. Then Until the end of this turn, you may discard a card. If you do, when this unit encounters another unit, that unit gets power -2000. When this unit encounters another unit, you may discard a card. If you do, draw a card.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-075_P_크라운_-_영화.jpg"
   },
@@ -1690,7 +1690,7 @@
     "rarity": "UR",
     "affiliation": "Pilgrim",
     "keyword": "Active",
-    "effect": "On the field opponent's units 1 . unit hit unit Equip 0cost item discard it. Then unit discard it. / card .",
+    "effect": "On the field opponent's units 1 . When this unit hits a unit with an equipped item of cost 0 or less, discard that item. Then discard this unit. Draw a card.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-077_SPR_지즈.jpg"
   },
@@ -1705,7 +1705,7 @@
     "rarity": "S",
     "affiliation": "Pilgrim",
     "keyword": "Active",
-    "effect": "On the field opponent's units 1 . unit hit unit Equip 0cost item discard it. Then unit discard it. / card .",
+    "effect": "On the field opponent's units 1 . When this unit hits a unit with an equipped item of cost 0 or less, discard that item. Then discard this unit. Draw a card.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-077_SPR_지즈.jpg"
   },
@@ -1720,7 +1720,7 @@
     "rarity": "SR",
     "affiliation": "Pilgrim",
     "keyword": "Active",
-    "effect": "3cost card 1 discard it. Then card 1 draw. field item Equip your units With this effect discard card . / card .",
+    "effect": "3 cost card 1 discard it. Then card 1 draw. Field item Equip your units With this effect discard card . / card .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-078_SPR_바하무트.jpg"
   },
@@ -1735,7 +1735,7 @@
     "rarity": "S",
     "affiliation": "Pilgrim",
     "keyword": "Active",
-    "effect": "3cost card 1 discard it. Then card 1 draw. field item Equip your units With this effect discard card . / card .",
+    "effect": "3 cost card 1 discard it. Then card 1 draw. Field item Equip your units With this effect discard card . / card .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-078_SPR_바하무트.jpg"
   },
@@ -1750,7 +1750,7 @@
     "rarity": "C",
     "affiliation": "",
     "keyword": "",
-    "effect": "On the field your units 1 . unit Equip 0cost item choose any number of On the field your units 1 Equip. With this effect Equip item 2 card 1 draw.",
+    "effect": "On the field, your units get +1 . Unit - Equip: Choose any number of items with cost 0 or less, On the field, your units get +1 Equip. With this effect Equip an item. If you do, draw 2 cards.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-079_C_깔끔한_마무리.jpg"
   },
@@ -1765,7 +1765,7 @@
     "rarity": "C",
     "affiliation": "",
     "keyword": "",
-    "effect": "On the field 0cost item Equip your units 1 , Until the end of this turn hit+1. unit Equip item 2 discard 0cost item card 1 .",
+    "effect": "On the field 0 cost item Equip your units 1 , Until the end of this turn hit+1. Unit Equip item 2 discard 0 cost item card 1 .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-080_C_네이키드_리틀_킹.jpg"
   },
@@ -1780,7 +1780,7 @@
     "rarity": "C",
     "affiliation": "",
     "keyword": "",
-    "effect": "discard 0cost item card 3 . With this effect card 1 discard it.",
+    "effect": "discard 0 cost item card 3 . With this effect card 1 discard it.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT08-081_C_안아···_줘..jpg"
   },
@@ -1906,7 +1906,7 @@
   },
   {
     "id": "BT01-012",
-    "name": "엠마-달링 레드",
+    "name": "M마-달링 레드",
     "type": "Unit",
     "attribute": "Flame",
     "cost": 4,
@@ -1945,13 +1945,13 @@
     "rarity": "",
     "affiliation": "Tetra Line",
     "keyword": "Active",
-    "effect": "1 discard it. Then On the field your units 1 , Until the end of this turn power+4000.",
+    "effect": "1 discard it. Then On the field, your units get +1 , Until the end of this turn power+4000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-038_C_루피.jpg"
   },
   {
     "id": "BT01-057",
-    "name": "미하라",
+    "name": "Mihara",
     "type": "Unit",
     "attribute": "Storm",
     "cost": 1,
@@ -1981,7 +1981,7 @@
   },
   {
     "id": "ST01-001",
-    "name": "라피",
+    "name": "Rapi",
     "type": "Leader",
     "attribute": "Flame",
     "cost": 0,
@@ -1996,7 +1996,7 @@
   },
   {
     "id": "ST01-001",
-    "name": "라피",
+    "name": "Rapi",
     "type": "Leader",
     "attribute": "Flame",
     "cost": 0,
@@ -2011,7 +2011,7 @@
   },
   {
     "id": "ST01-010",
-    "name": "아니스",
+    "name": "Anis",
     "type": "Unit",
     "attribute": "Flame",
     "cost": 6,
@@ -2026,7 +2026,7 @@
   },
   {
     "id": "ST01-010",
-    "name": "아니스",
+    "name": "Anis",
     "type": "Unit",
     "attribute": "Flame",
     "cost": 6,
@@ -2041,7 +2041,7 @@
   },
   {
     "id": "ST01-011",
-    "name": "라피",
+    "name": "Rapi",
     "type": "Unit",
     "attribute": "Flame",
     "cost": 7,
@@ -2080,7 +2080,7 @@
     "rarity": "SR",
     "affiliation": "Tetra Line",
     "keyword": "Entry",
-    "effect": "Until the end of this turn Encounter unit power-4000.",
+    "effect": "Until the end of this turn Encounter unit power -4000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-015_R_누아르-흑묘.jpg"
   },
@@ -2095,7 +2095,7 @@
     "rarity": "SR",
     "affiliation": "",
     "keyword": "",
-    "effect": "On the field opponent's units 1 , Until the end of this turn power-3000. With this effect unit discard card 1 draw.",
+    "effect": "On the field opponent's units 1 , Until the end of this turn power -3000. With this effect unit discard card 1 draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-024_R_피날레.jpg"
   },
@@ -2110,7 +2110,7 @@
     "rarity": "SR",
     "affiliation": "",
     "keyword": "",
-    "effect": "On the field opponent's units 1 . unit card 1 discardIf you do Until the end of this turn unit power discard unit card power .",
+    "effect": "On the field opponent's units 1 . Unit card 1 discard If you do Until the end of this turn unit power discard unit card power .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-015_R_계승되는_힘.jpg"
   },
@@ -2146,7 +2146,7 @@
   },
   {
     "id": "SB01-002",
-    "name": "베이-래디언트 래빗",
+    "name": "베이-래D언트 래빗",
     "type": "Unit",
     "attribute": "Flame",
     "cost": 4,
@@ -2161,7 +2161,7 @@
   },
   {
     "id": "SB01-002",
-    "name": "베이-래디언트 래빗",
+    "name": "베이-래D언트 래빗",
     "type": "Unit",
     "attribute": "Flame",
     "cost": 4,
@@ -2176,7 +2176,7 @@
   },
   {
     "id": "SB01-003",
-    "name": "라피 : 레드 후드-레드 플레이버",
+    "name": "Rapi : 레드 후드-레드 플레이버",
     "type": "Unit",
     "attribute": "Flame",
     "cost": 5,
@@ -2191,7 +2191,7 @@
   },
   {
     "id": "SB01-003",
-    "name": "라피 : 레드 후드-레드 플레이버",
+    "name": "Rapi : 레드 후드-레드 플레이버",
     "type": "Unit",
     "attribute": "Flame",
     "cost": 5,
@@ -2326,7 +2326,7 @@
   },
   {
     "id": "ST02-011",
-    "name": "디젤",
+    "name": "Diesel",
     "type": "Unit",
     "attribute": "Earth",
     "cost": 7,
@@ -2356,7 +2356,7 @@
   },
   {
     "id": "BT01-043",
-    "name": "티아",
+    "name": "Tia",
     "type": "Unit",
     "attribute": "Earth",
     "cost": 6,
@@ -2386,7 +2386,7 @@
   },
   {
     "id": "SB01-007",
-    "name": "티아-스윗 셰프",
+    "name": "Tia-스윗 셰프",
     "type": "Unit",
     "attribute": "Earth",
     "cost": 3,
@@ -2401,7 +2401,7 @@
   },
   {
     "id": "SB01-007",
-    "name": "티아-스윗 셰프",
+    "name": "Tia-스윗 셰프",
     "type": "Unit",
     "attribute": "Earth",
     "cost": 3,
@@ -2491,7 +2491,7 @@
   },
   {
     "id": "ST03-001",
-    "name": "모더니아",
+    "name": "Modernia",
     "type": "Leader",
     "attribute": "Storm",
     "cost": 0,
@@ -2506,7 +2506,7 @@
   },
   {
     "id": "ST03-001",
-    "name": "모더니아",
+    "name": "Modernia",
     "type": "Leader",
     "attribute": "Storm",
     "cost": 0,
@@ -2566,7 +2566,7 @@
   },
   {
     "id": "ST03-011",
-    "name": "모더니아",
+    "name": "Modernia",
     "type": "Unit",
     "attribute": "Storm",
     "cost": 7,
@@ -2605,7 +2605,7 @@
     "rarity": "SR",
     "affiliation": "",
     "keyword": "",
-    "effect": "unit card 1 discard it. card hit card draw.",
+    "effect": "unit card 1 discard it. Card hit card draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-026_C_신세계.jpg"
   },
@@ -2620,7 +2620,7 @@
     "rarity": "SR",
     "affiliation": "",
     "keyword": "",
-    "effect": "On the field your units 1 . On the field all other your units power Until the end of this turn unit power . unit discard it.",
+    "effect": "On the field, your units get +1 . On the field all other your units power Until the end of this turn unit power . Unit discard it.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-049_C_본딩_페인.jpg"
   },
@@ -2641,7 +2641,7 @@
   },
   {
     "id": "SB01-012",
-    "name": "미하라 : 본딩 체인-페인 이터",
+    "name": "Mihara : 본딩 체인-페인 이터",
     "type": "Unit",
     "attribute": "Storm",
     "cost": 2,
@@ -2656,7 +2656,7 @@
   },
   {
     "id": "SB01-012",
-    "name": "미하라 : 본딩 체인-페인 이터",
+    "name": "Mihara : 본딩 체인-페인 이터",
     "type": "Unit",
     "attribute": "Storm",
     "cost": 2,
@@ -2776,7 +2776,7 @@
   },
   {
     "id": "ST04-007",
-    "name": "앨리스",
+    "name": "Alice",
     "type": "Unit",
     "attribute": "Wave",
     "cost": 3,
@@ -2791,7 +2791,7 @@
   },
   {
     "id": "ST04-007",
-    "name": "앨리스",
+    "name": "Alice",
     "type": "Unit",
     "attribute": "Wave",
     "cost": 3,
@@ -2860,7 +2860,7 @@
     "rarity": "SR",
     "affiliation": "Elysion",
     "keyword": "Defender, Entry",
-    "effect": "2 discard . Then 5cost unit . power+1000.",
+    "effect": "2 discard . Then 5 cost unit . Power+1000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-059_R_앵커___이노센트_메이드.jpg"
   },
@@ -2926,7 +2926,7 @@
   },
   {
     "id": "SB01-018",
-    "name": "헬름-샹들리에 라이트",
+    "name": "헬름-샹들리에 Light",
     "type": "Unit",
     "attribute": "Wave",
     "cost": 3,
@@ -2971,7 +2971,7 @@
   },
   {
     "id": "SB01-020",
-    "name": "도로시 : 세렌디피티",
+    "name": "도로시 : 세렌D피티",
     "type": "Unit",
     "attribute": "Wave",
     "cost": 5,
@@ -2986,7 +2986,7 @@
   },
   {
     "id": "SB01-020",
-    "name": "도로시 : 세렌디피티",
+    "name": "도로시 : 세렌D피티",
     "type": "Unit",
     "attribute": "Wave",
     "cost": 5,
@@ -3046,7 +3046,7 @@
   },
   {
     "id": "ST05-006",
-    "name": "크라운",
+    "name": "Crown",
     "type": "Unit",
     "attribute": "",
     "cost": 3,
@@ -3061,7 +3061,7 @@
   },
   {
     "id": "ST05-006",
-    "name": "크라운",
+    "name": "Crown",
     "type": "Unit",
     "attribute": "",
     "cost": 3,
@@ -3100,13 +3100,13 @@
     "rarity": "SR",
     "affiliation": "",
     "keyword": "",
-    "effect": "discard 1cost item card 1 .",
+    "effect": "discard 1 cost item card 1 .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-076_R_로얄_에타이어.jpg"
   },
   {
     "id": "BT03-073",
-    "name": "소다 : 트윙클링 바니",
+    "name": "Soda : 트윙클링 바니",
     "type": "Unit",
     "attribute": "",
     "cost": 3,
@@ -3115,7 +3115,7 @@
     "rarity": "SR",
     "affiliation": "Tetra Line",
     "keyword": "Active",
-    "effect": "unit Equip item 1 deck card 3 discard it. Until the end of this turn With this effect discard item card 1 hit+1. / card discard it. card 2 draw. Then 2 discard it.",
+    "effect": "unit Equip item 1 deck card 3 discard it. Until the end of this turn, when discard item card 1 hit+1. / card discard it. Card 2 draw. Then 2 discard it.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-073_R_소다___트윙클링_바니.jpg"
   },
@@ -3130,7 +3130,7 @@
     "rarity": "SR",
     "affiliation": "Missilis",
     "keyword": "Entry",
-    "effect": "discard item card 3 deck . card cost Encounter unit cost Encounter unit discard it.",
+    "effect": "discard item card 3 deck . Card cost Encounter unit cost Encounter unit discard it.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-075_R_슈엔.jpg"
   },
@@ -3265,7 +3265,7 @@
     "rarity": "",
     "affiliation": "",
     "keyword": "",
-    "effect": "2 discard it. 3 card draw. / card discard it. discard 2cost unit card 1 .",
+    "effect": "2 discard it. 3 card draw. / card discard it. Discard 2 cost unit card 1 .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-012_C_꽃구경하지_않겠는가..jpg"
   },
@@ -3280,13 +3280,13 @@
     "rarity": "",
     "affiliation": "",
     "keyword": "",
-    "effect": "deck card 5 discard it. discard unit card 1 . / card discard it. deck 1cost item card 1 . deck .",
+    "effect": "deck card 5 discard it. Discard unit card 1 . / card discard it. Deck 1 cost item card 1 . Deck .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-081_C_거대한_집게.jpg"
   },
   {
     "id": "BT03-001",
-    "name": "라피 : 레드 후드",
+    "name": "Rapi : 레드 후드",
     "type": "Leader",
     "attribute": "Flame",
     "cost": 0,
@@ -3295,13 +3295,13 @@
     "rarity": "",
     "affiliation": "Elysion",
     "keyword": "Active",
-    "effect": "deck card . 5 card . 1 On the field opponent's units 1 , Until the end of this turn power-2000.",
+    "effect": "deck card . 5 card . 1 On the field opponent's units 1 , Until the end of this turn power -2000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-001_L_라피___레드_후드.jpg"
   },
   {
     "id": "BT03-001",
-    "name": "라피 : 레드 후드",
+    "name": "Rapi : 레드 후드",
     "type": "Leader",
     "attribute": "Flame",
     "cost": 0,
@@ -3310,7 +3310,7 @@
     "rarity": "S",
     "affiliation": "Elysion",
     "keyword": "Active",
-    "effect": "deck card . 5 card . 1 On the field opponent's units 1 , Until the end of this turn power-2000.",
+    "effect": "deck card . 5 card . 1 On the field opponent's units 1 , Until the end of this turn power -2000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-001_L_라피___레드_후드.jpg"
   },
@@ -3325,7 +3325,7 @@
     "rarity": "C",
     "affiliation": "Tetra Line",
     "keyword": "Attacker",
-    "effect": "Encounter unit power-1500.",
+    "effect": "Encounter unit power -1500.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-002_C_바이퍼-샤인_오브_러브.jpg"
   },
@@ -3340,13 +3340,13 @@
     "rarity": "C",
     "affiliation": "Pilgrim",
     "keyword": "Attacker",
-    "effect": "Encounter unit power-2000.",
+    "effect": "Encounter unit power -2000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-003_C_홍련___흑영.jpg"
   },
   {
     "id": "BT03-004",
-    "name": "아니스 : 스파클링 서머",
+    "name": "Anis : 스파클링 서머",
     "type": "Unit",
     "attribute": "Flame",
     "cost": 2,
@@ -3355,13 +3355,13 @@
     "rarity": "R",
     "affiliation": "Tetra Line",
     "keyword": "Entry",
-    "effect": "On the field [1] with your units 1 . unit Until the end of this turn [2] (unit opponent's units discard 2)power+1000.",
+    "effect": "On the field [1] with your units 1 . Unit Until the end of this turn [2] (unit opponent's units discard 2)power+1000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-004_R_아니스___스파클링_서머.jpg"
   },
   {
     "id": "BT03-005",
-    "name": "라피-화이트 프로미스",
+    "name": "Rapi-화이트 프로미스",
     "type": "Unit",
     "attribute": "Flame",
     "cost": 3,
@@ -3415,13 +3415,13 @@
     "rarity": "C",
     "affiliation": "Elysion",
     "keyword": "Attacker",
-    "effect": "3 discard 3cost card 1 . Then power+2000.",
+    "effect": "3 discard 3 cost card 1 . Then power+2000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-007_C_베스티-아크_메이지.jpg"
   },
   {
     "id": "BT03-008",
-    "name": "노이즈-체리블로섬 스테이지",
+    "name": "Noise-체리블로섬 스테이지",
     "type": "Unit",
     "attribute": "Flame",
     "cost": 4,
@@ -3430,13 +3430,13 @@
     "rarity": "R",
     "affiliation": "Tetra Line",
     "keyword": "Active",
-    "effect": "2cost 1 discard . Then Until the end of this turn [1] (unit opponent's units discard 1).",
+    "effect": "2 cost 1 discard . Then Until the end of this turn [1] (unit opponent's units discard 1).",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-008_R_노이즈-체리블로섬_스테이지.jpg"
   },
   {
     "id": "BT03-009",
-    "name": "브래디",
+    "name": "브래D",
     "type": "Unit",
     "attribute": "Flame",
     "cost": 5,
@@ -3445,13 +3445,13 @@
     "rarity": "SR",
     "affiliation": "Tetra Line",
     "keyword": "Attacker",
-    "effect": "choose any number of discard it. Until the end of this turn discard card 1 Encounter unit power-2500. / card discard it. On the field opponent's units 1 , Until the end of this turn power-5000.",
+    "effect": "choose any number of items and discard them Until the end of this turn discard card 1 Encounter unit power -2500. / card discard it. On the field opponent's units 1 , Until the end of this turn power -5000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-009_SPR_브래디.jpg"
   },
   {
     "id": "BT03-009",
-    "name": "브래디",
+    "name": "브래D",
     "type": "Unit",
     "attribute": "Flame",
     "cost": 5,
@@ -3460,7 +3460,7 @@
     "rarity": "S",
     "affiliation": "Tetra Line",
     "keyword": "Attacker",
-    "effect": "choose any number of discard it. Until the end of this turn discard card 1 Encounter unit power-2500. / card discard it. On the field opponent's units 1 , Until the end of this turn power-5000.",
+    "effect": "choose any number of items and discard them Until the end of this turn discard card 1 Encounter unit power -2500. / card discard it. On the field opponent's units 1 , Until the end of this turn power -5000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-009_SPR_브래디.jpg"
   },
@@ -3475,13 +3475,13 @@
     "rarity": "R",
     "affiliation": "Tetra Line",
     "keyword": "Entry",
-    "effect": "Until the end of this turn Encounter unit power-4000. With this effect unit discard card 1 draw.",
+    "effect": "Until the end of this turn Encounter unit power -4000. With this effect unit discard card 1 draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-010_R_크러스트.jpg"
   },
   {
     "id": "BT03-011",
-    "name": "라피 : 레드 후드",
+    "name": "Rapi : 레드 후드",
     "type": "Unit",
     "attribute": "Flame",
     "cost": 7,
@@ -3490,13 +3490,13 @@
     "rarity": "UR",
     "affiliation": "Elysion",
     "keyword": "Attacker, Active",
-    "effect": "1 discard . Then discard card cost card 1 . power+2000. / card .",
+    "effect": "1 discard . Then discard card cost card 1 . Power+2000. / card .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-011_SPR_라피___레드_후드.jpg"
   },
   {
     "id": "BT03-011",
-    "name": "라피 : 레드 후드",
+    "name": "Rapi : 레드 후드",
     "type": "Unit",
     "attribute": "Flame",
     "cost": 7,
@@ -3505,7 +3505,7 @@
     "rarity": "S",
     "affiliation": "Elysion",
     "keyword": "Attacker, Active",
-    "effect": "1 discard . Then discard card cost card 1 . power+2000. / card .",
+    "effect": "1 discard . Then discard card cost card 1 . Power+2000. / card .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-011_SPR_라피___레드_후드.jpg"
   },
@@ -3520,7 +3520,7 @@
     "rarity": "C",
     "affiliation": "",
     "keyword": "",
-    "effect": "2 discard it. 3 card draw. / card discard it. discard 2cost unit card 1 .",
+    "effect": "2 discard it. 3 card draw. / card discard it. Discard 2 cost unit card 1 .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-012_C_꽃구경하지_않겠는가..jpg"
   },
@@ -3535,7 +3535,7 @@
     "rarity": "C",
     "affiliation": "",
     "keyword": "",
-    "effect": "On the field opponent's units 1 . Until the end of this turn 1 unit power-1000.",
+    "effect": "On the field opponent's units 1 . Until the end of this turn 1 unit power -1000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-013_C_뉴_플레이버.jpg"
   },
@@ -3550,7 +3550,7 @@
     "rarity": "C",
     "affiliation": "",
     "keyword": "",
-    "effect": "On the field 4cost your units 1 . unit Until the end of this turn (unit Encounter unit).",
+    "effect": "On the field 4 cost your units 1 . Unit Until the end of this turn (unit Encounter unit).",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-014_C_폭발은_예술이다..jpg"
   },
@@ -3565,7 +3565,7 @@
     "rarity": "R",
     "affiliation": "",
     "keyword": "",
-    "effect": "On the field opponent's units 1 . unit card 1 discardIf you do Until the end of this turn unit power discard unit card power .",
+    "effect": "On the field opponent's units 1 . Unit card 1 discard If you do Until the end of this turn unit power discard unit card power .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-015_R_계승되는_힘.jpg"
   },
@@ -3610,7 +3610,7 @@
     "rarity": "",
     "affiliation": "Missilis",
     "keyword": "",
-    "effect": "deck card . 5 card . unit unit your units power+1000.",
+    "effect": "deck card . 5 card . Unit unit your units power+1000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-018_L_나가-라스트_걸후드.jpg"
   },
@@ -3625,7 +3625,7 @@
     "rarity": "S",
     "affiliation": "Missilis",
     "keyword": "",
-    "effect": "deck card . 5 card . unit unit your units power+1000.",
+    "effect": "deck card . 5 card . Unit unit your units power+1000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-018_L_나가-라스트_걸후드.jpg"
   },
@@ -3655,7 +3655,7 @@
     "rarity": "SR",
     "affiliation": "Missilis",
     "keyword": "",
-    "effect": "6 unit unit power+3000, hit+1. / card discard it. On the field 3cost opponent's units 1 discard it.",
+    "effect": "6 unit unit power+3000, hit+1. / card discard it. On the field 3 cost opponent's units 1 discard it.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-020_SPR_트리나.jpg"
   },
@@ -3670,13 +3670,13 @@
     "rarity": "S",
     "affiliation": "Missilis",
     "keyword": "",
-    "effect": "6 unit unit power+3000, hit+1. / card discard it. On the field 3cost opponent's units 1 discard it.",
+    "effect": "6 unit unit power+3000, hit+1. / card discard it. On the field 3 cost opponent's units 1 discard it.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-020_SPR_트리나.jpg"
   },
   {
     "id": "BT03-021",
-    "name": "티아",
+    "name": "Tia",
     "type": "Unit",
     "attribute": "Earth",
     "cost": 3,
@@ -3700,7 +3700,7 @@
     "rarity": "R",
     "affiliation": "Missilis",
     "keyword": "",
-    "effect": "6 unit unit On the field 3cost all other your units power+2000.",
+    "effect": "6 unit unit On the field 3 cost all other your units power+2000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-022_R_플로라.jpg"
   },
@@ -3715,7 +3715,7 @@
     "rarity": "C",
     "affiliation": "Elysion",
     "keyword": "Entry",
-    "effect": "deck card 2 , 4cost unit card 1 . discard it.",
+    "effect": "deck card 2 , 4 cost unit card 1 . Discard it.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-023_C_브리드-클래식_워커.jpg"
   },
@@ -3736,7 +3736,7 @@
   },
   {
     "id": "BT03-025",
-    "name": "디젤-스트로베리 플라워",
+    "name": "Diesel-스트로베리 플라워",
     "type": "Unit",
     "attribute": "Earth",
     "cost": 5,
@@ -3805,7 +3805,7 @@
     "rarity": "UR",
     "affiliation": "Missilis",
     "keyword": "Attacker",
-    "effect": "10 [4cost ] (4cost opponent's units unit). / card .",
+    "effect": "10 [4 cost ] (4 cost opponent's units unit). / card .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-028_SPR_나가-라스트_걸후드.jpg"
   },
@@ -3820,7 +3820,7 @@
     "rarity": "S",
     "affiliation": "Missilis",
     "keyword": "Attacker",
-    "effect": "10 [4cost ] (4cost opponent's units unit). / card .",
+    "effect": "10 [4 cost ] (4 cost opponent's units unit). / card .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-028_SPR_나가-라스트_걸후드.jpg"
   },
@@ -3835,7 +3835,7 @@
     "rarity": "C",
     "affiliation": "",
     "keyword": "",
-    "effect": "On the field 5cost your units 1 , Until the end of this turn hit+1.",
+    "effect": "On the field 5 cost your units 1 , Until the end of this turn hit+1.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-029_C_브랜드_뉴_이어.jpg"
   },
@@ -3850,7 +3850,7 @@
     "rarity": "C",
     "affiliation": "",
     "keyword": "",
-    "effect": "On the field 3cost your units Until the end of this turn hit+1. 3cost your units 3 card 1 draw.",
+    "effect": "On the field 3 cost your units Until the end of this turn hit+1. 3 cost your units 3 card 1 draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-030_C_최적의_경로.jpg"
   },
@@ -3865,7 +3865,7 @@
     "rarity": "R",
     "affiliation": "",
     "keyword": "",
-    "effect": "On the field 3cost your units 1 . unit power Encounter unit power Encounter unit discard it.",
+    "effect": "On the field 3 cost your units 1 . Unit power Encounter unit power Encounter unit discard it.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-031_R_축제의_끝.jpg"
   },
@@ -3880,7 +3880,7 @@
     "rarity": "C",
     "affiliation": "",
     "keyword": "",
-    "effect": "On the field 3cost your units Until the end of this turn power+5000. 3cost your units 3 hit+1. / card discard it. +1.",
+    "effect": "On the field 3 cost your units Until the end of this turn power+5000. 3 cost your units 3 hit+1. / card discard it. +1.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-032_C_시크릿_가든.jpg"
   },
@@ -3955,7 +3955,7 @@
     "rarity": "C",
     "affiliation": "Tetra Line",
     "keyword": "Exit",
-    "effect": "On the field your units 1 card 1 draw.",
+    "effect": "On the field, your units get +1 card 1 draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-036_C_로산나___시크_오션.jpg"
   },
@@ -3970,13 +3970,13 @@
     "rarity": "C",
     "affiliation": "Pilgrim",
     "keyword": "Exit",
-    "effect": "On the field opponent's units 1 . Until the end of this turn On the field your units 1 unit power-2500.",
+    "effect": "On the field opponent's units 1 . Until the end of this turn On the field, your units get +1 unit power -2500.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-037_C_니힐리스타.jpg"
   },
   {
     "id": "BT03-038",
-    "name": "모더니아-퍼스트 어펙션",
+    "name": "Modernia-퍼스트 어펙션",
     "type": "Unit",
     "attribute": "Storm",
     "cost": 2,
@@ -3991,7 +3991,7 @@
   },
   {
     "id": "BT03-039",
-    "name": "신데렐라-유리 공주",
+    "name": "Cinderella-유리 공주",
     "type": "Unit",
     "attribute": "Storm",
     "cost": 3,
@@ -4000,13 +4000,13 @@
     "rarity": "SR",
     "affiliation": "Pilgrim",
     "keyword": "Exit",
-    "effect": "discard 4cost unit card 1 .",
+    "effect": "discard 4 cost unit card 1 .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-039_SPR_신데렐라-유리_공주.jpg"
   },
   {
     "id": "BT03-039",
-    "name": "신데렐라-유리 공주",
+    "name": "Cinderella-유리 공주",
     "type": "Unit",
     "attribute": "Storm",
     "cost": 3,
@@ -4015,7 +4015,7 @@
     "rarity": "S",
     "affiliation": "Pilgrim",
     "keyword": "Exit",
-    "effect": "discard 4cost unit card 1 .",
+    "effect": "discard 4 cost unit card 1 .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-039_SPR_신데렐라-유리_공주.jpg"
   },
@@ -4036,7 +4036,7 @@
   },
   {
     "id": "BT03-041",
-    "name": "미하라 : 본딩 체인",
+    "name": "Mihara : 본딩 체인",
     "type": "Unit",
     "attribute": "Storm",
     "cost": 4,
@@ -4045,13 +4045,13 @@
     "rarity": "SR",
     "affiliation": "Missilis",
     "keyword": "Guardian, Exit",
-    "effect": "Sacrifice[1] (opponent's units On the field your units 1 discardIf you do unit). unit card item card 1 discard . Then unit unit unit card power+2500. / card .",
+    "effect": "Sacrifice[1] (opponent's units On the field, your units get +1 discard If you do unit). Unit card item card 1 discard . Then unit unit unit card power+2500. / card .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-041_SPR_미하라___본딩_체인.jpg"
   },
   {
     "id": "BT03-041",
-    "name": "미하라 : 본딩 체인",
+    "name": "Mihara : 본딩 체인",
     "type": "Unit",
     "attribute": "Storm",
     "cost": 4,
@@ -4060,7 +4060,7 @@
     "rarity": "S",
     "affiliation": "Missilis",
     "keyword": "Guardian, Exit",
-    "effect": "Sacrifice[1] (opponent's units On the field your units 1 discardIf you do unit). unit card item card 1 discard . Then unit unit unit card power+2500. / card .",
+    "effect": "Sacrifice[1] (opponent's units On the field, your units get +1 discard If you do unit). Unit card item card 1 discard . Then unit unit unit card power+2500. / card .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-041_SPR_미하라___본딩_체인.jpg"
   },
@@ -4090,7 +4090,7 @@
     "rarity": "C",
     "affiliation": "Elysion",
     "keyword": "Entry",
-    "effect": "Encounter unit 4cost unit Until the end of this turn Finisher (When declaring defense, immediately end the opponent's current attack and discard this unit).",
+    "effect": "Encounter unit 4 cost unit Until the end of this turn Finisher (When declaring defense, immediately end the opponent's current attack and discard this unit).",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-043_C_메이든-언더_더_썬.jpg"
   },
@@ -4105,7 +4105,7 @@
     "rarity": "UR",
     "affiliation": "Pilgrim",
     "keyword": "Active, Entry",
-    "effect": "1 Encounter unit discard it. 2 Until the end of this turn power+3000. / card discard it. discard unit card 1 .",
+    "effect": "1 Encounter unit discard it. 2 Until the end of this turn power+3000. / card discard it. Discard unit card 1 .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-044_SPR_리틀_머메이드-어비스_플라워.jpg"
   },
@@ -4120,7 +4120,7 @@
     "rarity": "S",
     "affiliation": "Pilgrim",
     "keyword": "Active, Entry",
-    "effect": "1 Encounter unit discard it. 2 Until the end of this turn power+3000. / card discard it. discard unit card 1 .",
+    "effect": "1 Encounter unit discard it. 2 Until the end of this turn power+3000. / card discard it. Discard unit card 1 .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-044_SPR_리틀_머메이드-어비스_플라워.jpg"
   },
@@ -4135,7 +4135,7 @@
     "rarity": "R",
     "affiliation": "Elysion",
     "keyword": "Entry",
-    "effect": "On the field your units 1 discard it. Then On the field your units Until the end of this turn (unit card discard).",
+    "effect": "On the field, your units get +1 discard it. Then On the field your units Until the end of this turn (unit card discard).",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-045_R_D___킬러_와이프-시크릿_파티_클리너.jpg"
   },
@@ -4150,7 +4150,7 @@
     "rarity": "C",
     "affiliation": "",
     "keyword": "",
-    "effect": "On the field 2cost your units 1 discard it. Then card 1 draw.",
+    "effect": "On the field 2 cost your units 1 discard it. Then card 1 draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-046_C_킬_더_로드.jpg"
   },
@@ -4180,7 +4180,7 @@
     "rarity": "R",
     "affiliation": "",
     "keyword": "",
-    "effect": "discard 4cost 6cost unit card 1 . / card discard it. 3 1 discard it.",
+    "effect": "discard 4 cost 6 cost unit card 1 . / card discard it. 3 1 discard it.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-048_R_궤도_엘리베이터.jpg"
   },
@@ -4195,7 +4195,7 @@
     "rarity": "C",
     "affiliation": "",
     "keyword": "",
-    "effect": "On the field your units 1 . On the field all other your units power Until the end of this turn unit power . unit discard it.",
+    "effect": "On the field, your units get +1 . On the field all other your units power Until the end of this turn unit power . Unit discard it.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-049_C_본딩_페인.jpg"
   },
@@ -4240,7 +4240,7 @@
     "rarity": "",
     "affiliation": "Elysion",
     "keyword": "Active",
-    "effect": "deck card . 6 card . 3cost 1 discard it. Then On the field your units 1 . unit .",
+    "effect": "deck card . 6 card . 3 cost 1 discard it. Then On the field, your units get +1 . Unit .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-052_L_마스트___로망틱_메이드.jpg"
   },
@@ -4255,7 +4255,7 @@
     "rarity": "S",
     "affiliation": "Elysion",
     "keyword": "Active",
-    "effect": "deck card . 6 card . 3cost 1 discard it. Then On the field your units 1 . unit .",
+    "effect": "deck card . 6 card . 3 cost 1 discard it. Then On the field, your units get +1 . Unit .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-052_L_마스트___로망틱_메이드.jpg"
   },
@@ -4276,7 +4276,7 @@
   },
   {
     "id": "BT03-054",
-    "name": "앨리스 : 원더랜드 바니",
+    "name": "Alice : 원더랜드 바니",
     "type": "Unit",
     "attribute": "Wave",
     "cost": 2,
@@ -4285,7 +4285,7 @@
     "rarity": "C",
     "affiliation": "Tetra Line",
     "keyword": "Entry",
-    "effect": "deck card 1 discard it. card card . card 1 draw card 1 draw.",
+    "effect": "deck card 1 discard it. Card card . Card 1 draw card 1 draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-054_C_앨리스___원더랜드_바니.jpg"
   },
@@ -4300,7 +4300,7 @@
     "rarity": "R",
     "affiliation": "Tetra Line",
     "keyword": "Entry",
-    "effect": "deck card 3 , card 1 . discard it.",
+    "effect": "deck card 3 , card 1 . Discard it.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-055_R_메어리___베이_갓데스.jpg"
   },
@@ -4315,7 +4315,7 @@
     "rarity": "C",
     "affiliation": "Pilgrim",
     "keyword": "Defender, Entry",
-    "effect": "Encounter unit . power+2000.",
+    "effect": "Encounter unit . Power+2000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-056_C_하란-연회의_마녀.jpg"
   },
@@ -4330,7 +4330,7 @@
     "rarity": "SR",
     "affiliation": "Tetra Line",
     "keyword": "Active",
-    "effect": "card 1 draw. unit card 1 discard it. discard card cost card 1 discard . discard discard unit card hit . / card discard it. card 1 draw.",
+    "effect": "card 1 draw. Unit card 1 discard it. Discard card cost card 1 discard . Discard discard unit card hit . / card discard it. Card 1 draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-057_SPR_폴크방-모이스트_래빗.jpg"
   },
@@ -4345,7 +4345,7 @@
     "rarity": "S",
     "affiliation": "Tetra Line",
     "keyword": "Active",
-    "effect": "card 1 draw. unit card 1 discard it. discard card cost card 1 discard . discard discard unit card hit . / card discard it. card 1 draw.",
+    "effect": "card 1 draw. Unit card 1 discard it. Discard card cost card 1 discard . Discard discard unit card hit . / card discard it. Card 1 draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-057_SPR_폴크방-모이스트_래빗.jpg"
   },
@@ -4375,7 +4375,7 @@
     "rarity": "R",
     "affiliation": "Elysion",
     "keyword": "Defender, Entry",
-    "effect": "2 discard . Then 5cost unit . power+1000.",
+    "effect": "2 discard . Then 5 cost unit . Power+1000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-059_R_앵커___이노센트_메이드.jpg"
   },
@@ -4390,7 +4390,7 @@
     "rarity": "SR",
     "affiliation": "Elysion",
     "keyword": "Defender, Entry",
-    "effect": "unit Until the end of this turn . 5 . power+1000.",
+    "effect": "unit Until the end of this turn . 5 . Power+1000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-060_SPR_헬름-애프터_샤워.jpg"
   },
@@ -4405,7 +4405,7 @@
     "rarity": "S",
     "affiliation": "Elysion",
     "keyword": "Defender, Entry",
-    "effect": "unit Until the end of this turn . 5 . power+1000.",
+    "effect": "unit Until the end of this turn . 5 . Power+1000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-060_SPR_헬름-애프터_샤워.jpg"
   },
@@ -4420,7 +4420,7 @@
     "rarity": "UR",
     "affiliation": "Elysion",
     "keyword": "Defender, Guardian",
-    "effect": "[2] (opponent's units 2 discardIf you do unit). power+4000. / card .",
+    "effect": "[2] (opponent's units 2 discard If you do unit). Power+4000. / card .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-061_SPR_마스트___로망틱_메이드.jpg"
   },
@@ -4435,13 +4435,13 @@
     "rarity": "S",
     "affiliation": "Elysion",
     "keyword": "Defender, Guardian",
-    "effect": "[2] (opponent's units 2 discardIf you do unit). power+4000. / card .",
+    "effect": "[2] (opponent's units 2 discard If you do unit). Power+4000. / card .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-061_SPR_마스트___로망틱_메이드.jpg"
   },
   {
     "id": "BT03-062",
-    "name": "메어리-메디컬 래빗",
+    "name": "메어리-메D컬 래빗",
     "type": "Unit",
     "attribute": "Wave",
     "cost": 7,
@@ -4450,7 +4450,7 @@
     "rarity": "R",
     "affiliation": "Tetra Line",
     "keyword": "Defender, Entry",
-    "effect": "1 discard . Then 1 . power+2000.",
+    "effect": "1 discard . Then 1 . Power+2000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-062_R_메어리-메디컬_래빗.jpg"
   },
@@ -4465,7 +4465,7 @@
     "rarity": "C",
     "affiliation": "",
     "keyword": "",
-    "effect": "On the field opponent's units 1 . unit .",
+    "effect": "On the field opponent's units 1 . Unit .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-063_C_다시_하면_돼!.jpg"
   },
@@ -4480,7 +4480,7 @@
     "rarity": "C",
     "affiliation": "",
     "keyword": "",
-    "effect": "On the field your units 1 unit hit discard . Then Encounter unit . / card discard it. card 1 draw.",
+    "effect": "On the field, your units get +1 unit hit discard . Then Encounter unit . / card discard it. Card 1 draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-064_C_로망틱_발렌타인.jpg"
   },
@@ -4495,13 +4495,13 @@
     "rarity": "R",
     "affiliation": "",
     "keyword": "",
-    "effect": "On the field your units 1 card 1 draw. .",
+    "effect": "On the field, your units get +1 card 1 draw. .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-065_R_따뜻한_목욕.jpg"
   },
   {
     "id": "BT03-066",
-    "name": "블루워터 아일랜드",
+    "name": "블루Water 아일랜드",
     "type": "Skill",
     "attribute": "Wave",
     "cost": 5,
@@ -4555,7 +4555,7 @@
     "rarity": "",
     "affiliation": "Pilgrim",
     "keyword": "Active",
-    "effect": "deck card . 6 card . deck card 3 discard it. With this effect discard item card 1 card 1 draw.",
+    "effect": "deck card . 6 card . Deck card 3 discard it. With this effect discard item card 1 card 1 draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-069_L_레비아탄.jpg"
   },
@@ -4570,7 +4570,7 @@
     "rarity": "S",
     "affiliation": "Pilgrim",
     "keyword": "Active",
-    "effect": "deck card . 6 card . deck card 3 discard it. With this effect discard item card 1 card 1 draw.",
+    "effect": "deck card . 6 card . Deck card 3 discard it. With this effect discard item card 1 card 1 draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-069_L_레비아탄.jpg"
   },
@@ -4591,7 +4591,7 @@
   },
   {
     "id": "BT03-071",
-    "name": "드레이크-메이드 포 빌런",
+    "name": "드레이크-메이드 포 Villain",
     "type": "Unit",
     "attribute": "",
     "cost": 2,
@@ -4600,13 +4600,13 @@
     "rarity": "C",
     "affiliation": "Missilis",
     "keyword": "Entry",
-    "effect": "field item Equip your units deck card 3 , item card 1 . discard it.",
+    "effect": "field item Equip your units deck card 3 , item card 1 . Discard it.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-071_C_드레이크-메이드_포_빌런.jpg"
   },
   {
     "id": "BT03-072",
-    "name": "크라운",
+    "name": "Crown",
     "type": "Unit",
     "attribute": "",
     "cost": 2,
@@ -4615,13 +4615,13 @@
     "rarity": "C",
     "affiliation": "Pilgrim",
     "keyword": "Exit",
-    "effect": "discard 2cost item card 1 .",
+    "effect": "discard 2 cost item card 1 .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-072_C_크라운.jpg"
   },
   {
     "id": "BT03-073",
-    "name": "소다 : 트윙클링 바니",
+    "name": "Soda : 트윙클링 바니",
     "type": "Unit",
     "attribute": "",
     "cost": 3,
@@ -4630,7 +4630,7 @@
     "rarity": "R",
     "affiliation": "Tetra Line",
     "keyword": "Active",
-    "effect": "unit Equip item 1 deck card 3 discard it. Until the end of this turn With this effect discard item card 1 hit+1. / card discard it. card 2 draw. Then 2 discard it.",
+    "effect": "unit Equip item 1 deck card 3 discard it. Until the end of this turn, when discard item card 1 hit+1. / card discard it. Card 2 draw. Then 2 discard it.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-073_R_소다___트윙클링_바니.jpg"
   },
@@ -4660,7 +4660,7 @@
     "rarity": "R",
     "affiliation": "Missilis",
     "keyword": "Entry",
-    "effect": "discard item card 3 deck . card cost Encounter unit cost Encounter unit discard it.",
+    "effect": "discard item card 3 deck . Card cost Encounter unit cost Encounter unit discard it.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-075_R_슈엔.jpg"
   },
@@ -4705,7 +4705,7 @@
     "rarity": "UR",
     "affiliation": "Pilgrim",
     "keyword": "Passive, Active",
-    "effect": "unit item Equip item 2 Equip . discard item card 2 Equip . unit Equip item Until the end of this turn 0cost . / card .",
+    "effect": "unit item Equip item 2 Equip . Discard item card 2 Equip . Unit Equip item Until the end of this turn 0 cost . / card .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-077_SPR_레비아탄.jpg"
   },
@@ -4720,7 +4720,7 @@
     "rarity": "S",
     "affiliation": "Pilgrim",
     "keyword": "Passive, Active",
-    "effect": "unit item Equip item 2 Equip . discard item card 2 Equip . unit Equip item Until the end of this turn 0cost . / card .",
+    "effect": "unit item Equip item 2 Equip . Discard item card 2 Equip . Unit Equip item Until the end of this turn 0 cost . / card .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-077_SPR_레비아탄.jpg"
   },
@@ -4750,7 +4750,7 @@
     "rarity": "SR",
     "affiliation": "Pilgrim",
     "keyword": "Entry",
-    "effect": "discard item card 8 deck . Then cost 8cost On the field opponent's units choose any number of discard it. With this effect discard unit 1 card 1 draw.",
+    "effect": "discard item card 8 deck . Then cost 8 cost On the field opponent's units choose any number of items and discard them With this effect discard unit 1 card 1 draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-079_SPR_베히모스.jpg"
   },
@@ -4765,7 +4765,7 @@
     "rarity": "S",
     "affiliation": "Pilgrim",
     "keyword": "Entry",
-    "effect": "discard item card 8 deck . Then cost 8cost On the field opponent's units choose any number of discard it. With this effect discard unit 1 card 1 draw.",
+    "effect": "discard item card 8 deck . Then cost 8 cost On the field opponent's units choose any number of items and discard them With this effect discard unit 1 card 1 draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-079_SPR_베히모스.jpg"
   },
@@ -4780,7 +4780,7 @@
     "rarity": "R",
     "affiliation": "",
     "keyword": "",
-    "effect": "On the field your units 1 . unit Until the end of this turn 「 item 1 Equip card 1 draw」 .",
+    "effect": "On the field, your units get +1 . Unit Until the end of this turn 「 item 1 Equip card 1 draw」 .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-080_R_죽으면_안_돼..jpg"
   },
@@ -4795,7 +4795,7 @@
     "rarity": "C",
     "affiliation": "",
     "keyword": "",
-    "effect": "deck card 5 discard it. discard unit card 1 . / card discard it. deck 1cost item card 1 . deck .",
+    "effect": "deck card 5 discard it. Discard unit card 1 . / card discard it. Deck 1 cost item card 1 . Deck .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-081_C_거대한_집게.jpg"
   },
@@ -4810,7 +4810,7 @@
     "rarity": "C",
     "affiliation": "",
     "keyword": "",
-    "effect": "On the field your units 1 unit Equip item 1 . On the field all other your units Until the end of this turn item .",
+    "effect": "On the field, your units get +1 unit Equip item 1 . On the field all other your units Until the end of this turn item .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT03-082_C_빨리_오라고오오!!!!!.jpg"
   },
@@ -4900,7 +4900,7 @@
     "rarity": "",
     "affiliation": "Elysion",
     "keyword": "Exit",
-    "effect": "On the field your units 1 , Until the end of this turn hit+1.",
+    "effect": "On the field, your units get +1 , Until the end of this turn hit+1.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-019_P_메이든___아이스_로즈.jpg"
   },
@@ -4930,7 +4930,7 @@
     "rarity": "",
     "affiliation": "Tetra Line",
     "keyword": "Passive",
-    "effect": "1, 1 discardIf you do card 1 draw.",
+    "effect": "1, 1 discard If you do card 1 draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-045_P_메어리___베이_갓데스.jpg"
   },
@@ -4966,7 +4966,7 @@
   },
   {
     "id": "BT02-002",
-    "name": "엠마-오피스 테라피",
+    "name": "M마-오피스 테Rapi",
     "type": "Unit",
     "attribute": "Flame",
     "cost": 3,
@@ -4990,7 +4990,7 @@
     "rarity": "UR",
     "affiliation": "Pilgrim",
     "keyword": "Attacker",
-    "effect": " (unit Encounter unit). power+4000. / card .",
+    "effect": "(unit Encounter unit). Power+4000. / card .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-003_SPR_레드_후드-넌센스_레드.jpg"
   },
@@ -5005,7 +5005,7 @@
     "rarity": "S",
     "affiliation": "Pilgrim",
     "keyword": "Attacker",
-    "effect": " (unit Encounter unit). power+4000. / card .",
+    "effect": "(unit Encounter unit). Power+4000. / card .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-003_SPR_레드_후드-넌센스_레드.jpg"
   },
@@ -5050,7 +5050,7 @@
     "rarity": "SR",
     "affiliation": "Tetra Line",
     "keyword": "Entry",
-    "effect": "discard 2cost unit card 1 .",
+    "effect": "discard 2 cost unit card 1 .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-006_SPR_바이퍼-톡신_래빗.jpg"
   },
@@ -5065,7 +5065,7 @@
     "rarity": "S",
     "affiliation": "Tetra Line",
     "keyword": "Entry",
-    "effect": "discard 2cost unit card 1 .",
+    "effect": "discard 2 cost unit card 1 .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-006_SPR_바이퍼-톡신_래빗.jpg"
   },
@@ -5095,7 +5095,7 @@
     "rarity": "C",
     "affiliation": "",
     "keyword": "",
-    "effect": "discard 7cost unit card 1 .",
+    "effect": "discard 7 cost unit card 1 .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-008_C_더_게임_마스터.jpg"
   },
@@ -5116,7 +5116,7 @@
   },
   {
     "id": "BT02-010",
-    "name": "디젤-블랙 홀리데이",
+    "name": "Diesel-블랙 Holy데이",
     "type": "Unit",
     "attribute": "Earth",
     "cost": 1,
@@ -5125,7 +5125,7 @@
     "rarity": "C",
     "affiliation": "Elysion",
     "keyword": "Entry",
-    "effect": "deck card 1 , 《》 unit card 1 . deck .",
+    "effect": "deck card 1 , 《》 unit card 1 . Deck .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-010_C_디젤-블랙_홀리데이.jpg"
   },
@@ -5176,7 +5176,7 @@
   },
   {
     "id": "BT02-013",
-    "name": "티아-러블리 데이트",
+    "name": "Tia-러블리 데이트",
     "type": "Unit",
     "attribute": "Earth",
     "cost": 4,
@@ -5185,7 +5185,7 @@
     "rarity": "C",
     "affiliation": "Missilis",
     "keyword": "Entry",
-    "effect": "On the field your units 1 , Until the end of this turn power+2000.",
+    "effect": "On the field, your units get +1 , Until the end of this turn power+2000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-013_C_티아-러블리_데이트.jpg"
   },
@@ -5290,7 +5290,7 @@
     "rarity": "R",
     "affiliation": "Elysion",
     "keyword": "Exit",
-    "effect": "On the field your units 1 , Until the end of this turn hit+1.",
+    "effect": "On the field, your units get +1 , Until the end of this turn hit+1.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-019_P_메이든___아이스_로즈.jpg"
   },
@@ -5311,7 +5311,7 @@
   },
   {
     "id": "BT02-021",
-    "name": "모더니아-퍼스트 어펙션",
+    "name": "Modernia-퍼스트 어펙션",
     "type": "Unit",
     "attribute": "Storm",
     "cost": 4,
@@ -5326,7 +5326,7 @@
   },
   {
     "id": "BT02-021",
-    "name": "모더니아-퍼스트 어펙션",
+    "name": "Modernia-퍼스트 어펙션",
     "type": "Unit",
     "attribute": "Storm",
     "cost": 4,
@@ -5395,7 +5395,7 @@
     "rarity": "C",
     "affiliation": "Elysion",
     "keyword": "Exit",
-    "effect": " (unit discard opponent's units cost unit cost unit discard it).",
+    "effect": "(unit discard opponent's units cost unit cost unit discard it).",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-024_C_프리바티-거버먼트_노멀.jpg"
   },
@@ -5410,7 +5410,7 @@
     "rarity": "R",
     "affiliation": "",
     "keyword": "",
-    "effect": "discard 2cost unit card 1 . / card discard it. discard unit card 1 .",
+    "effect": "discard 2 cost unit card 1 . / card discard it. Discard unit card 1 .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-025_R_라이터즈_스포일러.jpg"
   },
@@ -5425,7 +5425,7 @@
     "rarity": "C",
     "affiliation": "",
     "keyword": "",
-    "effect": "unit card 1 discard it. card hit card draw.",
+    "effect": "unit card 1 discard it. Card hit card draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-026_C_신세계.jpg"
   },
@@ -5500,7 +5500,7 @@
     "rarity": "C",
     "affiliation": "Elysion",
     "keyword": "Guardian",
-    "effect": "[1] (opponent's units 1 discardIf you do unit).",
+    "effect": "[1] (opponent's units 1 discard If you do unit).",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-030_C_키리.jpg"
   },
@@ -5530,7 +5530,7 @@
     "rarity": "R",
     "affiliation": "Pilgrim",
     "keyword": "Attacker",
-    "effect": "[6cost ] (6cost opponent's units unit).",
+    "effect": "[6 cost ] (6 cost opponent's units unit).",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-032_R_하란.jpg"
   },
@@ -5560,7 +5560,7 @@
     "rarity": "C",
     "affiliation": "Elysion",
     "keyword": "Guardian",
-    "effect": "[1] (opponent's units 1 discardIf you do unit).",
+    "effect": "[1] (opponent's units 1 discard If you do unit).",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-034_C_앵커.jpg"
   },
@@ -5581,7 +5581,7 @@
   },
   {
     "id": "BT02-036",
-    "name": "앨리스 : 원더랜드 바니",
+    "name": "Alice : 원더랜드 바니",
     "type": "Unit",
     "attribute": "Wave",
     "cost": 3,
@@ -5635,7 +5635,7 @@
     "rarity": "SR",
     "affiliation": "Pilgrim",
     "keyword": "Guardian, Entry",
-    "effect": "[2] (opponent's units 2 discardIf you do unit). power+2000.",
+    "effect": "[2] (opponent's units 2 discard If you do unit). Power+2000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-039_SPR_이사벨-허니문_파티.jpg"
   },
@@ -5650,7 +5650,7 @@
     "rarity": "S",
     "affiliation": "Pilgrim",
     "keyword": "Guardian, Entry",
-    "effect": "[2] (opponent's units 2 discardIf you do unit). power+2000.",
+    "effect": "[2] (opponent's units 2 discard If you do unit). Power+2000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-039_SPR_이사벨-허니문_파티.jpg"
   },
@@ -5680,7 +5680,7 @@
     "rarity": "SR",
     "affiliation": "Pilgrim",
     "keyword": "Attacker",
-    "effect": "5 [6cost ] (6cost opponent's units unit). / card discard it. card 1 draw.",
+    "effect": "5 [6 cost ] (6 cost opponent's units unit). / card discard it. Card 1 draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-041_SPR_도로시-노스텔지어.jpg"
   },
@@ -5695,7 +5695,7 @@
     "rarity": "S",
     "affiliation": "Pilgrim",
     "keyword": "Attacker",
-    "effect": "5 [6cost ] (6cost opponent's units unit). / card discard it. card 1 draw.",
+    "effect": "5 [6 cost ] (6 cost opponent's units unit). / card discard it. Card 1 draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-041_SPR_도로시-노스텔지어.jpg"
   },
@@ -5731,7 +5731,7 @@
   },
   {
     "id": "BT02-043",
-    "name": "루마니",
+    "name": "Lumani",
     "type": "Unit",
     "attribute": "Wave",
     "cost": 6,
@@ -5770,7 +5770,7 @@
     "rarity": "R",
     "affiliation": "Tetra Line",
     "keyword": "Passive",
-    "effect": "1, 1 discardIf you do card 1 draw.",
+    "effect": "1, 1 discard If you do card 1 draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-045_P_메어리___베이_갓데스.jpg"
   },
@@ -5785,7 +5785,7 @@
     "rarity": "UR",
     "affiliation": "Elysion",
     "keyword": "Guardian, Passive",
-    "effect": "[3] (opponent's units 3 discardIf you do unit). On the field 3cost opponent's units Berserker (unit). / card .",
+    "effect": "[3] (opponent's units 3 discard If you do unit). On the field 3 cost opponent's units Berserker (unit). / card .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-046_SPR_헬름___아쿠아마린.jpg"
   },
@@ -5800,7 +5800,7 @@
     "rarity": "S",
     "affiliation": "Elysion",
     "keyword": "Guardian, Passive",
-    "effect": "[3] (opponent's units 3 discardIf you do unit). On the field 3cost opponent's units Berserker (unit). / card .",
+    "effect": "[3] (opponent's units 3 discard If you do unit). On the field 3 cost opponent's units Berserker (unit). / card .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-046_SPR_헬름___아쿠아마린.jpg"
   },
@@ -5815,7 +5815,7 @@
     "rarity": "C",
     "affiliation": "",
     "keyword": "",
-    "effect": "On the field your units 1 , Until the end of this turn power+3500.",
+    "effect": "On the field, your units get +1 , Until the end of this turn power+3500.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-047_C_폴리스_라인.jpg"
   },
@@ -5926,7 +5926,7 @@
   },
   {
     "id": "BT02-055",
-    "name": "크라운-네이키드 킹",
+    "name": "Crown-네이키드 킹",
     "type": "Leader",
     "attribute": "",
     "cost": 0,
@@ -5941,7 +5941,7 @@
   },
   {
     "id": "BT02-055",
-    "name": "크라운-네이키드 킹",
+    "name": "Crown-네이키드 킹",
     "type": "Leader",
     "attribute": "",
     "cost": 0,
@@ -5965,7 +5965,7 @@
     "rarity": "C",
     "affiliation": "Missilis",
     "keyword": "Exit",
-    "effect": "discard 1cost item card 1 .",
+    "effect": "discard 1 cost item card 1 .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-056_C_트로니.jpg"
   },
@@ -5980,7 +5980,7 @@
     "rarity": "SR",
     "affiliation": "Tetra Line",
     "keyword": "",
-    "effect": "unit Equip item 1 power+2000. 3 Equip card 1 draw . / card discard it. card 2 draw. Then 2 discard it.",
+    "effect": "unit Equip item 1 power+2000. 3 Equip card 1 draw . / card discard it. Card 2 draw. Then 2 discard it.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-057_SPR_슈가-콜_미_하드보일드.jpg"
   },
@@ -5995,7 +5995,7 @@
     "rarity": "S",
     "affiliation": "Tetra Line",
     "keyword": "",
-    "effect": "unit Equip item 1 power+2000. 3 Equip card 1 draw . / card discard it. card 2 draw. Then 2 discard it.",
+    "effect": "unit Equip item 1 power+2000. 3 Equip card 1 draw . / card discard it. Card 2 draw. Then 2 discard it.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-057_SPR_슈가-콜_미_하드보일드.jpg"
   },
@@ -6040,7 +6040,7 @@
     "rarity": "SR",
     "affiliation": "Missilis",
     "keyword": "Passive",
-    "effect": "On the field item Equip your units 1 power+2000. item Equip your units 3 hit+1.",
+    "effect": "On the field item Equip your units 1 power+2000. Item Equip your units 3 hit+1.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-060_SPR_일레그.jpg"
   },
@@ -6055,7 +6055,7 @@
     "rarity": "S",
     "affiliation": "Missilis",
     "keyword": "Passive",
-    "effect": "On the field item Equip your units 1 power+2000. item Equip your units 3 hit+1.",
+    "effect": "On the field item Equip your units 1 power+2000. Item Equip your units 3 hit+1.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-060_SPR_일레그.jpg"
   },
@@ -6100,7 +6100,7 @@
     "rarity": "C",
     "affiliation": "Tetra Line",
     "keyword": "Entry",
-    "effect": "Encounter unit hit item card discard . Then Encounter unit discard it. / card discard it. deck 1cost item card 1 . deck .",
+    "effect": "Encounter unit hit item card discard . Then Encounter unit discard it. / card discard it. Deck 1 cost item card 1 . Deck .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-063_C_레오나.jpg"
   },
@@ -6151,7 +6151,7 @@
   },
   {
     "id": "BT02-067",
-    "name": "크라운-네이키드 킹",
+    "name": "Crown-네이키드 킹",
     "type": "Unit",
     "attribute": "",
     "cost": 4,
@@ -6166,7 +6166,7 @@
   },
   {
     "id": "BT02-067",
-    "name": "크라운-네이키드 킹",
+    "name": "Crown-네이키드 킹",
     "type": "Unit",
     "attribute": "",
     "cost": 4,
@@ -6190,13 +6190,13 @@
     "rarity": "C",
     "affiliation": "Missilis",
     "keyword": "Entry",
-    "effect": "deck card 2 , item card 1 . deck .",
+    "effect": "deck card 2 , item card 1 . Deck .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-068_C_리타-피쉬_가드.jpg"
   },
   {
     "id": "BT02-069",
-    "name": "드레이크-빌런 레이서",
+    "name": "드레이크-Villain 레이서",
     "type": "Unit",
     "attribute": "",
     "cost": 5,
@@ -6211,7 +6211,7 @@
   },
   {
     "id": "BT02-070",
-    "name": "센티-마이티 홀리데이",
+    "name": "센티-마이티 Holy데이",
     "type": "Unit",
     "attribute": "",
     "cost": 6,
@@ -6226,7 +6226,7 @@
   },
   {
     "id": "BT02-071",
-    "name": "소다 : 트윙클링 바니",
+    "name": "Soda : 트윙클링 바니",
     "type": "Unit",
     "attribute": "",
     "cost": 6,
@@ -6241,7 +6241,7 @@
   },
   {
     "id": "BT02-071",
-    "name": "소다 : 트윙클링 바니",
+    "name": "Soda : 트윙클링 바니",
     "type": "Unit",
     "attribute": "",
     "cost": 6,
@@ -6256,7 +6256,7 @@
   },
   {
     "id": "BT02-072",
-    "name": "맥스웰-메카닉 화이트",
+    "name": "맥스웰-Mechanic 화이트",
     "type": "Unit",
     "attribute": "",
     "cost": 7,
@@ -6295,7 +6295,7 @@
     "rarity": "R",
     "affiliation": "",
     "keyword": "",
-    "effect": "deck 《》 item card 1 . deck . / card discard it. deck 1cost item card 1 . deck .",
+    "effect": "deck 《》 item card 1 . Deck . / card discard it. Deck 1 cost item card 1 . Deck .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-074_R_식사_시간입니다,_주인님..jpg"
   },
@@ -6325,7 +6325,7 @@
     "rarity": "R",
     "affiliation": "",
     "keyword": "",
-    "effect": "discard 1cost item card 1 .",
+    "effect": "discard 1 cost item card 1 .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-076_R_로얄_에타이어.jpg"
   },
@@ -6340,7 +6340,7 @@
     "rarity": "C",
     "affiliation": "",
     "keyword": "",
-    "effect": "deck card 5 , item card 2 . deck .",
+    "effect": "deck card 5 , item card 2 . Deck .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT02-077_C_고양이_보은.jpg"
   },
@@ -6406,7 +6406,7 @@
   },
   {
     "id": "BT01-055",
-    "name": "신데렐라",
+    "name": "Cinderella",
     "type": "Leader",
     "attribute": "Storm",
     "cost": 0,
@@ -6415,7 +6415,7 @@
     "rarity": "",
     "affiliation": "Pilgrim",
     "keyword": "Passive",
-    "effect": "deck card . 5 card . , field 5cost your units discard card 1 draw.",
+    "effect": "deck card . 5 card . , field 5 cost your units discard card 1 draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-055_L_신데렐라.jpg"
   },
@@ -6511,7 +6511,7 @@
   },
   {
     "id": "ST05-006",
-    "name": "크라운",
+    "name": "Crown",
     "type": "Unit",
     "attribute": "",
     "cost": 3,
@@ -6526,7 +6526,7 @@
   },
   {
     "id": "ST05-007",
-    "name": "소다",
+    "name": "Soda",
     "type": "Unit",
     "attribute": "",
     "cost": 3,
@@ -6751,7 +6751,7 @@
   },
   {
     "id": "ST04-003",
-    "name": "마리안",
+    "name": "Mari안",
     "type": "Unit",
     "attribute": "Wave",
     "cost": 1,
@@ -6811,7 +6811,7 @@
   },
   {
     "id": "ST04-007",
-    "name": "앨리스",
+    "name": "Alice",
     "type": "Unit",
     "attribute": "Wave",
     "cost": 3,
@@ -7036,7 +7036,7 @@
   },
   {
     "id": "BT01-004",
-    "name": "노이즈-클래식 디바",
+    "name": "Noise-클래식 D바",
     "type": "Unit",
     "attribute": "Flame",
     "cost": 1,
@@ -7051,7 +7051,7 @@
   },
   {
     "id": "BT01-005",
-    "name": "라피-클래식 바캉스",
+    "name": "Rapi-클래식 바캉스",
     "type": "Unit",
     "attribute": "Flame",
     "cost": 2,
@@ -7066,7 +7066,7 @@
   },
   {
     "id": "BT01-005",
-    "name": "라피-클래식 바캉스",
+    "name": "Rapi-클래식 바캉스",
     "type": "Unit",
     "attribute": "Flame",
     "cost": 2,
@@ -7081,7 +7081,7 @@
   },
   {
     "id": "BT01-006",
-    "name": "아니스 : 스파클링 서머",
+    "name": "Anis : 스파클링 서머",
     "type": "Unit",
     "attribute": "Flame",
     "cost": 2,
@@ -7090,13 +7090,13 @@
     "rarity": "SR",
     "affiliation": "Tetra Line",
     "keyword": "Attacker",
-    "effect": "power+2000. [1] (unit opponent's units discard card 1 draw). / card discard it. On the field opponent's units 1 , Until the end of this turn power-5000.",
+    "effect": "power+2000. [1] (unit opponent's units discard card 1 draw). / card discard it. On the field opponent's units 1 , Until the end of this turn power -5000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-006_SPR_아니스___스파클링_서머.jpg"
   },
   {
     "id": "BT01-006",
-    "name": "아니스 : 스파클링 서머",
+    "name": "Anis : 스파클링 서머",
     "type": "Unit",
     "attribute": "Flame",
     "cost": 2,
@@ -7105,7 +7105,7 @@
     "rarity": "S",
     "affiliation": "Tetra Line",
     "keyword": "Attacker",
-    "effect": "power+2000. [1] (unit opponent's units discard card 1 draw). / card discard it. On the field opponent's units 1 , Until the end of this turn power-5000.",
+    "effect": "power+2000. [1] (unit opponent's units discard card 1 draw). / card discard it. On the field opponent's units 1 , Until the end of this turn power -5000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-006_SPR_아니스___스파클링_서머.jpg"
   },
@@ -7180,13 +7180,13 @@
     "rarity": "R",
     "affiliation": "Elysion",
     "keyword": "Active",
-    "effect": "On the field opponent's units 1 , Until the end of this turn power-1500.",
+    "effect": "On the field opponent's units 1 , Until the end of this turn power -1500.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-011_R_네온___블루_오션.jpg"
   },
   {
     "id": "BT01-012",
-    "name": "엠마-달링 레드",
+    "name": "M마-달링 레드",
     "type": "Unit",
     "attribute": "Flame",
     "cost": 4,
@@ -7225,7 +7225,7 @@
     "rarity": "SR",
     "affiliation": "Pilgrim",
     "keyword": "Passive",
-    "effect": "Berserker (unit). / card discard it. discard 2cost unit 1 .",
+    "effect": "Berserker (unit). / card discard it. Discard 2 cost unit 1 .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-014_SPR_홍련___흑영.jpg"
   },
@@ -7240,7 +7240,7 @@
     "rarity": "S",
     "affiliation": "Pilgrim",
     "keyword": "Passive",
-    "effect": "Berserker (unit). / card discard it. discard 2cost unit 1 .",
+    "effect": "Berserker (unit). / card discard it. Discard 2 cost unit 1 .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-014_SPR_홍련___흑영.jpg"
   },
@@ -7255,7 +7255,7 @@
     "rarity": "R",
     "affiliation": "Tetra Line",
     "keyword": "Entry",
-    "effect": "Until the end of this turn Encounter unit power-4000.",
+    "effect": "Until the end of this turn Encounter unit power -4000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-015_R_누아르-흑묘.jpg"
   },
@@ -7375,7 +7375,7 @@
     "rarity": "C",
     "affiliation": "",
     "keyword": "",
-    "effect": "Until the end of this turn On the field opponent's units power-1000.",
+    "effect": "Until the end of this turn On the field opponent's units power -1000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-021_C_포메이션_F.F.jpg"
   },
@@ -7390,7 +7390,7 @@
     "rarity": "C",
     "affiliation": "",
     "keyword": "",
-    "effect": "On the field opponent's units 2 , Until the end of this turn power-2000.",
+    "effect": "On the field opponent's units 2 , Until the end of this turn power -2000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-022_C_압도.jpg"
   },
@@ -7420,7 +7420,7 @@
     "rarity": "R",
     "affiliation": "",
     "keyword": "",
-    "effect": "On the field opponent's units 1 , Until the end of this turn power-3000. With this effect unit discard card 1 draw.",
+    "effect": "On the field opponent's units 1 , Until the end of this turn power -3000. With this effect unit discard card 1 draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-024_R_피날레.jpg"
   },
@@ -7516,7 +7516,7 @@
   },
   {
     "id": "BT01-030",
-    "name": "미카 : 스노우 버디",
+    "name": "미카 : 스노우 버D",
     "type": "Unit",
     "attribute": "Earth",
     "cost": 1,
@@ -7591,7 +7591,7 @@
   },
   {
     "id": "BT01-034",
-    "name": "길티-디스빌리프 웨이브",
+    "name": "길티-D스빌리프 웨이브",
     "type": "Unit",
     "attribute": "Earth",
     "cost": 2,
@@ -7606,7 +7606,7 @@
   },
   {
     "id": "BT01-034",
-    "name": "길티-디스빌리프 웨이브",
+    "name": "길티-D스빌리프 웨이브",
     "type": "Unit",
     "attribute": "Earth",
     "cost": 2,
@@ -7621,7 +7621,7 @@
   },
   {
     "id": "BT01-035",
-    "name": "솔린",
+    "name": "Sol린",
     "type": "Unit",
     "attribute": "Earth",
     "cost": 3,
@@ -7630,7 +7630,7 @@
     "rarity": "C",
     "affiliation": "Elysion",
     "keyword": "Attacker",
-    "effect": "[1cost ] (1cost opponent's units unit).",
+    "effect": "[1 cost ] (1 cost opponent's units unit).",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-035_C_솔린.jpg"
   },
@@ -7651,7 +7651,7 @@
   },
   {
     "id": "BT01-037",
-    "name": "디젤-미드나잇 스트로베리",
+    "name": "Diesel-미드나잇 스트로베리",
     "type": "Unit",
     "attribute": "Earth",
     "cost": 3,
@@ -7666,7 +7666,7 @@
   },
   {
     "id": "BT01-037",
-    "name": "디젤-미드나잇 스트로베리",
+    "name": "Diesel-미드나잇 스트로베리",
     "type": "Unit",
     "attribute": "Earth",
     "cost": 3,
@@ -7690,7 +7690,7 @@
     "rarity": "C",
     "affiliation": "Tetra Line",
     "keyword": "Active",
-    "effect": "1 discard it. Then On the field your units 1 , Until the end of this turn power+4000.",
+    "effect": "1 discard it. Then On the field, your units get +1 , Until the end of this turn power+4000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-038_C_루피.jpg"
   },
@@ -7750,7 +7750,7 @@
     "rarity": "C",
     "affiliation": "Tetra Line",
     "keyword": "Entry",
-    "effect": "On the field your units 1 , Until the end of this turn power+2000.",
+    "effect": "On the field, your units get +1 , Until the end of this turn power+2000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-041_C_얀-선라이즈_마켓.jpg"
   },
@@ -7771,7 +7771,7 @@
   },
   {
     "id": "BT01-043",
-    "name": "티아",
+    "name": "Tia",
     "type": "Unit",
     "attribute": "Earth",
     "cost": 6,
@@ -7795,7 +7795,7 @@
     "rarity": "SR",
     "affiliation": "Pilgrim",
     "keyword": "Entry",
-    "effect": "deck card 3 , 《》 unit 1 . deck . / card discard it. +1.",
+    "effect": "deck card 3 , 《》 unit 1 . Deck . / card discard it. +1.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-044_SPR_라푼젤.jpg"
   },
@@ -7810,7 +7810,7 @@
     "rarity": "S",
     "affiliation": "Pilgrim",
     "keyword": "Entry",
-    "effect": "deck card 3 , 《》 unit 1 . deck . / card discard it. +1.",
+    "effect": "deck card 3 , 《》 unit 1 . Deck . / card discard it. +1.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-044_SPR_라푼젤.jpg"
   },
@@ -7825,7 +7825,7 @@
     "rarity": "C",
     "affiliation": "Elysion",
     "keyword": "Passive",
-    "effect": "On the field 1cost your units power+2000.",
+    "effect": "On the field 1 cost your units power+2000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-045_C_브리드-블랙_문.jpg"
   },
@@ -7840,7 +7840,7 @@
     "rarity": "UR",
     "affiliation": "Pilgrim",
     "keyword": "Entry",
-    "effect": "On the field 《》 your units 1 . Until the end of this turn unit [3cost ] (3cost opponent's units unit). / card .",
+    "effect": "On the field 《》 your units 1 . Until the end of this turn unit [3 cost ] (3 cost opponent's units unit). / card .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-046_SPR_홍련.jpg"
   },
@@ -7855,7 +7855,7 @@
     "rarity": "S",
     "affiliation": "Pilgrim",
     "keyword": "Entry",
-    "effect": "On the field 《》 your units 1 . Until the end of this turn unit [3cost ] (3cost opponent's units unit). / card .",
+    "effect": "On the field 《》 your units 1 . Until the end of this turn unit [3 cost ] (3 cost opponent's units unit). / card .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-046_SPR_홍련.jpg"
   },
@@ -7870,7 +7870,7 @@
     "rarity": "C",
     "affiliation": "",
     "keyword": "",
-    "effect": "On the field 《》 1cost your units 1 . Until the end of this turn unit hit 2 .",
+    "effect": "On the field 《》 1 cost your units 1 . Until the end of this turn unit hit 2 .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-047_C_순백의_의지.jpg"
   },
@@ -7891,7 +7891,7 @@
   },
   {
     "id": "BT01-049",
-    "name": "디저트 타임",
+    "name": "D저트 타임",
     "type": "Skill",
     "attribute": "Earth",
     "cost": 3,
@@ -7966,7 +7966,7 @@
   },
   {
     "id": "BT01-055",
-    "name": "신데렐라",
+    "name": "Cinderella",
     "type": "Leader",
     "attribute": "Storm",
     "cost": 0,
@@ -7975,13 +7975,13 @@
     "rarity": "",
     "affiliation": "Pilgrim",
     "keyword": "Passive",
-    "effect": "deck card . 5 card . , field 5cost your units discard card 1 draw.",
+    "effect": "deck card . 5 card . , field 5 cost your units discard card 1 draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-055_L_신데렐라.jpg"
   },
   {
     "id": "BT01-055",
-    "name": "신데렐라",
+    "name": "Cinderella",
     "type": "Leader",
     "attribute": "Storm",
     "cost": 0,
@@ -7990,7 +7990,7 @@
     "rarity": "S",
     "affiliation": "Pilgrim",
     "keyword": "Passive",
-    "effect": "deck card . 5 card . , field 5cost your units discard card 1 draw.",
+    "effect": "deck card . 5 card . , field 5 cost your units discard card 1 draw.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-055_L_신데렐라.jpg"
   },
@@ -8005,13 +8005,13 @@
     "rarity": "C",
     "affiliation": "Missilis",
     "keyword": "Exit",
-    "effect": "On the field opponent's units 1 , Until the end of this turn power-2000.",
+    "effect": "On the field opponent's units 1 , Until the end of this turn power -2000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-056_C_에테르.jpg"
   },
   {
     "id": "BT01-057",
-    "name": "미하라",
+    "name": "Mihara",
     "type": "Unit",
     "attribute": "Storm",
     "cost": 1,
@@ -8095,7 +8095,7 @@
     "rarity": "SR",
     "affiliation": "Tetra Line",
     "keyword": "Active",
-    "effect": "On the field your units 2 1 discard it. unit 1 Until the end of this turn power+2000.",
+    "effect": "On the field your units 2 1 discard it. Unit 1 Until the end of this turn power+2000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-061_SPR_사쿠라___블룸_인_서머.jpg"
   },
@@ -8110,13 +8110,13 @@
     "rarity": "S",
     "affiliation": "Tetra Line",
     "keyword": "Active",
-    "effect": "On the field your units 2 1 discard it. unit 1 Until the end of this turn power+2000.",
+    "effect": "On the field your units 2 1 discard it. Unit 1 Until the end of this turn power+2000.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-061_SPR_사쿠라___블룸_인_서머.jpg"
   },
   {
     "id": "BT01-062",
-    "name": "유니-러블리 핑크",
+    "name": "Uni-러블리 핑크",
     "type": "Unit",
     "attribute": "Storm",
     "cost": 3,
@@ -8155,7 +8155,7 @@
     "rarity": "R",
     "affiliation": "Elysion",
     "keyword": "Entry",
-    "effect": "2 discard . discard Encounter unit discard it.",
+    "effect": "2 discard . Discard Encounter unit discard it.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-064_R_프리바티-연회의_공주.jpg"
   },
@@ -8200,7 +8200,7 @@
     "rarity": "R",
     "affiliation": "Tetra Line",
     "keyword": "Exit",
-    "effect": " (unit discard opponent's units cost unit cost unit discard it).",
+    "effect": "(unit discard opponent's units cost unit cost unit discard it).",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-067_P_목단.jpg"
   },
@@ -8215,7 +8215,7 @@
     "rarity": "",
     "affiliation": "Tetra Line",
     "keyword": "Exit",
-    "effect": " (unit discard opponent's units cost unit cost unit discard it).",
+    "effect": "(unit discard opponent's units cost unit cost unit discard it).",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-067_P_목단.jpg"
   },
@@ -8245,7 +8245,7 @@
     "rarity": "SR",
     "affiliation": "Pilgrim",
     "keyword": "Entry",
-    "effect": "Encounter unit 2cost unit discard it.",
+    "effect": "Encounter unit 2 cost unit discard it.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-069_SPR_니힐리스타.jpg"
   },
@@ -8260,7 +8260,7 @@
     "rarity": "S",
     "affiliation": "Pilgrim",
     "keyword": "Entry",
-    "effect": "Encounter unit 2cost unit discard it.",
+    "effect": "Encounter unit 2 cost unit discard it.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-069_SPR_니힐리스타.jpg"
   },
@@ -8290,7 +8290,7 @@
     "rarity": "SR",
     "affiliation": "Tetra Line",
     "keyword": "Entry",
-    "effect": "On the field your units 1 discard it. Then card 1 draw. / card .",
+    "effect": "On the field, your units get +1 discard it. Then card 1 draw. / card .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-071_SPR_로산나___시크_오션.jpg"
   },
@@ -8305,13 +8305,13 @@
     "rarity": "S",
     "affiliation": "Tetra Line",
     "keyword": "Entry",
-    "effect": "On the field your units 1 discard it. Then card 1 draw. / card .",
+    "effect": "On the field, your units get +1 discard it. Then card 1 draw. / card .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-071_SPR_로산나___시크_오션.jpg"
   },
   {
     "id": "BT01-072",
-    "name": "모더니아-세컨드 어펙션",
+    "name": "Modernia-세컨드 어펙션",
     "type": "Unit",
     "attribute": "Storm",
     "cost": 7,
@@ -8326,7 +8326,7 @@
   },
   {
     "id": "BT01-073",
-    "name": "신데렐라",
+    "name": "Cinderella",
     "type": "Unit",
     "attribute": "Storm",
     "cost": 8,
@@ -8335,13 +8335,13 @@
     "rarity": "UR",
     "affiliation": "Pilgrim",
     "keyword": "Entry",
-    "effect": "Encounter unit cost unit 1 discard . discard Encounter unit discard it. / card discard it. 3 1 discard it.",
+    "effect": "Encounter unit cost unit 1 discard . Discard Encounter unit discard it. / card discard it. 3 1 discard it.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-073_SPR_신데렐라.jpg"
   },
   {
     "id": "BT01-073",
-    "name": "신데렐라",
+    "name": "Cinderella",
     "type": "Unit",
     "attribute": "Storm",
     "cost": 8,
@@ -8350,7 +8350,7 @@
     "rarity": "S",
     "affiliation": "Pilgrim",
     "keyword": "Entry",
-    "effect": "Encounter unit cost unit 1 discard . discard Encounter unit discard it. / card discard it. 3 1 discard it.",
+    "effect": "Encounter unit cost unit 1 discard . Discard Encounter unit discard it. / card discard it. 3 1 discard it.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-073_SPR_신데렐라.jpg"
   },
@@ -8365,7 +8365,7 @@
     "rarity": "C",
     "affiliation": "",
     "keyword": "",
-    "effect": "field unit 1 discard it. unit hit card draw. / card .",
+    "effect": "field unit 1 discard it. Unit hit card draw. / card .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-074_C_시크릿_코드.jpg"
   },
@@ -8380,7 +8380,7 @@
     "rarity": "C",
     "affiliation": "",
     "keyword": "",
-    "effect": "1 discard it. card cost unit field 1 discard it.",
+    "effect": "1 discard it. Card cost unit field 1 discard it.",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-075_C_버닝_샷.jpg"
   },
@@ -8425,7 +8425,7 @@
     "rarity": "R",
     "affiliation": "",
     "keyword": "",
-    "effect": "unit cost 4cost On the field opponent's units 2 discard it. / card discard it. discard unit 1 .",
+    "effect": "unit cost 4 cost On the field opponent's units 2 discard it. / card discard it. Discard unit 1 .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-078_R_뷰티_풀_샷.jpg"
   },
@@ -8440,7 +8440,7 @@
     "rarity": "C",
     "affiliation": "",
     "keyword": "",
-    "effect": "discard 2cost unit 2 .",
+    "effect": "discard 2 cost unit 2 .",
     "ip": "Goddess of Victory: NIKKE",
     "image": "nikke_card_images/BT01-079_C_EX_매거진.jpg"
   },
@@ -8476,7 +8476,7 @@
   },
   {
     "id": "ST03-001",
-    "name": "모더니아",
+    "name": "Modernia",
     "type": "Leader",
     "attribute": "Storm",
     "cost": 0,
@@ -8491,7 +8491,7 @@
   },
   {
     "id": "ST03-001",
-    "name": "모더니아",
+    "name": "Modernia",
     "type": "Leader",
     "attribute": "Storm",
     "cost": 0,
@@ -8536,7 +8536,7 @@
   },
   {
     "id": "ST03-004",
-    "name": "유니",
+    "name": "Uni",
     "type": "Unit",
     "attribute": "Storm",
     "cost": 2,
@@ -8641,7 +8641,7 @@
   },
   {
     "id": "ST03-011",
-    "name": "모더니아",
+    "name": "Modernia",
     "type": "Unit",
     "attribute": "Storm",
     "cost": 7,
@@ -8911,7 +8911,7 @@
   },
   {
     "id": "ST02-011",
-    "name": "디젤",
+    "name": "Diesel",
     "type": "Unit",
     "attribute": "Earth",
     "cost": 7,
@@ -9016,7 +9016,7 @@
   },
   {
     "id": "ST01-001",
-    "name": "라피",
+    "name": "Rapi",
     "type": "Leader",
     "attribute": "Flame",
     "cost": 0,
@@ -9031,7 +9031,7 @@
   },
   {
     "id": "ST01-001",
-    "name": "라피",
+    "name": "Rapi",
     "type": "Leader",
     "attribute": "Flame",
     "cost": 0,
@@ -9091,7 +9091,7 @@
   },
   {
     "id": "ST01-005",
-    "name": "노이즈",
+    "name": "Noise",
     "type": "Unit",
     "attribute": "Flame",
     "cost": 2,
@@ -9151,7 +9151,7 @@
   },
   {
     "id": "ST01-009",
-    "name": "엠마",
+    "name": "M마",
     "type": "Unit",
     "attribute": "Flame",
     "cost": 5,
@@ -9166,7 +9166,7 @@
   },
   {
     "id": "ST01-010",
-    "name": "아니스",
+    "name": "Anis",
     "type": "Unit",
     "attribute": "Flame",
     "cost": 6,
@@ -9181,7 +9181,7 @@
   },
   {
     "id": "ST01-011",
-    "name": "라피",
+    "name": "Rapi",
     "type": "Unit",
     "attribute": "Flame",
     "cost": 7,
