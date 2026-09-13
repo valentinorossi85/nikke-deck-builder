@@ -4,6 +4,24 @@ const CONFIG = {
     MAX_COPIES: 3
 };
 
+// Couleurs des attributs
+const ATTRIBUTE_COLORS = {
+    'Flame': '#e74c3c',
+    'Earth': '#27ae60',
+    'Storm': '#3498db',
+    'Wave': '#9b59b6',
+    '': '#95a5a6'
+};
+
+// Noms des attributs
+const ATTRIBUTE_NAMES = {
+    'Flame': '🔥 Flame',
+    'Earth': ' Earth',
+    'Storm': '⚡ Storm',
+    'Wave': '🌊 Wave',
+    '': ' Neutral'
+};
+
 // État
 let allCards = [];
 let filteredCards = [];
@@ -18,24 +36,24 @@ async function loadCards() {
     try {
         const response = await fetch('./cards.json');
         if (!response.ok) throw new Error("Impossible de charger cards.json");
-        allCards = await response.json();
+        const rawCards = await response.json();
         
-        // Nettoyer les espaces parasites dans les données
-        allCards = allCards.map(card => ({
-            ...card,
-            id: (card.id || '').trim(),
-            name: (card.name || '').trim(),
-            type: (card.type || '').trim(),
-            attribute: (card.attribute || '').trim(),
-            affiliation: (card.affiliation || '').trim(),
-            keyword: (card.keyword || '').trim(),
-            effect: (card.effect || '').trim(),
-            image: (card.image || '').trim(),
-            ip: (card.ip || '').trim(),
-            rarity: (card.rarity || '').trim()
-        }));
+        // ✅ NETTOYAGE DES CLÉS ET VALEURS (espaces parasites dans le JSON)
+        // Le JSON a des clés comme "attribute " au lieu de "attribute"
+        allCards = rawCards.map(card => {
+            const cleaned = {};
+            for (const key in card) {
+                const cleanKey = key.trim(); // Enlève les espaces des clés
+                let value = card[key];
+                if (typeof value === 'string') value = value.trim(); // Enlève les espaces des valeurs
+                cleaned[cleanKey] = value;
+            }
+            return cleaned;
+        });
         
         console.log(`${allCards.length} cartes chargées.`);
+        console.log('Exemple carte nettoyée:', allCards[0]);
+        console.log('Attribut exemple:', allCards[0].attribute); // Doit afficher "Storm" pas undefined
         
         // Filtrage initial
         applyFilters();
@@ -56,7 +74,7 @@ function applyFilters() {
     const searchTerm = document.getElementById('searchInput')?.value.toLowerCase() || '';
     const typeFilter = document.getElementById('ipFilter')?.value || 'all';
     
-    // Récupérer l'attribut du leader actuel (si défini)
+    // Récupérer l'attribut du leader actuel
     const leaderAttribute = deck.leader && deck.leader.attribute ? deck.leader.attribute.toLowerCase() : null;
     
     filteredCards = allCards.filter(card => {
@@ -76,11 +94,11 @@ function applyFilters() {
             matchLeader = card.type && card.type.toLowerCase().includes('leader');
         }
         
-        // ✅ NOUVEAU : Filtre par attribut/couleur du leader
+        // ✅ FILTRE PAR ATTRIBUT (couleur)
         let matchAttribute = true;
         if (leaderAttribute) {
             const cardAttribute = (card.attribute || '').toLowerCase();
-            // Autoriser si la carte n'a pas d'attribut (neutre) OU si elle a le même attribut que le leader
+            // Autoriser si la carte n'a pas d'attribut (neutre) OU si elle a le même attribut
             matchAttribute = !cardAttribute || cardAttribute === leaderAttribute;
         }
         
@@ -90,36 +108,48 @@ function applyFilters() {
     renderCardList();
 }
 
-// Listener pour la recherche
+// Listeners
 document.getElementById('searchInput')?.addEventListener('input', applyFilters);
-
-// Listener pour le filtre par type
 document.getElementById('ipFilter')?.addEventListener('change', applyFilters);
 
-// --- AFFICHAGE CARTES (Avec Drag & Drop intégré) ---
+// --- AFFICHAGE CARTES ---
+function getAttributeColor(attribute) {
+    return ATTRIBUTE_COLORS[attribute] || '#95a5a6';
+}
+
+function getAttributeName(attribute) {
+    return ATTRIBUTE_NAMES[attribute] || attribute;
+}
+
 function renderCardList() {
     const container = document.getElementById('cardList');
     if (!container) return;
     
+    // Mettre à jour le compteur
+    const countEl = document.getElementById('cardCount');
+    if (countEl) countEl.textContent = filteredCards.length;
+    
     if (filteredCards.length === 0) {
-        container.innerHTML = '<p>No cards found.</p>';
+        container.innerHTML = '<p style="text-align:center; color:#888; padding:20px;">No cards found.</p>';
         return;
     }
     
-    container.innerHTML = filteredCards.map((card, index) => {
-        // Déterminer si c'est une carte draggable (toujours oui, mais visuel différent si leader filter)
+    const leaderAttribute = deck.leader && deck.leader.attribute ? deck.leader.attribute : null;
+    
+    container.innerHTML = filteredCards.map((card) => {
         const isLeaderCard = card.type && card.type.toLowerCase().includes('leader');
         const borderStyle = isLeaderCard ? 'border: 2px solid gold;' : '';
         const opacityStyle = isLeaderFilterActive && !isLeaderCard ? 'opacity: 0.3;' : '';
         
-        // ✅ Indicateur visuel pour les cartes filtrées par attribut
-        const leaderAttribute = deck.leader && deck.leader.attribute ? deck.leader.attribute : null;
+        // Indicateur visuel pour les cartes qui ne correspondent pas à l'attribut du leader
         const cardAttribute = card.attribute || '';
         const attributeMismatch = leaderAttribute && cardAttribute && cardAttribute.toLowerCase() !== leaderAttribute.toLowerCase();
-        const mismatchStyle = attributeMismatch ? 'opacity: 0.3; filter: grayscale(80%);' : '';
+        const mismatchStyle = attributeMismatch ? 'opacity: 0.4; filter: grayscale(70%);' : '';
+        const mismatchWarning = attributeMismatch ? '<span class="mismatch-warning">⚠ Wrong attribute</span>' : '';
         
         // Badge d'attribut
-        const attributeBadge = card.attribute ? `<span class="card-attribute" style="background-color: ${getAttributeColor(card.attribute)}; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.7em; margin-left: 5px;">${card.attribute}</span>` : '';
+        const attributeBadge = cardAttribute ? 
+            `<span class="attribute-badge" style="background-color: ${getAttributeColor(cardAttribute)};">${getAttributeName(cardAttribute)}</span>` : '';
         
         return `
         <div class="card-item" 
@@ -131,75 +161,54 @@ function renderCardList() {
             <img src="${card.image}" alt="${card.name}" class="card-thumbnail" 
                  onerror="this.src='https://via.placeholder.com/150x200?text=No+Image'">
             <div class="card-info">
-                <h4>${card.name} ${attributeBadge}</h4>
+                <h4>${card.name}</h4>
                 <span class="card-rarity">${card.type}</span>
-                ${isLeaderCard && isLeaderFilterActive ? '<span style="color:gold; font-weight:bold;">★ LEADER</span>' : ''}
+                ${attributeBadge}
+                ${mismatchWarning}
+                ${isLeaderCard && isLeaderFilterActive ? '<span style="color:gold; font-weight:bold; display:block; margin-top:3px;">★ LEADER</span>' : ''}
             </div>
             <button class="btn-add" onclick="event.stopPropagation(); addToDeck('${card.id}')">+</button>
         </div>
     `}).join('');
 }
 
-// ✅ Fonction utilitaire pour les couleurs d'attribut
-function getAttributeColor(attribute) {
-    const colors = {
-        'Flame': '#e74c3c',    // Rouge
-        'Earth': '#27ae60',    // Vert
-        'Storm': '#3498db',    // Bleu
-        'Wave': '#9b59b6',     // Violet
-        '': '#95a5a6'          // Gris (neutre)
-    };
-    return colors[attribute] || '#95a5a6';
-}
-
-// --- GESTION DU DRAG & DROP ---
-// 1. Démarrage du glisser
+// --- DRAG & DROP ---
 window.handleDragStart = function(event, cardId) {
     event.dataTransfer.setData('text/plain', cardId);
     event.dataTransfer.effectAllowed = 'move';
-    // Petit effet visuel
     setTimeout(() => event.target.style.opacity = '0.5', 0);
 };
 
-// 2. Fin du glisser (reset opacité)
 document.addEventListener('dragend', (event) => {
     if (event.target.classList.contains('card-item')) {
         event.target.style.opacity = '1';
     }
 });
 
-// 3. Configuration de la zone de drop (Leader Slot)
 function initLeaderZone() {
     const zone = document.getElementById('leader-slot');
     if (!zone) return;
     
-    // Empêcher le comportement par défaut (nécessaire pour autoriser le drop)
     zone.addEventListener('dragover', (e) => {
         e.preventDefault(); 
         e.dataTransfer.dropEffect = 'move';
         zone.style.borderColor = '#ffd700';
         zone.style.backgroundColor = 'rgba(255, 215, 0, 0.2)';
-        zone.style.transform = 'scale(1.02)';
     });
     
     zone.addEventListener('dragleave', () => {
         zone.style.borderColor = '#ccc';
         zone.style.backgroundColor = 'transparent';
-        zone.style.transform = 'scale(1)';
     });
     
     zone.addEventListener('drop', (e) => {
         e.preventDefault();
         zone.style.borderColor = '#ccc';
         zone.style.backgroundColor = 'transparent';
-        zone.style.transform = 'scale(1)';
-        
         const cardId = e.dataTransfer.getData('text/plain');
         if (cardId) {
             const card = allCards.find(c => c.id === cardId);
-            if (card) {
-                setAsLeader(cardId);
-            }
+            if (card) setAsLeader(cardId);
         }
     });
 }
@@ -215,52 +224,46 @@ window.setAsLeader = function(cardIdOrObj) {
     
     if (!card) return;
     
-    // Vérification : est-ce vraiment un leader ?
     if (!card.type.toLowerCase().includes('leader')) { 
         alert("Cette carte n'est pas un Leader !"); 
         return; 
     }
     
     if (deck.leader && deck.leader.id === card.id) {
-        // Si on clique sur le leader actuel, on le retire
         deck.leader = null;
     } else {
-        // Si un ancien leader existe, on le remet dans le deck
         if (deck.leader) {
             deck.cards.push(deck.leader);
         }
-        // Nouveau leader
         deck.leader = card;
-        // Retirer du deck normal si présent
         const idx = deck.cards.findIndex(c => c.id === card.id);
         if (idx > -1) deck.cards.splice(idx, 1);
     }
     
     updateUI();
-    
-    // ✅ IMPORTANT : Re-filtrer les cartes selon le nouvel attribut du leader
-    applyFilters();
+    applyFilters(); // ✅ Re-filtrer après changement de leader
 };
 
 window.addToDeck = function(cardId) {
     const card = allCards.find(c => c.id === cardId);
     if (!card) return;
     
-    // ✅ Vérification : la carte correspond-elle à l'attribut du leader ?
-    if (deck.leader && deck.leader.attribute && card.attribute) {
-        if (card.attribute.toLowerCase() !== deck.leader.attribute.toLowerCase()) {
-            alert(`Cette carte (${card.attribute}) ne correspond pas à l'attribut du leader (${deck.leader.attribute}) !`);
+    // ✅ Vérification de l'attribut
+    if (deck.leader && deck.leader.attribute) {
+        const leaderAttr = deck.leader.attribute.toLowerCase();
+        const cardAttr = (card.attribute || '').toLowerCase();
+        
+        if (cardAttr && cardAttr !== leaderAttr) {
+            alert(`❌ Incompatible!\n\nLeader: ${getAttributeName(deck.leader.attribute)}\nCarte: ${getAttributeName(card.attribute)}\n\nVous ne pouvez ajouter que des cartes de l'attribut du leader (ou neutres).`);
             return;
         }
     }
     
-    // Si c'est un leader, on propose de le mettre en leader directement
     if (card.type && card.type.toLowerCase().includes('leader')) {
         if(confirm(`Voulez-vous définir "${card.name}" comme Leader ?`)) {
             setAsLeader(card);
             return;
         }
-        // Si l'utilisateur annule, on ne fait rien (on n'ajoute pas au deck)
         return;
     }
     
@@ -287,9 +290,7 @@ window.removeFromDeck = function(index) {
 window.removeLeader = function() {
     deck.leader = null;
     updateUI();
-    
-    // ✅ IMPORTANT : Re-filtrer les cartes (retirer la contrainte d'attribut)
-    applyFilters();
+    applyFilters(); // ✅ Re-filtrer
 };
 
 // --- MISE A JOUR INTERFACE ---
@@ -306,21 +307,26 @@ function renderLeader() {
     
     if (deck.leader) {
         const attributeBadge = deck.leader.attribute ? 
-            `<div style="text-align:center; margin-top:3px;"><span style="background-color: ${getAttributeColor(deck.leader.attribute)}; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8em;">${deck.leader.attribute}</span></div>` : '';
-            
+            `<div style="text-align:center; margin-top:8px;"><span class="attribute-badge" style="background-color: ${getAttributeColor(deck.leader.attribute)}; font-size: 0.9em;">${getAttributeName(deck.leader.attribute)}</span></div>` : '';
+        
         container.innerHTML = `
-            <div class="card-in-deck" style="position:relative;">
-                <img src="${deck.leader.image}" alt="${deck.leader.name}" style="width:100%; border-radius:8px;">
-                <button class="btn-remove" onclick="removeLeader()" style="position:absolute; top:5px; right:5px; background:red; color:white; border:none; border-radius:50%; width:20px; height:20px; cursor:pointer;">×</button>
-                <div style="text-align:center; font-weight:bold; margin-top:5px;">${deck.leader.name}</div>
+            <div style="position:relative; width:100%; max-width:200px; margin:0 auto;">
+                <div style="position:relative; width:100%; aspect-ratio:2/3; overflow:hidden; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+                    <img src="${deck.leader.image}" alt="${deck.leader.name}" style="width:100%; height:100%; object-fit:cover; display:block;">
+                    <button onclick="removeLeader()" style="position:absolute; top:5px; right:5px; background:red; color:white; border:none; border-radius:50%; width:24px; height:24px; cursor:pointer; font-size:16px; line-height:1; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 4px rgba(0,0,0,0.3);">×</button>
+                </div>
+                <div style="text-align:center; font-weight:bold; margin-top:8px; font-size:0.95em;">${deck.leader.name}</div>
                 ${attributeBadge}
             </div>
         `;
     } else {
         container.innerHTML = `
-            <p style="color: #888; font-size: 0.9em; text-align: center; margin-top: 20px; pointer-events:none;">
-                Glissez un Leader ici<br>ou double-cliquez sur une carte
-            </p>`;
+            <div style="text-align:center; padding:30px 20px; color:#888; font-size:0.9em; border:2px dashed #ccc; border-radius:8px; min-height:200px; display:flex; align-items:center; justify-content:center;">
+                <div>
+                    <div style="font-size:2em; margin-bottom:10px;">👑</div>
+                    <div>Glissez un Leader ici<br>ou double-cliquez sur une carte</div>
+                </div>
+            </div>`;
     }
 }
 
@@ -329,14 +335,14 @@ function renderDeck() {
     if (!container) return;
     
     if (deck.cards.length === 0) {
-        container.innerHTML = '<p>Votre deck est vide.</p>';
+        container.innerHTML = '<p style="text-align:center; color:#888; padding:20px;">Votre deck est vide.</p>';
         return;
     }
     
     container.innerHTML = deck.cards.map((card, index) => `
-        <div class="card-in-deck">
-            <img src="${card.image}" alt="${card.name}">
-            <button class="btn-remove" onclick="removeFromDeck(${index})">×</button>
+        <div class="card-in-deck" style="position:relative; display:inline-block; margin:5px;">
+            <img src="${card.image}" alt="${card.name}" style="width:80px; height:120px; object-fit:cover; border-radius:6px;">
+            <button class="btn-remove" onclick="removeFromDeck(${index})" style="position:absolute; top:-5px; right:-5px; background:red; color:white; border:none; border-radius:50%; width:20px; height:20px; cursor:pointer; font-size:14px; line-height:1;">×</button>
         </div>
     `).join('');
 }
@@ -346,8 +352,8 @@ function updateStats() {
     if (!el) return;
     
     const leaderInfo = deck.leader ? 
-        `${deck.leader.attribute ? `<span style="color:${getAttributeColor(deck.leader.attribute)}">${deck.leader.attribute}</span>` : 'Neutre'}` : 
-        'MANQUANT';
+        `${deck.leader.attribute ? `<span style="color:${getAttributeColor(deck.leader.attribute)}; font-weight:bold;">${getAttributeName(deck.leader.attribute)}</span>` : 'Neutre'}` : 
+        '<span style="color:#e74c3c;">MANQUANT</span>';
     
     el.innerHTML = `<div>Cartes: <strong>${deck.cards.length}/40</strong></div> <div>Leader: <strong>${leaderInfo}</strong></div>`;
 }
@@ -368,7 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("Application prête. Drag & Drop activé.");
 });
 
-// --- GESTION DE LA MODALE (Popup détails carte) ---
+// --- MODALE ---
 window.showCardDetails = function(cardId) {
     const card = allCards.find(c => c.id === cardId);
     if (!card) return;
@@ -390,7 +396,7 @@ window.showCardDetails = function(cardId) {
             </div>
             <div class="modal-info-row">
                 <span class="modal-info-label">Attribute:</span>
-                <span class="modal-info-value" style="color: ${getAttributeColor(card.attribute)}; font-weight: bold;">${card.attribute || 'Neutre'}</span>
+                <span class="modal-info-value" style="color: ${getAttributeColor(card.attribute)}; font-weight: bold;">${getAttributeName(card.attribute)}</span>
             </div>
             <div class="modal-info-row">
                 <span class="modal-info-label">Cost:</span>
@@ -418,7 +424,6 @@ window.showCardDetails = function(cardId) {
     modal.classList.add('active');
 };
 
-// Fermer la modale
 window.closeModal = function(event) {
     if (event.target.id === 'cardModal') {
         document.getElementById('cardModal').classList.remove('active');
@@ -427,4 +432,44 @@ window.closeModal = function(event) {
 
 window.closeModalDirect = function() {
     document.getElementById('cardModal').classList.remove('active');
+};
+
+// Fonctions placeholder pour Export/Import
+window.exportDeck = function() {
+    const data = JSON.stringify(deck, null, 2);
+    const blob = new Blob([data], {type: 'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'deck.json';
+    a.click();
+    URL.revokeObjectURL(url);
+};
+
+window.importDeck = function() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json';
+    input.onchange = (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            try {
+                const imported = JSON.parse(event.target.result);
+                if (imported.leader && imported.cards) {
+                    deck = imported;
+                    updateUI();
+                    applyFilters();
+                    alert('Deck importé avec succès !');
+                } else {
+                    alert('Format de fichier invalide.');
+                }
+            } catch (err) {
+                alert('Erreur lors de l\'import : ' + err.message);
+            }
+        };
+        reader.readAsText(file);
+    };
+    input.click();
 };

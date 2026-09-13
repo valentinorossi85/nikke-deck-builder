@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,75 +11,72 @@
         <h1>🎮 Nivel Arena Deck Builder</h1>
         <nav>
             <a href="rules.md">Rules</a>
-            <a href="#" onclick="alert('Help: Click on a card to add it to your deck')">Help</a>
+            <a href="#">Help</a>
         </nav>
     </header>
 
     <main>
-        <section class="filters">
+        <div class="filters">
             <input type="text" id="searchInput" placeholder="Search for a card...">
             <select id="ipFilter">
                 <option value="all">All Types</option>
-                <option value="Unit">Units</option>
-                <option value="Leader">Leaders</option>
-                <option value="Skill">Skills</option>
+                <option value="unit">Units</option>
+                <option value="leader">Leaders</option>
+                <option value="skill">Skills</option>
             </select>
-             <label style="display: flex; align-items: center; gap: 5px; cursor: pointer;">
-        <input type="checkbox" id="leaderOnlyCheck" onchange="toggleLeaderFilter()">
-        <span>Hide non-Leader cards</span>
-    </label>
-        </section>
+            <!-- ✅ Checkbox bien intégrée -->
+            <div class="leader-filter-container">
+                <input type="checkbox" id="leaderOnlyCheck" onchange="toggleLeaderFilter()">
+                <label for="leaderOnlyCheck">Hide non-Leader cards</label>
+            </div>
+        </div>
 
         <div class="builder-container">
-            <section class="card-pool">
+            <div class="card-pool">
                 <h2>Available Cards (<span id="cardCount">0</span>)</h2>
                 <div id="cardList" class="card-grid"></div>
-            </section>
+            </div>
 
-            <section class="deck-builder">
+            <div class="deck-builder">
                 <h2>My Deck</h2>
-                
                 <div id="deckStats" class="deck-stats">
-                    <div class="stat">
-                        <span class="stat-label">Cards:</span>
-                        <span class="stat-value">0/40</span>
-                    </div>
+                    <div>Cartes: <strong>0/40</strong></div>
+                    <div>Leader: <strong>MANQUANT</strong></div>
                 </div>
 
-                <div class="deck-section">
-                    <h3>Leader</h3>
-                    <div id="leader-slot" class="leader-zone">
-                        <p style="color: #888; font-size: 0.9em;">Drag a card here or double-click on it</p>
-                    </div>
+                <h3>Leader</h3>
+                <div id="leader-slot" class="leader-zone">
+                    <p style="color: #888; font-size: 0.9em; text-align: center; pointer-events:none;">
+                        Drag a card here or double-click on it
+                    </p>
                 </div>
 
-                <h3>Deck Cards</h3>
+                <h3 style="margin-top: 1.5rem;">Deck Cards</h3>
                 <div id="deckList" class="deck-grid"></div>
 
-                <div id="validationResult" class="validation"></div>
-
                 <div class="actions">
-                    <button id="exportBtn" class="btn btn-primary">Export</button>
-                    <label class="btn btn-secondary">
-                        Import
-                        <input type="file" id="importBtn" accept=".json" style="display: none;">
-                    </label>
+                    <button class="btn btn-primary" onclick="exportDeck()">Export</button>
+                    <button class="btn btn-secondary" onclick="importDeck()">Import</button>
                 </div>
-            </section>
+
+                <div id="validationResult" class="validation invalid">
+                    ❌ Deck Invalide (Il faut 1 Leader et 40 cartes)
+                </div>
+            </div>
         </div>
     </main>
+
+    <!-- Modal pour les détails de carte -->
+    <div id="cardModal" class="modal" onclick="closeModal(event)">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModalDirect()">&times;</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
 
     <footer>
         <p>Nivel Arena Deck Builder - Educational Project</p>
     </footer>
-
-    <!-- Modal pour afficher les détails de la carte -->
-    <div id="cardModal" class="modal" onclick="closeModal(event)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <button class="modal-close" onclick="closeModalDirect()">×</button>
-            <div id="modalBody"></div>
-        </div>
-    </div>
 
     <script src="app.js"></script>
 </body>

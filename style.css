@@ -77,6 +77,51 @@ main {
     min-width: 200px;
 }
 
+/* ✅ FIX : Checkbox bien alignée, pas d'espace bizarre */
+.leader-filter-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 6px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+    white-space: nowrap;
+}
+
+.leader-filter-container:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(102, 126, 234, 0.4);
+}
+
+.leader-filter-container input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: #ffd700;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.leader-filter-container label {
+    cursor: pointer;
+    user-select: none;
+    margin: 0;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.leader-filter-container label::before {
+    content: '👑';
+    font-size: 1.1em;
+}
+
 .builder-container {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -201,6 +246,11 @@ main {
     align-items: center;
     justify-content: center;
     transition: all 0.3s;
+}
+
+.leader-zone.drag-over {
+    border-color: #ffd700;
+    background: rgba(255, 215, 0, 0.1);
 }
 
 .deck-grid {
@@ -384,4 +434,24 @@ footer {
 
 .modal-effect strong {
     color: #667eea;
+}
+
+/* ✅ Badge attribut */
+.attribute-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75em;
+    font-weight: bold;
+    color: white;
+    margin-left: 5px;
+    margin-top: 3px;
+}
+
+/* ✅ Indicateur mismatch */
+.mismatch-warning {
+    color: #e74c3c;
+    font-size: 0.7em;
+    display: block;
+    margin-top: 2px;
 }
