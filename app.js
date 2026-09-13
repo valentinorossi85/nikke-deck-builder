@@ -13,15 +13,6 @@ const ATTRIBUTE_COLORS = {
     '': '#95a5a6'
 };
 
-// Noms des attributs
-const ATTRIBUTE_NAMES = {
-    'Flame': '🔥 Flame',
-    'Earth': ' Earth',
-    'Storm': '⚡ Storm',
-    'Wave': '🌊 Wave',
-    '': ' Neutral'
-};
-
 // État
 let allCards = [];
 let filteredCards = [];
@@ -31,6 +22,24 @@ let deck = {
     cards: []
 };
 
+// --- FONCTION UTILITAIRE : Nettoyer une chaîne ---
+function cleanStr(val) {
+    if (typeof val !== 'string') return val;
+    return val.trim();
+}
+
+// --- FONCTION UTILITAIRE : Accéder à une propriété avec ou sans espace ---
+function getProp(card, key) {
+    // Essaie la clé exacte, puis avec espace, puis trimée
+    if (card[key] !== undefined) return card[key];
+    if (card[key + ' '] !== undefined) return card[key + ' '];
+    // Cherche une clé qui trimée correspond
+    for (const k in card) {
+        if (k.trim() === key) return card[k];
+    }
+    return undefined;
+}
+
 // --- CHARGEMENT ---
 async function loadCards() {
     try {
@@ -38,24 +47,22 @@ async function loadCards() {
         if (!response.ok) throw new Error("Impossible de charger cards.json");
         const rawCards = await response.json();
         
-        // ✅ NETTOYAGE DES CLÉS ET VALEURS (espaces parasites dans le JSON)
-        // Le JSON a des clés comme "attribute " au lieu de "attribute"
+        // ✅ NETTOYAGE ROBUSTE : crée un objet propre pour chaque carte
         allCards = rawCards.map(card => {
-            const cleaned = {};
-            for (const key in card) {
-                const cleanKey = key.trim(); // Enlève les espaces des clés
-                let value = card[key];
-                if (typeof value === 'string') value = value.trim(); // Enlève les espaces des valeurs
-                cleaned[cleanKey] = value;
+            const clean = {};
+            for (const rawKey in card) {
+                const key = rawKey.trim();
+                let val = card[rawKey];
+                if (typeof val === 'string') val = val.trim();
+                clean[key] = val;
             }
-            return cleaned;
+            return clean;
         });
         
         console.log(`${allCards.length} cartes chargées.`);
-        console.log('Exemple carte nettoyée:', allCards[0]);
-        console.log('Attribut exemple:', allCards[0].attribute); // Doit afficher "Storm" pas undefined
+        console.log('Exemple:', allCards[0]);
+        console.log('Attributs uniques:', [...new Set(allCards.map(c => c.attribute).filter(Boolean))]);
         
-        // Filtrage initial
         applyFilters();
     } catch (error) {
         console.error(error);
@@ -75,20 +82,22 @@ function applyFilters() {
     const typeFilter = document.getElementById('ipFilter')?.value || 'all';
     
     // Récupérer l'attribut du leader actuel
-    const leaderAttribute = deck.leader && deck.leader.attribute ? deck.leader.attribute.toLowerCase() : null;
+    const leaderAttribute = deck.leader && deck.leader.attribute 
+        ? deck.leader.attribute.toLowerCase() 
+        : null;
     
     filteredCards = allCards.filter(card => {
-        // Text filter
+        // Filtre texte
         const matchText = card.name.toLowerCase().includes(searchTerm) || 
                           card.id.toLowerCase().includes(searchTerm);
         
-        // Type filter (Unit, Leader, Skill)
+        // Filtre type
         let matchType = true;
         if (typeFilter !== 'all') {
             matchType = card.type && card.type.toLowerCase() === typeFilter.toLowerCase();
         }
         
-        // Leader filter
+        // Filtre leader
         let matchLeader = true;
         if (isLeaderFilterActive) {
             matchLeader = card.type && card.type.toLowerCase().includes('leader');
@@ -118,7 +127,14 @@ function getAttributeColor(attribute) {
 }
 
 function getAttributeName(attribute) {
-    return ATTRIBUTE_NAMES[attribute] || attribute;
+    const names = {
+        'Flame': '🔥 Flame',
+        'Earth': '🌍 Earth',
+        'Storm': ' Storm',
+        'Wave': ' Wave',
+        '': '⚪ Neutral'
+    };
+    return names[attribute] || attribute || '⚪ Neutral';
 }
 
 function renderCardList() {
@@ -143,13 +159,15 @@ function renderCardList() {
         
         // Indicateur visuel pour les cartes qui ne correspondent pas à l'attribut du leader
         const cardAttribute = card.attribute || '';
-        const attributeMismatch = leaderAttribute && cardAttribute && cardAttribute.toLowerCase() !== leaderAttribute.toLowerCase();
+        const attributeMismatch = leaderAttribute && cardAttribute && 
+            cardAttribute.toLowerCase() !== leaderAttribute.toLowerCase();
         const mismatchStyle = attributeMismatch ? 'opacity: 0.4; filter: grayscale(70%);' : '';
-        const mismatchWarning = attributeMismatch ? '<span class="mismatch-warning">⚠ Wrong attribute</span>' : '';
+        const mismatchWarning = attributeMismatch ? 
+            '<span style="color: #e74c3c; font-size: 0.7em; display:block; margin-top:2px;">⚠ Wrong attribute</span>' : '';
         
         // Badge d'attribut
         const attributeBadge = cardAttribute ? 
-            `<span class="attribute-badge" style="background-color: ${getAttributeColor(cardAttribute)};">${getAttributeName(cardAttribute)}</span>` : '';
+            `<span style="background-color: ${getAttributeColor(cardAttribute)}; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.7em; margin-left: 5px; display:inline-block; margin-top:3px;">${getAttributeName(cardAttribute)}</span>` : '';
         
         return `
         <div class="card-item" 
@@ -192,19 +210,16 @@ function initLeaderZone() {
     zone.addEventListener('dragover', (e) => {
         e.preventDefault(); 
         e.dataTransfer.dropEffect = 'move';
-        zone.style.borderColor = '#ffd700';
-        zone.style.backgroundColor = 'rgba(255, 215, 0, 0.2)';
+        zone.classList.add('drag-over');
     });
     
     zone.addEventListener('dragleave', () => {
-        zone.style.borderColor = '#ccc';
-        zone.style.backgroundColor = 'transparent';
+        zone.classList.remove('drag-over');
     });
     
     zone.addEventListener('drop', (e) => {
         e.preventDefault();
-        zone.style.borderColor = '#ccc';
-        zone.style.backgroundColor = 'transparent';
+        zone.classList.remove('drag-over');
         const cardId = e.dataTransfer.getData('text/plain');
         if (cardId) {
             const card = allCards.find(c => c.id === cardId);
@@ -307,7 +322,7 @@ function renderLeader() {
     
     if (deck.leader) {
         const attributeBadge = deck.leader.attribute ? 
-            `<div style="text-align:center; margin-top:8px;"><span class="attribute-badge" style="background-color: ${getAttributeColor(deck.leader.attribute)}; font-size: 0.9em;">${getAttributeName(deck.leader.attribute)}</span></div>` : '';
+            `<div style="text-align:center; margin-top:8px;"><span style="background-color: ${getAttributeColor(deck.leader.attribute)}; color: white; padding: 4px 12px; border-radius: 4px; font-size: 0.9em; font-weight:bold;">${getAttributeName(deck.leader.attribute)}</span></div>` : '';
         
         container.innerHTML = `
             <div style="position:relative; width:100%; max-width:200px; margin:0 auto;">
@@ -341,8 +356,8 @@ function renderDeck() {
     
     container.innerHTML = deck.cards.map((card, index) => `
         <div class="card-in-deck" style="position:relative; display:inline-block; margin:5px;">
-            <img src="${card.image}" alt="${card.name}" style="width:80px; height:120px; object-fit:cover; border-radius:6px;">
-            <button class="btn-remove" onclick="removeFromDeck(${index})" style="position:absolute; top:-5px; right:-5px; background:red; color:white; border:none; border-radius:50%; width:20px; height:20px; cursor:pointer; font-size:14px; line-height:1;">×</button>
+            <img src="${card.image}" alt="${card.name}">
+            <button class="btn-remove" onclick="removeFromDeck(${index})">×</button>
         </div>
     `).join('');
 }
@@ -366,6 +381,46 @@ function validateDeck() {
     el.className = isValid ? 'validation valid' : 'validation invalid';
     el.innerHTML = isValid ? '✅ Deck Valide !' : '❌ Deck Invalide (Il faut 1 Leader et 40 cartes)';
 }
+
+// Export/Import
+window.exportDeck = function() {
+    const data = {
+        leader: deck.leader,
+        cards: deck.cards
+    };
+    const json = JSON.stringify(data, null, 2);
+    const blob = new Blob([json], {type: 'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'deck.json';
+    a.click();
+    URL.revokeObjectURL(url);
+};
+
+window.importDeck = function() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json';
+    input.onchange = (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            try {
+                const data = JSON.parse(event.target.result);
+                deck.leader = data.leader || null;
+                deck.cards = data.cards || [];
+                updateUI();
+                applyFilters();
+            } catch (err) {
+                alert('Erreur lors de l\'import: ' + err.message);
+            }
+        };
+        reader.readAsText(file);
+    };
+    input.click();
+};
 
 // Initialisation
 document.addEventListener('DOMContentLoaded', () => {
@@ -432,44 +487,4 @@ window.closeModal = function(event) {
 
 window.closeModalDirect = function() {
     document.getElementById('cardModal').classList.remove('active');
-};
-
-// Fonctions placeholder pour Export/Import
-window.exportDeck = function() {
-    const data = JSON.stringify(deck, null, 2);
-    const blob = new Blob([data], {type: 'application/json'});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'deck.json';
-    a.click();
-    URL.revokeObjectURL(url);
-};
-
-window.importDeck = function() {
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = '.json';
-    input.onchange = (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-        const reader = new FileReader();
-        reader.onload = (event) => {
-            try {
-                const imported = JSON.parse(event.target.result);
-                if (imported.leader && imported.cards) {
-                    deck = imported;
-                    updateUI();
-                    applyFilters();
-                    alert('Deck importé avec succès !');
-                } else {
-                    alert('Format de fichier invalide.');
-                }
-            } catch (err) {
-                alert('Erreur lors de l\'import : ' + err.message);
-            }
-        };
-        reader.readAsText(file);
-    };
-    input.click();
 };

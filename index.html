@@ -24,16 +24,16 @@
                 <option value="leader">Leaders</option>
                 <option value="skill">Skills</option>
             </select>
-            <!-- ✅ Checkbox bien intégrée -->
+            <!-- ✅ Checkbox compacte -->
             <div class="leader-filter-container">
                 <input type="checkbox" id="leaderOnlyCheck" onchange="toggleLeaderFilter()">
-                <label for="leaderOnlyCheck">Hide non-Leader cards</label>
+                <label for="leaderOnlyCheck">👑 Hide non-Leader cards</label>
             </div>
         </div>
 
         <div class="builder-container">
             <div class="card-pool">
-                <h2>Available Cards (<span id="cardCount">0</span>)</h2>
+                <h2 id="availableCardsTitle">Available Cards (<span id="cardCount">0</span>)</h2>
                 <div id="cardList" class="card-grid"></div>
             </div>
 
@@ -51,7 +51,7 @@
                     </p>
                 </div>
 
-                <h3 style="margin-top: 1.5rem;">Deck Cards</h3>
+                <h3>Deck Cards</h3>
                 <div id="deckList" class="deck-grid"></div>
 
                 <div class="actions">
